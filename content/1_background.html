@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1. Background</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h2>Background</h2>
+            <p>
+                The 90.1 Energy Cost Budget and Performance Rating Method Submittal Review Manual (the
+                Manual) is a comprehensive reference for reviewing modeling-based submittals. The Manual supports the
+                2016, 2019, and 2022 editions of ANSI/ASHRAE Standard 90.1, focusing on the aspects
+                unique to whole building performance-based compliance, as illustrated in Figure 1 with the
+                <span style="color: red; background-color: yellow;">red text and yellow highlighting</span>.
+                Some of the enforcement steps that are the same for prescriptive and performance projects, such as site
+                inspections and commissioning, are not addressed.
+            </p>
+
+            <figure>
+                <img src="../assets/images/section1-6/figure-1.png" alt="Figure 1. Scope of the Manual" style="max-width: 450px;">
+                <figcaption>
+                    *The Energy Cost Budget Method is Section 11 in ASHRAE 90.1 2016 and 2019 and Section 12 in ASHRAE
+                    90.1 2022.
+                </figcaption>
+                <figcaption><strong>Figure 1: Scope of the Manual</strong></figcaption>
+            </figure>
+
+            <br>
+
+            <p>
+                The Manual is a companion to the DOE/PNNL 90.1 Energy Cost Budget and Performance Rating Method
+                Compliance Form (the Compliance Form) which meets 90.1 Energy Cost Budget and Performance Rating Method
+                documentation requirements. The Compliance Form is a spreadsheet-based tool that is filled out by the
+                energy modeler and design team and submitted, along with the required supporting documentation, to the
+                Authority Having Jurisdiction (AHJ) or the Rating Authority (RA) for review. The review checks described
+                in this Manual are incorporated into the Quality Control Checks tab (QC Tab) of the Compliance Form. The
+                compliance documentation process is illustrated in Figure 2.
+            </p>
+
+            <p>
+                The QC tab allows reviewer to identify the checks to be performed for the project based on the
+                established high impact areas and the available review budget, and record pass/fail outcome and comments
+                for each completed check. This Manual includes description of each check listed in the QC tab including
+                references to the applicable 90.1 requirements, simulation reports, and common mistakes.
+            </p>
+
+            <figure>
+                <img src="../assets/images/section1-6/figure-2.png" alt="Figure 2: Compliance Documentation Process"
+                     style="max-width: 750px;">
+                <figcaption><strong>Figure 2: Compliance Documentation Process</strong></figcaption>
+            </figure>
+
+            <br>
+
+            <p>This Manual includes the following:</p>
+            <ul>
+                <li>
+                    The review checks to verify that the proposed design reported in the Compliance Form reflects design
+                    documents; that the configuration of the baseline/budget model is established correctly, that the
+                    baseline/budget and proposed design is modeled as reported, that the simulation is error-free, and
+                    that the compliance outcome is established correctly;
+                </li>
+                <li>Examples and common mistakes;</li>
+                <li>The methodology for prioritizing the review to focus on the most impactful areas;</li>
+                <li>Simulation reports for common BEM tools annotated with tips on performing specific checks;</li>
+                <li>
+                    Checks to verify compliance with the mandatory requirements of 90.1 relevant to the simulation
+                    inputs.
+                </li>
+            </ul>
+            <p>
+                For jurisdiction and rating authorities’ administrators charged with establishing a submittal review
+                framework for their organization, see the
+                <a href="https://www.energycodes.gov/performance_based_compliance">DOE Energy Codes website</a>
+                for recommendations for organizing an effective and efficient submittal review process including but not
+                limited to the following:</p>
+            <ul>
+                <li>Adoption of the DOE/PNNL 90.1 Performance-based Compliance Form,</li>
+                <li>Establishing the minimum qualification requirements for energy modelers and submittal reviewers,</li>
+                <li>And third-party reviewer scope of work template.</li>
+            </ul>
+
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()" style="opacity: 0; visibility: hidden;">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

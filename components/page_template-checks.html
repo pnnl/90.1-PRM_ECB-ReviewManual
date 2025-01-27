@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+
+
+
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div id="2022-g3_3-modal-container"></div> <!-- Modal for 2022 G3.3 Review Tips container -->
+
+        <!-- Sim Output Full Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: auto; max-width: none;">
+            <div class="modal-content" id="resizableModal" style="resize: both; overflow: auto; max-width: 100vw; max-height: 100vh;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Resizable container for the image -->
+                <div id="resizableContainer">
+                  <img id="modalImage" src="" class="img-fluid" alt="Full Image" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </main>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script>
+    const componentTypes = [];
+    const labels = [];
+</script>
+<script src="../assets/js/add-components-checks.js"></script>
+<script src="../assets/js/filter-checks.js"></script>
+<script src="../assets/js/filter-2022-g3_3-content.js"></script>
+</body>
+</html>

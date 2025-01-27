@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <button class="btn btn-filter mb-3" type="button" data-toggle="collapse" data-target="#filterContent"
+                aria-expanded="false" aria-controls="filterContent">
+            Filter Content
+        </button>
+
+        <form class="mb-3 me-3" role="search" autocomplete="off" style="position: relative;">
+            <div class="btn-group">
+               <input id="searchInput" class="form-control dropdown-toggle" placeholder="Search..." aria-label="Search" data-toggle="dropdown" aria-expanded="false">
+                <ul id="dropdownResults" class="dropdown-menu dropdown-menu-right"></ul>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="collapse container mt-3" id="filterContent">
+    <div class="card card-body">
+        <form>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <strong>Project Path: </strong><br>
+                    <div class="d-flex">
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="ecbPath" name="path" value="ECB" checked>
+                            <label class="form-check-label" for="ecbPath">
+                                ECB
+                            </label>
+                        </div>
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="prmPath" name="path" value="PRM" checked>
+                            <label class="form-check-label" for="prmPath">
+                                PRM
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                    <strong>90.1 Vintage: </strong><br>
+                    <div class="d-flex">
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="v2016" name="version" value="2016" checked>
+                            <label class="form-check-label" for="v2016">
+                                2016
+                            </label>
+                        </div>
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="v2019" name="version" value="2019" checked>
+                            <label class="form-check-label" for="v2019">
+                                2019
+                            </label>
+                        </div>
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="v2022" name="version" value="2022" checked>
+                            <label class="form-check-label" for="v2022">
+                                2022
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 mb-3">
+                    <strong>Model Type(s): </strong><br>
+                    <div class="d-flex">
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="bModel" name="model" value="B" checked>
+                            <label class="form-check-label" for="bModel">
+                                Budget/Baseline
+                            </label>
+                        </div>
+                        <div class="form-check pr-3">
+                            <input class="form-check-input" type="checkbox" id="pModel" name="model" value="P" checked>
+                            <label class="form-check-label" for="pModel">
+                                Proposed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <!-- First Dropdown -->
+                <div class="col-4 mb-3">
+                    <label for="check-type" class="form-label"><strong>Check Type(s):</strong></label>
+                    <select class="selectpicker form-control" id="check-type" name="check-type" multiple>
+                        <option value="All" selected>All</option>
+                        <option value="1">1. General Requirements</option>
+                        <option value="2">2. Design Docs --> Compliance Form</option>
+                        <option value="3">3. Mandatory Requirements</option>
+                        <option value="4">4. ECB/PRM --> Compliance Form</option>
+                        <option value="5">5. Compliance Form --> Model Inputs</option>
+                        <option value="6">6. Compliance Form --> Model Outputs</option>
+                        <option value="7">7. Model Outputs --> Benchmarks</option>
+                    </select>
+                </div>
+
+                <!-- Second Dropdown -->
+                <div class="col-4 mb-3">
+                    <label for="component-type" class="form-label"><strong>Component Type(s):</strong></label>
+                    <select class="selectpicker form-control" id="component-type" name="component" multiple>
+                        <option value="All" selected>All</option>
+                    </select>
+                </div>
+
+                <!-- Third Dropdown -->
+                <div class="col-4 mb-3">
+                    <label for="bem-tool" class="form-label"><strong>BEM Tool(s):</strong></label>
+                    <select class="selectpicker form-control" id="bem-tool" name="bemTool" multiple>
+                        <option value="All" selected>All</option>
+                        <option value="eQUEST">eQUEST</option>
+                        <option value="Trane TRACE 700">Trane TRACE 700</option>
+                        <option value="Trane TRACE 3D Plus">Trane TRACE 3D Plus</option>
+                        <option value="IESVE">IESVE</option>
+                        <option value="EnergyPlus">EnergyPlus</option>
+                        <option value="OpenStudio">OpenStudio</option>
+                        <option value="Carrier HAP v5">Carrier HAP v5</option>
+                        <option value="Design Builder">Design Builder</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filter Links -->
+            <div id="filter-links" class="mt-3">
+                <!-- Links will be dynamically populated based on the ids of cards within the #page-content -->
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button id="collapseFilter" class="rounded-circle collapsed" type="button" data-toggle="collapse" data-target="#filterContent"
+            aria-expanded="false" aria-controls="filterContent">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+</div>

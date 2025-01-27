@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+
+            <!--- Page Content Goes Here --->
+            <h1>Service Water Heating (SWH)</h1>
+
+            <h3>Overview</h3>
+
+            <p>
+                The service water heating category covers parameters related to the service water heating equipment and
+                demand. Table 11 summarizes the checks included in this group.
+            </p>
+
+            <p><strong>Table 11: Service Water Heating Quality Control Checks Overview</strong></p>
+
+            <table id="checks-table" class="table table-bordered table-sm" border="1">
+
+                <colgroup>
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: 150px;">
+                    <col style="width: 150px;">
+                </colgroup>
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Focus of the Check</th>
+                        <th>Type of Check</th>
+                        <th>Proposed Design</th>
+                        <th>Baseline/Budget Design</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td rowspan="6">SWH System Components</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td>
+                            <a href="#swh01">SWH01-P</a>
+                            <a href="#swh03-p">SWH03-P</a>
+                        </td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>
+                            <a href="#swh01">SWH01-B</a>
+                        </td>
+                    </tr>
+                    <!-- I split up SWH01-B and SHW03-B into two rows since only SHW03-B is automated -->
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td class="automated">
+                            <a href="#swh03-b">SWH03-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Meet mandatory requirements</td>
+                        <td class="automated">
+                            <a href="#swh02-p">SWH02-P</a>
+                        </td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs consistent with CF</td>
+                        <td class="automated">
+                            <a href="#swh05">SWH05-P</a>
+                        </td>
+                        <td class="automated">
+                            <a href="#swh05">SWH05-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation outputs consistent with CF</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">Hot Water Demand</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td class="automated">
+                            <a href="#swh04-p">SWH04-P</a>
+                        </td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td class="automated">
+                            <a href="#swh04-b">SWH04-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Meet mandatory requirements</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs consistent with CF</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>Simulation outputs consistent with CF</td>
+                        <td>
+                            <a href="#swh06">SWH06</a>
+                            <a href="#swh07">SWH07</a>
+                        </td>
+                        <td>
+                            <a href="#swh06">SWH06</a>
+                            <a href="#swh07">SWH07</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <strong>Legend: </strong><span class="automated">PASS/FAIL/NA outcome is
+                            determined automatically in the Quality Control Checks tab of the Compliance 
+                            Form.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The following strategies may be used to prioritize the review:</p>
+            <ol>
+                <li>
+                    If there are multiple water heater types, the review should focus on water heaters with the largest
+                    capacity or a representative smaller unit.
+                </li>
+                <li>
+                    Hot water demand checks should only be performed for Appendix G projects where different hot
+                    water demand is reported in the Compliance Form for the baseline versus proposed design.
+                </li>
+            </ol>
+
+            <p>For 90.1 2022 PRM alterations subject to G3.3 (i.e., Minor Alterations), the summary tables on the
+               Quality Control Checks tab in the Compliance Form may not reflect correct values for the baseline since
+               projects, for the most part, only enter proposed design information and provide notes as to what was
+               modeled in the baseline in the notes fields associated with the proposed design related tables. Refer to
+               the
+                <a href="../content/6_14_90-1-2022-section-g3-3.html">90.1 2022 Section G3.3 Performance Calculations
+                    for Other Alterations</a>
+                section for more information regarding 90.1 2022 G3.3.
+            </p>
+
+            <!--SWH01-P Section -->
+            <div id="swh01" class="card card-body mb-3" data-check-type="2" data-component="system" data-model="P">
+                <h3>SWH01-P Proposed SWH system type, efficiency and capacity reported in the Compliance Form reflects
+                    design documents</h3>
+
+                 <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1 Column A #11/Table 12.5.1 Column A #11</strong>
+                     <p style="margin:0;">
+                         The service water-heating system type and all related performance parameters, such as equipment
+                         capacities and efficiencies, in the proposed design are determined as follows:
+                     </p>
+                     <ul>
+                         <li>
+                             Where a complete service water-heating system exists, the model must reflect the actual
+                             system type using actual component capacities and efficiencies.
+                         </li>
+                         <li>
+                             Where a service water-heating system has been designed and submitted with design documents,
+                             the service water-heating model must be consistent with design documents.
+                         </li>
+                         <li>
+                             Where no service water-heating system exists or has been submitted with the design
+                             documents, no service water heating must be modeled.
+                         </li>
+                         <li>Piping losses must not be modeled</li>
+                     </ul>
+                 </div>
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019, and 2022 PRM</h5>
+                    <strong>Table G3.1 #11, Proposed Building Performance</strong>
+                    <p style="margin:0;">
+                        The service water-heating system type and all related performance parameters, such as equipment
+                        capacities and efficiencies, in the proposed design must be determined as follows:
+                    </p>
+                     <ol>
+                         <li>
+                             Where a complete service water-heating system exists, the proposed design must reflect the
+                             actual system type using actual component capacities and efficiencies.
+                         </li>
+                         <li>
+                             Where a service water-heating system has been designed and submitted with design documents,
+                             the service water heating model must be consistent with design documents.
+                         </li>
+                         <li>
+                             Where no service water-heating system exists or has been designed and submitted with design
+                             documents, but the building will have service water-heating loads, a service water-heating system
+                             must be modeled that matches the system type in the baseline building design, serves the same
+                             water-heating loads, and comply with but not exceed the requirements of Section 7. Exception: For
+                             alterations subject to 90.1 Section G3.3, because the same system types are modeled in the baseline
+                             and proposed, if no service water heating system exists in the proposed then none will be modeled
+                             in the proposed or baseline.
+                         </li>
+                         <li>For buildings that will have no service water-heating loads, no service water-heating
+                             system is modeled.</li>
+                         <li>Piping losses must not be modeled.</li>
+                     </ol>
+                 </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Proposed SWHs are listed in Table 1 of the Service Water Heating tab. If projects include multiple
+                        water heaters, identify SWH types with the highest total nameplate input rate calculated as the
+                        product of the number of heaters and nameplate input rate per heater, and focus the review on
+                        these units only.
+                    </li>
+                    <li>
+                        Cross-check information provided for the SHWs in the design documents with the inputs in Table 1.
+                        The reference to drawings/specs where information for each heater is available should be included
+                        in Table 1 for each heater. Request cutsheets if any of the parameters are missing.
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_SHW.png" style="max-width: 1040px; min-width: 1040px;">
+                        </figure>
+                    </li>
+                </ol>
+            </div>
+
+            <!--SWH02-P Section -->
+            <div id="swh02-p" class="card card-body mb-3" data-check-type="3" data-component="system" data-model="P">
+                <h3>SWH02-P Proposed SWH system efficiency reported in the Compliance Form meets the mandatory
+                    requirements of 90.1 Section 8</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Confirm that the rated efficiency exceeds the minimum required efficiency and that the rated
+                        standby loss is below the maximum listed in Table 1. These reference values are based on 90.1
+                        Table 7.8 and are mandatory. Failure to meet these requirements should be flagged. For most
+                        SWHs, the reference values will be determined automatically. If the auto-populated default is
+                        over-written, the value is shown in bold brown font and should be confirmed.
+                    </li>
+                </ol>
+            </div>
+
+            <!--SWH02-B Section -->
+            <div id="swh02-b" class="card card-body mb-3" data-check-type="3" data-component="system" data-model="B">
+                <h3>SWH02-B Baseline/budget SWH system type, efficiency and capacity reported in the Compliance Form is
+                    established correctly</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1 Column B #11/Table 12.5.1 Column B #11</strong>
+                    <p>The SWH system type and fuel must be the same as in the proposed design, except a dedicated SWH
+                        system must be modeled if the proposed design has a combination space/service water heating system.
+                        Storage tank volume in the budget design must be the same as in the proposed design. Piping losses
+                        must not be modeled.
+                    </p>
+                 </div>
+
+                <div data-version="2016,2019" data-path="PRM">
+                    <h5>90.1 2016 and 2019 PRM</h5>
+                    <strong>Table G3.1 Baseline Building Performance column #11</strong>
+                    <p>The SWH system type and fuel must be as prescribed in 90.1 Table G3.1.1-2 based on the building type,
+                        irrespective of system type and fuel source in the proposed design. For example, all multifamily
+                        occupancies have a central gas storage water heater; all office occupancies have a central electric
+                        resistance storage water heater. In mixed use buildings, e.g. in a building with multifamily occupancy on
+                        the top 10 floors and office occupancy on the lower 3 floors, a separate baseline SWH system type must
+                        be modeled for each occupancy. Storage tank volume in the budget design must be the same as in the
+                        proposed design.
+                    </p>
+                 </div>
+
+                <div data-version="2022" data-path="PRM">
+                    <h5>90.1 2022 PRM</h5>
+                    <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                    <p>Requirements are the same as Table G3.1 Baseline Building Performance column #11 for the 90.1 2016
+                        and 2019 PRM described above.
+                    </p>
+
+                    <p><strong><u>G3.3 Minor Alterations</u></strong><br>
+                        Service water heating systems included in the scope of the alteration are required to be modeled with
+                        the minimum requirements in 90.1 Section 7.1.4 with the same system type modeled as specified in
+                        proposed design. All unmodified service water heating systems and equipment shall be modeled the
+                        same as in the proposed design.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>Baseline/budget SWHs are listed in Table 2 of the Service Water Heating tab. All values are set
+                        automatically by applying the appropriate 90.1 rules to the project. Default values over-written by
+                        the modeler are shown in brown bold font in the table and should be verified by reviewer. Refer to
+                        <a href="#" class="modal-2022-g3_3-trigger" data-content-id="swh02-b">
+                        90.1 2022 Section G3.3 Performance Calculations for Other Alterations</a> for review tips for alterations
+                        subject to 90.1 2022 Section G3.3 (i.e., Minor alterations).
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_water-heater.png" style="max-width: 950px;
+                            min-width: 950px;">
+                        </figure>
+                    </li>
+
+                    <li>Common mistakes (these are not applicable to alterations subject to 90.1 2022 PRM Section G3.3):
+                        <ul>
+                            <li>Assuming distributed water heaters in the PRM baseline when there are distributed water
+                            heaters in the proposed design. Baseline always has a central water heater for each building
+                            occupancy type. Multiple service water heaters may only be included in mixed-use buildings
+                            </li>
+                            <li>Where proposed design has distributed water heaters, assuming that the capacity of the
+                                central baseline water heater is equal to the sum of capacities of the specified water
+                                heaters. Instead, baseline systems must be sized according to the provisions of 90.1 Section
+                                7.4.1 to avoid excessive oversizing and low operating efficiency.
+                            </li>
+                            <li>Where proposed design has combination space/service water heating boiler, assuming that
+                                the capacity of the central baseline water heater is equal to the capacity of the specified
+                                space/service water heating boiler. Instead, baseline systems must be sized according to
+                                the provisions of 90.1 Section 7.4.1 to avoid excessive oversizing and low operating
+                                efficiency.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+            </div>
+
+            <!--SWH03-P Section -->
+            <div id="swh03-p" class="card card-body mb-3" data-check-type="2" data-component="system" data-model="P">
+                <h3>SHW03-P The ancillary components of the proposed SWH system reported in the Compliance Form reflect
+                    design documents</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB,PRM">
+                    <h5>90.1 2016 and 2019/2022 ECB, 90.1 2016/2019/2022 PRM</h5>
+                    <p>
+                        Based on Tables 11.5.1 #11/12.5.1 #11 and G3.1 #11, ancillary components include recirculation pumps,
+                        service hot water preheat and condenser heat recovery
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Table 1 includes fields for specifying recirculation pumps and hot water reheat strategies, if
+                        applicable. The review check should be completed for projects with entries in either of these fields
+                        or if service water heating is identified as one of the impactful end uses.
+                    </li>
+                    <li>Cross-check information provided in the table with the design documents to verify alignment.</li>
+                </ol>
+            </div>
+
+            <!--SWH03-B Section -->
+            <div id="swh03-b" class="card card-body mb-3" data-check-type="4" data-component="system" data-model="B">
+                <h3>SHW03-B Ancillary components of the baseline/budget SWH system reported in the Compliance Form are
+                    established correctly</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1 Column B #11 Exception 3/Table 12.5.1 Column B #11 Exception 3</strong>
+                    <p>
+                        For 24-hour facilities that meet the prescriptive criteria for use of condenser heat recovery systems
+                        described in Section 6.5.6.2, a system meeting the requirements of that section must be included in the
+                        baseline building design, regardless of the exceptions to Section 6.5.6.2. If a condenser heat recovery
+                        system meeting the requirements described in Section 6.5.6.2 cannot be modeled, the requirement for
+                        90.1 Energy Cost Budget and Performance Rating Method Submittal Review Manual 127
+                        including such a system in the actual building must be met as a prescriptive requirement in accordance
+                        with Section 6.5.6.2 and no heat recovery system must be included in the proposed design or budget
+                        building design.
+                    </p>
+                </div>
+
+                <div data-version="2016,2019" data-path="PRM">
+                    <h5>90.1 2016 and 2019 PRM</h5>
+                    <strong>Table G3.1 #11, Baseline Building Performance column, (e) & (f)</strong>
+                    <ul>
+                        <li>
+                            For large, 24-hour-per-day facilities that meet the prescriptive criteria for use of condenser heat
+                            recovery systems described in Section 6.5.6.2, a system meeting the requirements of that section
+                            shall be included in the baseline building design regardless of the exceptions to Section 6.5.6.2. If a
+                            condenser heat recovery system meeting the requirements described in Section 6.5.6.2 cannot be
+                            modeled, the requirement for including such a system in the actual building must be met as a
+                            prescriptive requirement in accordance with Section 6.5.6.2, and no heat recovery system would be
+                            included in the proposed design or baseline building design.
+                        </li>
+                        <li>
+                            Where recirculation pumps are used to ensure prompt availability of service water-heating at the
+                            end use, the energy consumption of such pumps must be calculated explicitly.
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-version="2022" data-path="PRM">
+                    <h5>90.1 2022 PRM</h5>
+                    <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                    <p>
+                        Requirements are the same as Table G3.1 #11, Baseline Building Performance column, (e) & (f) for the
+                        90.1 2016 and 2019 PRM described above.
+                    </p>
+
+                    <p><strong><u>G3.3 Minor Alterations</u></strong><br>
+                        Alterations subject to 90.1 2022 Section G3.3 (i.e., Minor Alterations) are only required to model
+                        condenser heat recovery systems if the requirements are applicable based on the scope of the alteration
+                        and based on the language in 90.1 Section 6.1.4. This means, based on the language in 90.1 Section
+                        6.1.4, that only alterations in which new cooling systems are installed to serve previously uncooled
+                        spaces would need to minimally comply with 90.1 Section 6.5.6.2 in the baseline.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>The ancillary components of service hot water systems are reported in Table 2 of the Service Water
+                        Heating tab. The values are auto populated but may be over-written. The overwritten defaults
+                        should be verified to confirm that they are justified (for alterations following 90.1 2022 Section G3.3
+                        see Table 1 for baseline and proposed design model inputs and examine the Notes section under
+                        Table 1 for clarifying notes regarding modeled values).
+                    </li>
+                </ol>
+            </div>
+
+            <!--SWH04-P Section -->
+            <div id="swh04-p" class="card card-body mb-3" data-check-type="2" data-component="demand" data-model="P">
+                <h3>SHW04-P Proposed service hot water demand reported in the Compliance Form is reasonable.</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB,PRM">
+                    <h5>90.1 2016 and 2019/2022 ECB and PRM</h5>
+                    <p><strong>Table 11.5.1 Column B #11/ Table 12.5.1 Column B #11, Table G3.1 #11 Baseline Building
+                        Performance column: </strong>
+                        Service water-heating energy consumption shall be calculated explicitly based on the volume of
+                        service water heating required, the entering makeup water, and the leaving service water heating
+                        temperatures. Entering water temperatures shall be estimated based on the location. Leaving
+                        temperatures shall be based on the end-use requirements.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        The check should only be performed for PRM projects if hot water demand reported in the
+                        Compliance Form is different between the baseline/budget and proposed.
+                    </li>
+                    <li>SHW demand assumptions are provided in Tables 4 - 6 of the Service Water Heating tab.
+                        <ol style="list-style-type: lower-alpha">
+                            <li>
+                                Table 4 calculates SHW demand for multifamily projects based on the entered flow rates for the
+                                specified fixtures in showers and sinks, average supply SHW temperature, entering cold water
+                                temperature and temperature at the fixture point of use. The calculations are based on
+                                requirements of the
+                                <a href="https://www.energystar.gov/sites/default/files/asset/document/ENERGY_STAR_MFHR_Simulation_Guidelines_AppG2016.pdf">
+                                EPA ENERGY STAR Multifamily New Construction Program Simulation Guidelines</a>. Verify that entered flow rates
+                                match design documents.
+                            </li>
+                            <li>
+                                Table 5 shows default service hot water use for non-residential building types. The default
+                                values are based on typical hot water use in buildings of similar type provided in ASHRAE 90.1
+                                2013 User’s Manual. If default is overwritten, the input is shown in brown font and should be
+                                verified.
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <!--SWH04-B Section -->
+            <div id="swh04-b" class="card card-body mb-3" data-check-type="4" data-component="demand" data-model="B">
+                <h3>SWH04-B Difference between the baseline/budget and proposed hot water demand reported in the
+                    Compliance Form is as allowed</h3>
+
+                <div data-version="2016" data-path="ECB">
+                    <h5>90.1 2016 ECB</h5>
+                    <p>
+                        Change in service water heating load is not listed as a trade-off opportunity in the section, thus must be
+                        modeled the same in the budget and proposed design. This is further clarified in the updates to this
+                        section incorporated into 2019 edition of 90.1 shown below.
+                    </p>
+                </div>
+
+                <div data-version="2019,2022" data-path="ECB">
+                    <h5>90.1 2019/2022 ECB</h5>
+                    <p><strong>Table 11.5.1 Column B #11/Table 12.5.1 Column B #11:</strong> Service water loads and use shall be
+                        the same for both the proposed design and baseline building design and typical of the proposed building type.
+                    </p>
+                </div>
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016 and 2019/2022 PRM</h5>
+                    <p style="margin:0;"><strong>Table G3.1 #11 Baseline Building Performance column:</strong> Exception to (g)
+                        states that service water heating use can be reduced due to the following:
+                    </p>
+                        <ul>
+                            <li>
+                                Water conservation measures that reduce the physical volume of service water required.
+                                Examples include low-flow shower heads.
+                            </li>
+                            <li>
+                                Reducing the required temperature of service mixed water, by increasing the temperature, or by
+                                increasing the temperature of the entering makeup water. Examples include alternative sanitizing
+                                technologies for dishwashing and heat recovery to entering makeup water.
+                            </li>
+                            <li>
+                                Reducing the hot fraction of mixed water to achieve required operational temperature. Examples
+                                include shower or laundry heat recovery to incoming cold-water supply, reducing the hot-water
+                                fraction required to meet required mixed-water temperature.
+                            </li>
+                        </ul>
+                    <p>Such reductions must be demonstrated by calculations.</p>
+                    <p style="margin:0;">2019 and 2022 editions include the following clarification in Table G3.1 #1, Baseline
+                       Building column:<br>
+                       Where the baseline building systems and equipment are permitted to be different from the proposed design but
+                       are not prescribed in this appendix, the baseline must be determined based on the following,
+                       in the order of priority:
+                    </p>
+                    <ul>
+                        <li>Requirements in Sections 5 through 10</li>
+                        <li>
+                            Requirements of other efficiency or equipment codes or standards applicable to the design of the
+                            building systems and equipment
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Hot water demand is reported in Table 4 of the Service Water Heating tab for the residential
+                        occupancies and in Table 5 for all others.
+                        <br>
+                    </li>
+                    <li>
+                        ECB: the amount of service hot water consumed in the building is not a trade-off opportunity and
+                        must be modeled the same in the budget building and the proposed design.
+                        <br>
+                    </li>
+                    <li>PRM:
+                        <ol style="list-style-type: lower-alpha">
+                            <li>
+                                Projects may document a reduction in demand provided the methodology is approved by
+                                the building official. For example, on projects with low-flow fixtures, hot water demand in
+                                the Proposed Design may be reduced to reflect the lower flow rates of the installed fixtures
+                                compared to the maximum flow allowed by the applicable code or standard.
+                            </li>
+                            <li>
+                                Table 4 of the Service Water Heating tab automatically calculates savings from common
+                                water-savings technologies found on residential projects such as low flow plumbing fixtures
+                                and ENERGY STAR appliances. Baseline values are set by defaults and should be verified if
+                                overwritten.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>Common Mistakes
+                        <ol style="list-style-type: lower-alpha">
+                            <li>Modeling hot water demand reduction on projects following ECB</li>
+                            <li>
+                                Using baseline flow rate based on requirements of the outdated standard such as Energy
+                                Policy Act 1992 (EPACT 1992). The baseline must be based on the maximum allowed flow
+                                rates of the applicable codes such as state International Plumbing Code.
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <!--SWH05 Section -->
+            <div id="swh05" class="card card-body mb-3" data-check-type="5" data-component="system" data-model="B,P">
+                <h3>SWH05-B, SWH05-P Modeled baseline/budget and proposed SWH system type, efficiency, capacity and
+                    ancillary features reflect parameters reported in the Compliance Form</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Review the simulation reports to confirm that the modeled SWH system parameters are as reported
+                        in the Compliance Form.
+                    </li>
+                </ol>
+
+                <div class="annotated-report container">
+                    <div class="row" data-bem-tool="eQUEST">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border">
+                                eQUEST
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-top border-left border-right">
+                                    PV-A, PS-H
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/eQuest_PV-A.png">
+                                        Annotated Report
+                                    </button>
+                                    <!-- Could not find PS-H in eQuest simulation output reports section of the Review Manual  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 700">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 700
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                     Plant Information entered values report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace700_plant-info.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 3D Plus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 3D Plus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    System Component Summary report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <!--No system component summary report in the manual -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="IESVE">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                IESVE
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Plant Loops & Equipment Report, Florida Energy Code Compliance Report, Room Loads
+                                    Report, Zone Loads Report, System Loads Report, Energy Model Output Report, PRM
+                                    Compliance Report, ECB Compliance Report, BPRM Report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_plant-loops.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_florida_pg3.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_room-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_zone-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads1.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads2.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_energy-model-output.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/ashrae-prm-ecb-compliance-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_BPRM-report.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="EnergyPlus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                EnergyPlus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    eplustbl.html ‘Equipment Summary’ report, ‘Service Water Heating’ section
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="OpenStudio">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                OpenStudio
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                eplustbl.html ‘Equipment Summary’ report, ‘Service Water Heating’ section
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Carrier HAP v5">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Carrier HAP v5
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    “Plant Input Data” report, “Boiler Input Data” report.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Design Builder">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Design Builder
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Service Water Heating sheet in LEED Minimum Energy Performance Calculator (.xlsm)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/designbuilder_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--SWH06 Section -->
+            <div id="swh06" class="card card-body mb-3" data-check-type="6" data-component="demand" data-model="B,P">
+                <h3>SWH06 Difference in the baseline/budget and proposed hot water use is reasonable based on the system
+                    parameters reported in the Compliance Form</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        ECB: Since the budget SWH system must be of the same type and use the same fuel as the proposed
+                        system and the reduction in the hot water demand is not a trade-off opportunity, the difference
+                        in SWH energy use between the budget and proposed design depends only on the difference in
+                        efficiencies of the budget and proposed systems.
+                        <p>
+                            <br>
+                            SWH_Use<sub>prop</sub> * SWH_Eff<sub>prop</sub> = SWH_Use<sub>budget</sub> * SWH_Eff<sub>budget</sub>
+                        </p>
+                        <p>SWH_Use [MMBtu] = the annual SWH use from simulation output reports</p>
+                        <p>SWH_Eff = SWH efficiency reported in the submittal</p>
+                        <p>
+                            Projects that do not show this pattern should be flagged and explanation and supporting documentation
+                            should be requested. Higher savings may be demonstrated by projects that have solar hot water
+                            preheat as allowed by 90.1 Section 11.4.3.1/12.4.3.1, or other means of service hot water preheat, such
+                            as use of condenser heat recovery, that differs between the budget and proposed design.
+                        </p>
+                    </li>
+                    <li>
+                        90.1 PRM: The baseline SWH system may be of a different type and use a different fuel than the
+                        proposed SWH system and there may be a difference in hot water demand between the baseline
+                        and proposed design, thus this check cannot be effectively performed. For alterations following 90.1
+                        2022 Section G3.3 (i.e., Minor Alterations) that are not modeling a reduction in hot water demand
+                        the check described in review tip #1 can be performed using the baseline and proposed efficiency
+                        values reported in Table 1 on the Service Water Heating tab in the Compliance Form.
+                    </li>
+
+                </ol>
+
+                <div class="annotated-report container">
+                    <div class="row" data-bem-tool="eQUEST">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border">
+                                eQUEST
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-top border-left border-right">
+                                    BEPU
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/eQuest_BEPU.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 700">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 700
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                     Equipment Energy Consumption report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace700_equip.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trane_equip-energy.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 3D Plus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 3D Plus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    LEED Summary Section 1.6
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace3d-li06-11.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="IESVE">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                IESVE
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Detailed Simulation Report, Plant Loops & Equipment Report, Room Loads Report, Zone
+                                    Loads Report, System Loads Report, Energy Model Output Report, PRM Compliance
+                                    Report, ECB Compliance Report, BPRM Report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_detailed-sim.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_ahvac19-swh06.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_plant-loops.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_room-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_zone-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads1.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads2.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_energy-model-output.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/ashrae-prm-ecb-compliance-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_BPRM-report.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="EnergyPlus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                EnergyPlus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    NA <!--Blank in review manual so entered NA to keep formatting -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="OpenStudio">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                OpenStudio
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                NA <!--Blank in review manual so entered NA to keep formatting -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Carrier HAP v5">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Carrier HAP v5
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    “Monthly Simulation Results” report for an SHW plant
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Design Builder">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Design Builder
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Service Water Heating sheet in LEED Minimum Energy Performance Calculator (.xlsm)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/designbuilder_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--SWH07 Section -->
+            <div id="swh07" class="card card-body mb-3" data-check-type="6" data-component="demand" data-model="P">
+                <h3>SWH07-P Modeled proposed SWH effective full load hours are reasonable</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        SWH effective full load hours are equal to the ratio of the annual service water heating energy use
+                        from the simulation outputs to the reported service water heater capacity. Effective full load hours
+                        which are higher than typical included in Appendix A may indicate that modeled service water
+                        heating demand exceeds the values anticipated by the design team and that the modeled service
+                        water heater energy use is exaggerated. EFLH exceeding typical by more than 25%, or exceeding
+                        8760 hours per year, should be flagged.
+                    </li>
+                </ol>
+
+                <div class="annotated-report container">
+                    <div class="row" data-bem-tool="eQUEST">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border">
+                                eQUEST
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-top border-left border-right">
+                                    BEPU
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/eQuest_BEPU.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 700">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 700
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                     Equipment Energy Consumption report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace700_equip.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 3D Plus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 3D Plus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    LEED Summary Section 1.6
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace3d-li06-11.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="IESVE">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                IESVE
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Room Loads Report, Zone Loads Report, System Loads Report, Energy Model Output
+                                    Report, PRM Compliance Report, ECB Compliance Report, BPRM Report, Plant Loops &
+                                    Equipment Report, Florida Energy Code Compliance Report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_room-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_zone-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads1.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads2.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_energy-model-output.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/ashrae-prm-ecb-compliance-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_BPRM-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_plant-loops.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_florida_pg3.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="EnergyPlus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                EnergyPlus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    eplustbl.html ‘LEED Summary’ report, ‘EAp2-4/5. Performance Rating Method Compliance’ section
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="OpenStudio">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                OpenStudio
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                eplustbl.html ‘LEED Summary’ report, ‘EAp2-4/5. Performance Rating Method Compliance’ section
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Carrier HAP v5">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Carrier HAP v5
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    “Monthly Simulation Results” report for an SHW plant.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Design Builder">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Design Builder
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Service Water Heating sheet in LEED Minimum Energy Performance Calculator (.xlsm)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/designbuilder_SHW.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--- ---------------------- --->
+
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div id="2022-g3_3-modal-container"></div> <!-- Modal for 2022 G3.3 Review Tips container -->
+
+        <!-- Sim Output Full Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: auto; max-width: none;">
+            <div class="modal-content" id="resizableModal" style="resize: both; overflow: auto; max-width: 100vw; max-height: 100vh;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Resizable container for the image -->
+                <div id="resizableContainer">
+                  <img id="modalImage" src="" class="img-fluid" alt="Full Image" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script>
+    const componentTypes = ["system","demand"];
+    const labels = ["SWH System Components","Hot Water Demand"];
+</script>
+<script src="../assets/js/add-components-checks.js"></script>
+<script src="../assets/js/filter-checks.js"></script>
+<script src="../assets/js/filter-2022-g3_3-content.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

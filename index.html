@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar" class="flex-shrink-0 p-3" style="width: 330px;">
+        <a href="index.html">
+            <img src="assets/images/PNNL_Orange.png" alt="PNNL Logo">
+        </a>
+        <span class="fs-5 fw-semibold">Contents</span>
+        <ul class="list-unstyled ps-0">
+            <li class="chapter mb-1">
+                <a href="content/1_background.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    <b>1. &nbsp </b> Background
+                </a>
+            </li>
+            <li class="chapter mb-1">
+                <a href="content/2_organization-of-the-manual.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    <b>2. &nbsp </b> Organization of the Manual
+                </a>
+            </li>
+            <li class="chapter mb-1">
+                <a href="content/3_submittal-review-quick-start.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    <b>3. &nbsp </b> Submittal Review Quick Start
+                </a>
+            </li>
+            <li class="chapter mb-1">
+                <a href="content/4_review-process.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    <b>4. &nbsp </b> Review Process
+                </a>
+            </li>
+            <li class="chapter mb-1">
+                <button class="btn btn-toggle d-inline-flex justify-content-start rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#ch5-collapse" aria-expanded="false">
+                    <b>5. &nbsp </b> Review Methodology
+                </button>
+                <div class="collapse border-1" id="ch5-collapse">
+                    <ul class="list-unstyled fw-normal small">
+                        <li>
+                            <a href="content/5_1_general-concept.html" class="btn d-inline-flex justify-content-start rounded" >
+                                <b>5.1 &nbsp </b> General Concept of 90.1 ECB and PRM Compliance
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/5_2_types-of-review-checks.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>5.2 &nbsp </b> Types of the Review Checks
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/5_3_identifying-impactful-aspects.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>5.3 &nbsp </b> Identifying the Impactful Aspects of the Submittal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/5_4_establishing-review-scope.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>5.4 &nbsp </b> Establishing Review Scope
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="chapter mb-1">
+                <button class="btn btn-toggle d-inline-flex justify-content-start rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#ch6-collapse" aria-expanded="false">
+                    <b>6. &nbsp </b> Review Checks
+                </button>
+                <div class="collapse border-1" id="ch6-collapse">
+                    <ul class="list-unstyled fw-normal small">
+                        <li>
+                            <a href="content/6_1_nomenclature.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.1 &nbsp </b> Nomenclature
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_2_compliance-form-tab-name-changes.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.2 &nbsp </b> Compliance Form tab Name Changes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_3_simulation-general.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.3 &nbsp </b> Simulation General (SG)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_4_utility-rates.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.4 &nbsp </b> Utility Rate (UR)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_5_building-envelope.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.5 &nbsp </b> Building Envelope (BE)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_6_lighting-interior.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.6 &nbsp </b> Lighting, Interior (LI)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_7_lighting-exterior.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.7 &nbsp </b> Lighting, Exterior (LE)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_8_plug-process-other-loads.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.8 &nbsp </b> Plug, Process and Other Loads (PPO)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_9_service-water-heating.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.9 &nbsp </b> Service Water Heating (SWH)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_10_airside-hvac.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.10 &nbsp </b> Airside HVAC (AHVAC)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_11_waterside-hvac.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.11 &nbsp </b> Waterside HVAC (WHVAC)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_12_renewable-energy.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.12 &nbsp </b> Renewable Energy (RE)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_13_exceptional-calculations.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.13 &nbsp </b> Exceptional Calculations (EC)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/6_14_90-1-2022-section-g3-3.html" class="btn d-inline-flex justify-content-start rounded">
+                                <b>6.14 &nbsp </b> 90.1 2022 Section G3.3 Performance Calculations for Other Alterations
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+<!--            <li class="chapter mb-1">-->
+<!--                <button class="btn btn-toggle d-inline-flex justify-content-start rounded collapsed"-->
+<!--                        data-bs-toggle="collapse" data-bs-target="#ch7-collapse" aria-expanded="false">-->
+<!--                    <b>7. &nbsp </b> Simulation Reports-->
+<!--                </button>-->
+<!--                <div class="collapse border-1" id="ch7-collapse">-->
+<!--                    <ul class="list-unstyled fw-normal small">-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.1 &nbsp </b> Carrier HAP v5-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.2 &nbsp </b> DesignBuilder-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.3 &nbsp </b> EnergyPlus / OpenStudio-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.4 &nbsp </b> eQUEST-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.5 &nbsp </b> IESVE-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.6 &nbsp </b> Trane TRACE 3D Plus-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="#nomenclature" class="btn d-inline-flex justify-content-start rounded">-->
+<!--                                <b>7.7 &nbsp </b> Trane TRACE 700-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </li>-->
+            <li class="chapter mb-1">
+                <a href="content/appendixA_typical-building-operating-schedules.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    Appendix A: Typical Building Operating Schedules
+                </a>
+            </li>
+            <li class="chapter mb-1">
+                <a href="content/abbreviations-and-acronyms.html" class="btn d-inline-flex justify-content-start rounded section-header">
+                    Abbreviations and Acronyms
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom">
+            <div class="container">
+                <div class="d-flex flex-wrap justify-content-end dropdown">
+                    <form class="mb-3 me-3" role="search" autocomplete="off" style="position: relative;">
+                        <div class="btn-group">
+                            <input id="searchInput" class="form-control dropdown-toggle" placeholder="Search..."
+                                   aria-label="Search" data-bs-toggle="dropdown" aria-expanded="false">
+                            <ul id="dropdownResults" class="dropdown-menu dropdown-menu-end"></ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="jumbotron text-center">
+            <h1 class="display-5 mt-5">ASHRAE 90.1<br>Energy Cost Budget and Performance Rating Method<br>Submittal Review Manual
+            </h1>
+            <p class="lead mt-3">V04<br>July 2024</p>
+        </div>
+
+        <!-- Summary Section -->
+        <div id="summary" class="container my-5 ms-3">
+            <h2>Summary</h2>
+            <p>The 90.1 Energy Cost Budget and Performance Rating Method Submittal Review Manual (the Manual) is a comprehensive reference for reviewing modeling-based submittals. The Manual is a companion to the DOE/PNNL 90.1 Performance-based Compliance Form (Compliance Form) and supports the 2016, 2019, and 2022 editions of ANSI/ASHRAE Standard 90.1. The forms can be downloaded <a href="https://www.energycodes.gov/ashrae-standard-901-performance-based-compliance-form">here</a>.</p>
+
+            <p>The Manual includes the following:</p>
+            <ul>
+                <li>The review checks to verify that the proposed design reported in the Compliance Form reflects design documents; that the configuration of the baseline/budget model is established correctly; that the baseline/budget and proposed design is modeled as reported; that the simulation is error-free, and that the compliance outcome is established correctly.</li>
+                <li>The review checks to verify compliance with the mandatory requirements of 90.1 relevant to the simulation inputs.</li>
+                <li>Examples and common mistakes.</li>
+                <li>The methodology for prioritizing the review.</li>
+                <li>Simulation reports for common BEM tools annotated with tips on performing specific checks.</li>
+            </ul>
+
+            <p>Jurisdiction and rating authorities’ administrators charged with establishing a submittal review framework for their organization should refer to the <a href="https://www.energycodes.gov/performance_based_compliance">DOE Energy Codes website</a> for recommendations for organizing an effective and efficient submittal review process, including adoption of the DOE/PNNL 90.1 Performance-based Compliance Form, establishing the minimum qualification requirements for energy modelers and submittal reviewers, and a third-party reviewer Scope of Work template.</p>
+
+            <h2>Acknowledgements</h2>
+            <p>This manual was supported by the Pacific Northwest National Laboratory (PNNL) and the U.S. Department of Energy and was one of the outcomes of a research project to facilitate performance-based compliance with commercial energy code. The author would like to thank the following individuals:</p>
+
+            <ul>
+                <li>Michael Rosenberg (PNNL) and Kevin J Madison for the comprehensive feedback</li>
+                <li>Kimberly Cheslak, Dimitri Contoyannis, Jason Glazer, Duane Jonlin, Eric Mets, Andrew Parker, Dan Suyeyasu, Christin Witco for peer review</li>
+                <li>Caitlin Bohnert and Matthew Biesterveld (Trane), Matthew Dahlhausen and Andrew Parker (NREL), Liam Buckley (IES), Jim Pegues (Carrier), Andy Tindale, David Cocking and Shaun Wang (DesignBuilder) for developing the material included in the software-specific sections of the Manual.</li>
+            </ul>
+
+            <h3>Authors</h3>
+            <ul>
+                <li>Maria Karpman, Karpman Consulting</li>
+                <li>Christina LaPerle, Karpman Consulting</li>
+            </ul>
+
+        </div>
+
+        <br>
+        <!-- Disclaimer Section -->
+        <div id="disclaimer-container" class="container mt-5">
+            <h5 class="text-center">Disclaimer</h5>
+            <p>
+                This document was prepared as an account of work sponsored by an agency of the United States Government.
+                Neither the United States Government nor any agency thereof, nor Battelle Memorial Institute, nor any of
+                their employees, makes <strong>any warranty, express or implied, or assumes any legal liability or
+                responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product,
+                or process disclosed, or represents that its use would not infringe privately owned rights.</strong>
+                Reference herein to any specific commercial product, process, or service by trade name, trademark,
+                manufacturer, or otherwise does not necessarily constitute or imply its endorsement, recommendation, or
+                favoring by the United States Government or any agency thereof, or Battelle Memorial Institute. The
+                views and opinions of authors expressed herein do not necessarily state or reflect those of the United
+                States Government or any agency thereof.
+            </p>
+        </div>
+        <footer id="footer" class="bg-dark text-center py-3">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="assets/images/PNNL_CENTER_White.png" alt="PNNL Logo" class="mt-1 mx-2">
+                <img src="assets/images/DOE_Logo.png" alt="DOE Logo" class="mt-1 mx-5">
+            </div>
+        </footer>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/index-sidebar-state.js"></script>
+</body>
+</html>

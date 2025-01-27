@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h2><strong>Review Methodology</strong></h2>
+            <h3><strong>Types of the Review Checks</strong></h3>
+            <p>The review checks described in this manual have the following focus areas:</p>
+            <ol>
+                <li><strong>General requirements of 90.1 Energy Cost Budget and Performance Rating Method</strong>
+                    <ul>
+                        <li>Examples include verifying that an approved simulation tool and weather file was used.</li>
+                    </ul>
+                </li>
+                <li><strong>Specified systems and components reported in the Compliance Form reflect design documents</strong>
+                    <ul>
+                        <li>
+                            Examples include verifying that the rated wattage of lighting fixtures and the number of
+                            lighting fixtures specified in various spaces reported in the Compliance Form are consistent
+                            with the lighting plans and schedules; that the reported HVAC system types, capacities, and
+                            efficiencies reflect design documents, etc.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Specified systems and components meet the mandatory requirements in 90.1 Sections 5 - 10</strong>
+                    <ul>
+                        <li>
+                            Examples include verifying that the specified lighting controls meet mandatory requirements in Section 9;
+                            that the efficiency of the specified HVAC systems meets or exceeds minimums provided in Section 6,
+                            etc.
+                        </li>
+                        <li>
+                            The applicable mandatory requirements for many systems and components are listed in the Compliance Form.
+                            Compliance with these requirements is automatically verified by these QC checks.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Budget/baseline systems and components reported in the Compliance Form reflect requirements of the 90.1
+                    Energy Cost Budget Method or Performance Rating Method</strong>
+                    <ul>
+                        <li>
+                            Examples include verifying that the lighting power density, HVAC system types, thermal and solar
+                            properties of the envelope reported in the Compliance Form for the budget/baseline design are
+                            established correctly.
+                        </li>
+                        <li>
+                            In many cases, the relevant parameters are automatically populated in the Compliance Form by applying
+                            the rules of the ECB or PRM to the reported “triggers”. For example, project climate zone is one of the
+                            triggers that determine the auto-populated U-values of the baseline exterior walls. The key triggers are
+                            typically listed in the check description.
+                        </li>
+                        <li>
+                            The auto-populated budget/baseline parameters may be accepted without further review once the triggers
+                            are verified and if the auto-populated values are not over-written.
+                        </li>
+                        <li>
+                            Some defaults may be over-written, for example when 90.1 rules have exceptions that are not automated in the
+                            Compliance Form. The over-written defaults are shown in brown font in the Compliance Form and may require
+                            additional verification.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Simulation inputs reflect systems and components reported in the Compliance Form</strong>
+                    <ul>
+                        <li>
+                            Examples include verifying that lighting power density or mechanical system type, capacity,
+                            and efficiency are modeled as reported in the Compliance Form. For example, if the
+                            Compliance Form indicates that the baseline exterior lighting power is 1,700 W, the check
+                            would confirm that it matches the exterior lighting input in the simulation tool.
+                        </li>
+                        <li>Such checks apply to both the baseline/budget and proposed design models.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Simulation outputs are consistent with systems and components reported in the Compliance Form</strong>
+                    <ul>
+                        <li>
+                            Baseline/budget and proposed design models include numerous inputs in addition to those
+                            reported in the Compliance Form. These undisclosed inputs, as well as modeling mistakes, may
+                            have a significant impact on the compliance outcome. Confirming a reasonable correlation
+                            between inputs and outputs is an effective way of identifying potential issues. For example,
+                            if air leakage through the envelope is reported to be the same in the baseline and proposed
+                            design, an output report may be used to verify that infiltration heating and cooling loads
+                            are the same in the baseline (budget) and proposed models.
+                        </li>
+                        <li>
+                            Some of these checks are automated in the Compliance Form. For example, since both non-coincident interior
+                            lighting peak demand and the rated lighting fixture wattage are reported, projects with non-coincident peak
+                            demand exceeding the rated lighting wattage are clearly erroneous. Similarly, projects with no electric space
+                            heating systems reported in the Compliance Form but with electricity used for space heating based on the simulation
+                            reports are automatically flagged.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Simulation outputs are consistent with the selected benchmarks</strong>
+                    <ul>
+                        <li>
+                            The check may be applied at the whole building level, for example to confirm that the modeled energy use
+                            intensity (EUI) of the budget design is similar to a typical EUI for buildings of similar type in the same
+                            climate zone minimally compliant with the given edition of 90.1. A similar approach may be used to verify EUI
+                            of individual end uses such as lighting or space heating.
+                        </li>
+                        <li>
+                            The benchmarks for the budget/baseline and proposed designs are selected in Table 4 of the Energy Performance
+                            Summary tab of the Compliance Form. The default benchmarks are set based on DOE/PNNL prototype models (the prototype
+                            models) as described below:
+                            <ul>
+                                <li>
+                                    Proposed design documenting minimum code compliance: the prototype model of the
+                                    appropriate building type and climate zone, compliant with the same edition of 90.1.
+                                </li>
+                                <li>
+                                    Proposed design documenting performance above code: the prototype model of the
+                                    appropriate building type and climate zone, compliant with 90.1 2019.
+                                </li>
+                                <li>
+                                    ECB budget design: the prototype model of the appropriate building type and climate
+                                    zone, compliant with the same edition of 90.1.
+                                </li>
+                                <li>
+                                    PRM baseline: the prototype model of the appropriate building type and climate zone,
+                                    compliant with 90.1 2004.
+                                </li>
+                                <li>
+                                    For mixed-use buildings, the benchmark energy use is calculated as an area-weighted
+                                    average.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            The configuration and key operating assumptions of the prototype models are summarized in the scorecards which
+                            can be downloaded at the
+                            <a href="https://www.energycodes.gov/prototype-building-models">
+                                DOE Building Energy Codes Program website.
+                            </a>
+                        </li>
+                        <li>
+                            Refer to
+                            <a href="../content/6_14_90-1-2022-section-g3-3.html">
+                                90.1 2022 Section G3.3 Performance Calculations for Other Alterations
+                            </a>
+                            for notes of caution for alterations subject to Section G3.3 (i.e.,
+                            Minor Alterations).
+                        </li>
+                        <li>
+                            The default limits by which the modeled EUIs can deviate from the benchmark EUIs before a flag is triggered for
+                            the corresponding review check on the Quality Control Checks tab are included in Table 6 of the Performance Summary
+                            tab from the proposed design, and in Table 7 for the baseline/budget design and may be customized.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h2><strong>Review Methodology</strong></h2>
+            <h3><strong>Establishing Review Scope</strong></h3>
+            <p>
+                The goal of the review is to identify whether any specified systems or components must be changed in
+                order for the design to comply with the ASHRAE Standard 90.1 Energy Cost Budget Method or Performance
+                Rating Method. Both compliance options require designs to meet the applicable mandatory provisions of
+                the Standard; thus, any identified issues with the mandatory requirements will necessitate changes to
+                the design.
+            </p>
+
+            <p>
+                Since the 90.1 Energy Cost Budget and Performance Rating Methods allow performance trade-offs between
+                systems and components (with the exception of falling below the mandatory provisions), identifying
+                issues pertaining to the impactful systems are likely to affect compliance outcome and necessitate
+                changes to the design. On the other hand, uncovering issues with systems that have relatively low impact
+                on the modeled energy cost of baseline/budget and proposed design may result in updates to the models
+                and/or information reported in the Compliance Form without any changes to the design documents.
+                Incidentally, it is important to stress that some of the systems and components that fall into the low
+                impact category for the purpose of 90.1 compliance modeling may have high impact on building lifecycle
+                cost and occupant comfort.
+            </p>
+
+            <p>Table 2 illustrates the recommended review prioritization logic based on these considerations.</p>
+            <h6><strong>Table 2: Review Check Prioritization Strategies</strong></h6>
+            <table border="1">
+
+                <thead>
+                    <tr style = "background-color: #C2C2C2; text-align: center; vertical-align: middle;">
+                        <th>Type of Review Checks (see
+                            <a href="../content/5_2_types-of-review-checks.html">Types of Review Checks</a>
+                            section)
+                        </th>
+                        <th>PROPOSED DESIGN</th>
+                        <th>BASELINE/BUDGET DESIGN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            1. General requirements of the 90.1 Energy Cost Budget Method or Performance Rating Method
+                        </td>
+                        <td colspan="2" style="text-align: center; vertical-align: middle; background-color:#FFF5E1;">Always</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            2. Specified systems reported in the Compliance Form reflect design documents
+                        </td>
+                        <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
+                            Always, based on sampling
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#E0F7FA;">
+                            NA
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            3. Specified systems meet mandatory requirements
+                        </td>
+                        <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
+                            Always, based on sampling
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#E0F7FA;">
+                            NA
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            4. Budget/baseline systems reported in the Compliance Form meet 90.1 Energy Cost Budget
+                            Method or Performance Rating Method requirements
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#E0F7FA;">
+                            NA
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
+                            Only for impactful systems, based on sampling
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            5. Simulation inputs reflect systems and components reported in the Compliance Form
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
+                            Only for impactful systems based on sampling IF passes #2
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
+                            Only for impactful systems based on sampling IF passes #4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            6. Simulation outputs are consistent with systems and components reported in the Compliance
+                            Form
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
+                            Only for impactful systems, based on sampling IF passes #2
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
+                            Only for impactful systems, based on sampling IF passes #4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "background-color: #DCDCDC">
+                            7. Modeled end uses are consistent with benchmark
+                        </td>
+                        <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
+                            Always (Note 1)
+                        </td>
+                        <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
+                            Always (Note 1)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <strong>Note 1:</strong> Consistency with the benchmark is always checked for the total site energy use intensity (EUI)
+                and the following end uses: interior lighting, miscellaneous and process equipment, space heating, space cooling,
+                ventilation fans, heat rejection, service water heating, and elevators.
+            </p>
+
+            <p>
+                The Review Checks section of the Manual includes subsections dedicated to the key building systems (e.g., interior
+                lighting, building envelope, etc.). Each subsection starts with an introduction that includes a table listing the
+                available checks based on their type, as defined in the first column of Table 2, and component being addressed (e.g.,
+                lighting wattage, lighting controls, etc.) These introductory sections also include the sampling recommendations. For
+                example, verification that the specified lighting fixture wattage reported in the compliance form reflects design
+                document should focus on fixtures that account for the largest share of the specified wattage and spot-checking other
+                fixtures.
+            <p>
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

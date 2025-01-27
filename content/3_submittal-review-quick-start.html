@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3. Submittal Review Quick Start</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h2>Submittal Review Quick Start</h2>
+            <br>
+            <h3>For AHJ and RA Administrators</h3>
+            <p>See the <a href ="https://www.energycodes.gov/">DOE Energy Codes website</a> for recommendations for organizing an
+                effective and efficient submittal review process including but not limited to the following:</p>
+            <ul>
+                <li>Adoption of the
+                    <a href="https://www.energycodes.gov/performance_based_compliance">
+                        90.1 Performance-based Compliance Form
+                    </a>,
+                </li>
+                <li>
+                    Establishing the minimum qualification requirements for energy modelers and submittal reviewers,
+                </li>
+                <li>And third-party reviewer scope of work template.</li>
+            </ul>
+
+            <h3>For Submittal Reviewers</h3>
+            <ol>
+                <li>Before performing the first review:
+                    <ol type="a">
+                        <li>
+                            Review the submittal review policy documents published by AHJ/RA to understand the
+                            documentation requirements, review scope, target turnaround time, and budget.
+                        </li>
+                        <li>
+                            Read the
+                            <a href="../content/4_review-process.html">Review Process</a>
+                            section to understand the review steps.
+                        </li>
+                        <li>
+                            Read the
+                            <a href="../content/5_1_general-concept.html">Review Methodology</a>
+                            section to learn about the different types of checks included in the Manual and understand
+                            the methodology for identifying impactful aspects of the submittal, and the tools available
+                            in the Compliance Form to help facilitate the reviews.
+                        </li>
+                        <li>View the
+                            <a href="https://www.energycodes.gov/technical-assistance/training/courses/performance-based-compliance-submittal-reviewers">
+                            Department of Energy "Performance-based Compliance for Submittal Reviewers” training.
+                            </a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    Follow the steps outlined in the
+                    <a href="../content/4_review-process.html">Review Process</a>
+                    section of this Manual to perform a review.
+                </li>
+            </ol>
+
+            <h3>For Energy Modelers</h3>
+            <p>
+                Modelers and design teams should use the same process as described above for the Submittal Reviewers to
+                perform quality control before submitting the package for review. This helps minimize review iterations
+                and ensures a speedy approval. The following is recommended:
+            </p>
+            <ol type="a">
+                <li>
+                    At minimum, review the QC Checks tab of the Compliance Form to verify that no automated checks
+                    result in a “Fail” outcome. Investigate all failed checks and correct the inputs in the appropriate
+                    tabs of the Compliance Form and/or in the simulation to resolve the check. If the check is not
+                    resolved, provide an explanation for the reviewer.
+                </li>
+                <li>
+                    To improve submittal quality, consider completing all checks for which “Include in Review” is
+                    automatically set to “Yes” in the QC Checks tab of the Compliance Form. Some jurisdictions and
+                    rating authorities may require this step.
+                </li>
+                <li>
+                    When replying to review comments, refer to the Review Checks section of this Manual to understand
+                    the 90.1 requirements and common mistakes relevant to the particular checks.
+                </li>
+            </ol>
+
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h1>Exceptional Calculations (EC)</h1>
+
+            <h3>EC Review Checks Overview</h3>
+            <p>This group of quality control checks focuses on verifying calculations performed outside of the whole
+            building simulation tool. The checks only apply to projects that include such calculations.</p>
+
+            <!--- EC01 Section --->
+            <div id="ec01" class="card card-body mb-3" data-check-type="3" data-component="except-calcs" data-model="B,P">
+                <h3>EC01 Documentation submitted for each exceptional calculation method reported in the Compliance Form
+                    meets 90.1 requirements.
+                </h3>
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016, 2019 and 2022 ECB  </h5>
+                    <strong>Section 11.4.5/12.4.5: </strong>
+                    <p>
+                        When the simulation program does not model a design, material, or device in the proposed design,
+                        an exceptional calculation method must be used. Where there are multiple designs, materials, or
+                        devices that the simulation program does not model, each must be calculated separately, and
+                        exceptional savings determined for each. The following documentation must be submitted for each
+                        exceptional calculation method:
+                    </p>
+                    <ol style="list-style-type: lower-alpha">
+                        <li>
+                            Theoretical and empirical information verifying the method’s accuracy, and step-by-step
+                            documentation of the exceptional calculation method performed, detailed enough to reproduce
+                            the results.
+                        </li>
+                        <li>Copies of all spreadsheets used to perform the calculations.</li>
+                        <li>
+                            A sensitivity analysis of energy consumption when each of the input parameters that are
+                            estimated is varied from half to double the value assumed.
+                        </li>
+                    </ol>
+                </div>
+
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019, and 2022 PRM </h5>
+                    <strong>Section G2.5</strong>
+                    <p>
+                        Either the actual rates for purchased energy or state average energy prices published by U.S.
+                        Energy Information Administration (EIA) for commercial building customers may be used, but rates
+                        from different sources may not be mixed in the same project.
+                    </p>
+                    <ol style="list-style-type: lower-alpha">
+                        <li>
+                            Step-by-step documentation of the exceptional calculation method performed, detailed enough
+                            to reproduce the results.
+                        </li>
+                        <li>Copies of all spreadsheets used to perform the calculations.</li>
+                        <li>
+                            A sensitivity analysis of energy consumption when each of the input parameters is varied
+                            from half to double the value assumed.
+                        </li>
+                        <li>
+                            The calculations must be performed on a time-step basis consistent with the simulation
+                            program used.
+                        </li>
+                    </ol>
+
+                    <h5>Review Tips</h5>
+                    <ol>
+                        <li>
+                            Exceptional calculations are listed in Table 1 of the Exceptional Calculations tab of the
+                            Compliance Form. Prioritize review of exceptional calculations that are expected to generate
+                            the greatest savings based on the information provided in Table 2 of the tab.
+                        </li>
+                        <li>
+                            Refer to Submittal Checklist #35 for the list of files and documents substantiating the
+                            exceptional calculations. Locate the material and confirm that the provided details meet
+                            90.1 requirements quoted above for each exceptional calculation.
+                        </li>
+                        <li>
+                            Common mistakes
+                            <ol style="list-style-type: lower-alpha">
+                                <li>
+                                    Submittal includes screenshots or printouts of the calculations but not the
+                                    spreadsheet files where formulas can be examined.
+                                </li>
+                                <li>
+                                    Savings are estimated using proprietary calculators from the vendor of specified
+                                    system and equipment.
+                                </li>
+                                <li>
+                                    Calculation methodology not based on peer-reviewed reference or fundamental
+                                    principles of physics or thermodynamics.
+                                </li>
+                                <li>
+                                    The whole building simulation tool used on the project must be able to explicitly
+                                    model all systems and components of the baseline/budget design (Section G2.2.1 b,
+                                    Section 11.4.1.1/12.4.1.1 h), thus exceptional calculations may only apply to the
+                                    proposed design.
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!--- EC02 Section --->
+            <div id="ec02" class="card card-body mb-3" data-check-type="6" data-component="except-calcs" data-model="B,P">
+                <h3>EC02 Calculation methodology is acceptable and inputs reflect specified systems and equipment</h3>
+                <div data-version="2016,2019,2022" data-path="ECB,PRM">
+                    <h5>90.1 2016, 2019, and 2022 The Energy Cost Budget and Performance Rating Methods</h5>
+                    <strong>90.1 Sections 11.4.5 (12.4.5 in 90.1 2022), G2.5</strong>
+                    <p>
+                        Each exceptional calculation is subject to approval by the authority having jurisdiction or rating
+                        authority.
+                    </p>
+
+                    <h5>Review Tips</h5>
+                    <ol>
+                        <li>
+                            The Energy Cost Budget and Performance Rating Methods require that all building systems and
+                            equipment are modeled identically in the baseline/budget and proposed design except when
+                            specifically allowed to be different (see Table 11.5.1 No 1 (12.5.1 No 1 in 90.1 2022) and
+                            Table G3.1 No 1. Confirm that system or equipment that is the subject of exceptional
+                            calculation method is an allowed trade-off opportunity.
+                        </li>
+                        <li>
+                            Verify methodology used for the exceptional calculation methods to confirm that it is
+                            acceptable
+                        </li>
+                        <li>
+                            Confirm that calculation inputs reflect properties of the relevant systems and equipment specified in
+                            the design documents.
+                        </li>
+                        <li>
+                            Ensure that operating conditions assumptions and other inputs not inherent in system design are
+                            conservative and do not exaggerate savings.
+                        </li>
+                        <li>Verify that applicable interactive effects are accounted for.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!--- EC03 Section --->
+            <div id="ec03" class="card card-body mb-3" data-check-type="1" data-component="except-calcs" data-model="B,P">
+                <h3>EC03 Contribution of exceptional calculations toward compliance does not exceed the allowed limits</h3>
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB  </h5>
+                    <p>
+                        There is no limit on the contribution of savings documented via exceptional calculations toward
+                        compliance.
+                    </p>
+                </div>
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019 and 2022 PRM</h5>
+                    <p>
+                        <strong>Section G2.5:</strong> When the simulation program does not model a design, material, or
+                        device associated with the proposed design, an approved exceptional calculation method may be used.
+                        The total Exceptional Savings must not account for more than half of the difference between the
+                        baseline building performance and the proposed building performance.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        The required cap is automatically accounted for in the Compliance Calculations tab of the
+                        Compliance Form based on the compliance path followed by the project.
+                    </li>
+                    <li>
+                        Even though the ECB does not limit contribution of exceptional calculations toward compliance,
+                        the AHJ may choose to limit contribution of exceptional calculations towards trade-offs since such
+                        calculations often involve in-house spreadsheets developed by the Permit Applicant and are not
+                        peer-reviewed, or based on savings estimates by the vendor of the system and component
+                        being specified.
+                    </li>
+                    <li>
+                        <strong>Example EC03</strong>
+                        <p>
+                            Q: The modeled baseline energy cost is $100,000 and the modeled proposed energy cost is $92,000.
+                            In addition, the submittal includes $9,000 savings from a ventilated façade which could not be
+                            modeled in the simulation tool. The savings were determined using exceptional calculations and
+                            documented as required in 90.1 Section G2.5. What proposed building performance should be used
+                            to calculate PRM compliance following 90.1 Section G1.2.2?
+                        </p>
+                        <p>
+                            A: The difference between the baseline and proposed energy cost without accounting for exceptional
+                            calculations is $100,000-$92,000=$8,000. The savings from exceptional calculations are greater than
+                            $8,000*0.5=$4,000, thus the allowed contribution of the exceptional calculations toward savings is
+                            capped at $4,000. The proposed energy cost that must be used in the compliance calculations is
+                            $92,000-$4,000=$88,000. The Performance Cost Index is equal to $88,000 / $100,000=0.88.
+                        </p>
+                        <p>
+                            A: The difference between the baseline and proposed energy cost without accounting for
+                            exceptional calculations is $100,000-$92,000=$8,000. This means that savings from exceptional
+                            calculations are capped at $8,000 (i.e., at $8,000 the total exceptional savings would constitute
+                            half of the difference between the baseline and the proposed building performance including the
+                            savings from exceptional calculations, the total savings would be $16,000 if exceptional calculation
+                            savings were $8,000). The proposed energy cost that must be used in the compliance calculations is
+                            $92,000-$8,000=$84,000. The Performance Cost Index is equal to $84,000 / $100,000=0.84.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+
+            <!------------------------------>
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div id="2022-g3_3-modal-container"></div> <!-- Modal for 2022 G3.3 Review Tips container -->
+
+        <!-- Sim Output Full Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: auto; max-width: none;">
+            <div class="modal-content" id="resizableModal" style="resize: both; overflow: auto; max-width: 100vw; max-height: 100vh;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Resizable container for the image -->
+                <div id="resizableContainer">
+                  <img id="modalImage" src="" class="img-fluid" alt="Full Image" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script>
+    const componentTypes = ["except-calcs"];
+    const labels = ["Exceptional Calculations"];
+</script>
+<script src="../assets/js/add-components-checks.js"></script>
+<script src="../assets/js/filter-checks.js"></script>
+<script src="../assets/js/filter-2022-g3_3-content.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

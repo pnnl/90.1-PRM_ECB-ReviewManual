@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+
+            <!--- Page Content Goes Here --->
+            <h1>Plug, Process and Other Loads (PPO)</h1>
+
+            <h3>Overview</h3>
+
+            <p>
+                This category includes receptacle loads, non-HVAC motors, process loads, refrigeration equipment,
+                elevators and other systems and components reported on Plug, Process and Other Loads tab of the
+                Compliance Form. Some of these systems, such as certain refrigeration equipment and elevators, are
+                regulated by 90.1, while others are not. Table 9 summarizes the checks included in this group.
+            </p>
+
+            <p><strong>Table 9: Plug, Process and Other Loads Checks Overview</strong></p>
+
+            <table id="checks-table" class="table table-bordered table-sm" border="1">
+
+                <colgroup>
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: 150px;">
+                    <col style="width: 150px;">
+                </colgroup>
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Focus of the Check</th>
+                        <th>Type of Check</th>
+                        <th>Proposed Design</th>
+                        <th>Baseline/Budget Design</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td rowspan="3">Miscellaneous and Process Equipment</td>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td>
+                            <a href="#ppo02-p">PPO02-P</a>
+                        </td>
+                        <td>
+                            <a href="#ppo02-p">PPO02-B</a>
+                            <a href="#ppo03">PPO03</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs consistent with CF</td>
+                        <td>
+                            <a href="#ppo04">PPO04-P</a>
+                        </td>
+                        <td>
+                            <a href="#ppo04">PPO04-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation outputs consistent with CF</td>
+                        <td class="automated">
+                            <a href="#ppo01">PPO01</a>
+                        </td>
+                        <td class="automated">
+                            <a href="#ppo01">PPO01</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Commercial Refrigerators and Freezers</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td>
+                            <a href="#ppo05-p">PPO05-P</a>
+                        </td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>
+                            <a href="#ppo05-b">PPO05-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs/outputs consistent with CF</td>
+                        <td class="automated">
+                            <a href="#ppo06">PPO06</a>
+                        </td>
+                        <td class="automated">
+                            <a href="#ppo06">PPO06</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Regulated Motors</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td><a href="#ppo07-p">PPO07-P</a></td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>
+                            <a href="#ppo07-b">PPO07-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs/outputs consistent with CF</td>
+                        <td class="automated">
+                            <a href="#ppo08">PPO08</a>
+                        </td>
+                        <td class="automated">
+                            <a href="#ppo08">PPO08</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Elevators</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td>
+                            <a href="#ppo09-p">PP009-P</a>
+                        </td>
+                        <td>NA</td>
+                    </tr>
+                    <tr>
+                        <td>CF inputs reflect requirements of ECB/PRM</td>
+                        <td style="text-align: center;">NA</td>
+                        <td>
+                            <a href="#ppo09-b">PPO09-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs/outputs consistent with CF</td>
+                        <td class="automated">
+                            <a href="#ppo10">PPO10</a>
+                        </td>
+                        <td class="automated">
+                            <a href="#ppo10">PPO10</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Combined Heat and Power</td>
+                        <td>CF inputs reflect design documents</td>
+                        <td>
+                            <a href="#ppo11-p">PPO11-P</a>
+                        </td>
+                        <td>
+                            <a href="#ppo11-b">PPO11-B</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Simulation inputs/outputs consistent with CF</td>
+                        <td>
+                            <a href="#ppo12">PPO12</a>
+                        </td>
+                        <td>
+                            <a href="#ppo12">PPO12</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <strong>Legend: </strong><span class="automated">PASS/FAIL/NA outcome is determined
+                            automatically in the Quality Control Checks tab of the Compliance Form.</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                Table 10 illustrates whether trade-offs are allowed for systems and components included in the PPO
+                category by the Energy Cost Budget and Performance Rating Methods. If trade-offs are not allowed, the
+                review should be limited to verifying that the energy use of the associated systems and equipment is the
+                same in the baseline/budget and proposed designs. No other checks are necessary.
+            </p>
+            <p><strong>Table 10: 90.1 Trade-off Limits for Plug, Process and Other Loads</strong></p>
+
+            <table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+                <thead>
+                    <tr>
+                        <th rowspan="2" style="background-color: #D3D3D3"></th>
+                        <th rowspan="2" colspan="2" style="background-color: #D3D3D3">2016 ECB</th>
+                        <th rowspan="2" colspan="2" style="background-color: #D3D3D3">2019/2022 ECB</th>
+                        <th colspan="2" style="background-color: #D3D3D3">2016 and 2019 PRM and 2022 G3.2 PRM</th>
+                        <th colspan="2" style="background-color: #D3D3D3">2022 PRM G3.3</th>
+                    </tr>
+                    <tr>
+                        <th style="background-color: #D3D3D3">Min. compliance</th>
+                        <th style="background-color: #D3D3D3">Above code</th>
+                        <th style="background-color: #D3D3D3">Min. compliance</th>
+                        <th style="background-color: #D3D3D3">Above code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background-color: #D3D3D3">Miscellaneous plug and process equipment</td>
+                        <td colspan="2">No</td>
+                        <td colspan="2">No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #D3D3D3">Commercial refrigerators and freezers</td>
+                        <td colspan="2">No</td>
+                        <td colspan="2">Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #D3D3D3">Regulated Motors</td>
+                        <td colspan="2">Yes</td>
+                        <td colspan="2">Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #D3D3D3">Elevators</td>
+                        <td colspan="2">No</td>
+                        <td colspan="2">No</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #D3D3D3">Combined Heat and Power</td>
+                        <td colspan="8">Recovered Heat Only</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <p>
+                In addition, skip review checks for the following systems and components if they are not reported in the
+                Compliance Form and are not expected to be specified:
+            </p>
+            <ol style="list-style-type: lower-alpha">
+                <li>Elevators in buildings two stories or less</li>
+                <li>
+                    Commercial refrigerators and freezers in building types other than convention center, retail,
+                    school/university, dining, health care clinic, hospital or warehouse
+                </li>
+                <li>Regulated motors in buildings 10 stories or less</li>
+                <li>Combined heat and power in any project</li>
+            </ol>
+
+            <p>
+                Within the given type of equipment, focus on verifying units with the highest contribution to the total
+                energy use of that category or that are representative and spot-check the rest. For example, if a
+                project includes 10 passenger elevators of the same type and two service elevators, the review should
+                focus on the passenger elevator.
+            </p>
+            <p>
+                For 90.1 2022 PRM alterations subject to G3.3 (i.e., Minor Alterations), the summary tables on the
+                Quality Control Checks tab in the Compliance Form may not reflect correct values for the baseline since
+                projects, for the most part, only enter proposed design information and provide notes as to what was
+                modeled in the baseline in the notes fields associated with the proposed design related tables. Refer to
+                the
+                <a href="../content/6_14_90-1-2022-section-g3-3.html">90.1 2022 Section G3.3 Performance Calculations for
+                    Other Alterations</a>
+                section for more information regarding 90.1 2022 G3.3.
+            </p>
+
+            <!--PPO01 Section -->
+            <div id="ppo01" class="card card-body mb-3" data-check-type="6" data-component="misc" data-model="B,P">
+                <h3>PPO01 The difference between the modeled baseline/budget and proposed misc. equipment and process
+                    energy use is as expected</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>Modeled energy use from miscellaneous equipment and industrial is reported in Table 2 of the
+                        Compliance Calculations tab
+                        <ol style="list-style-type: lower-alpha">
+                            <li>90.1 2016/2019/2022 Energy Cost Budge Method or 90.1 2016/2019/2022 Performance Rating
+                                Method minimum code compliance:
+                                <p>
+                                    Modeled energy use of miscellaneous loads must be the same for the baseline/budget
+                                    and proposed design. Differences in reported energy use should be flagged as an error.
+                                </p>
+                                <p>
+                                    Exception: 90.1 2019 and 2022 PRM projects can model credit when receptacle controls
+                                    are included in the proposed design in spaces not required by Section 8.4.2. The
+                                    credit and corresponding savings shall not exceed 10% per Table G3.1 #12 Proposed
+                                    Building Performance column.
+                                </p>
+                            </li>
+
+                            <li>90.1 2016/2019/2022 Performance Rating Method  when documenting above code performance:
+                                <p>
+                                    Energy use of the baseline may differ from proposed design as specifically approved
+                                    by the rating authority. Complete checks PPO02 and PPO03 to confirm that the
+                                    difference is justified.
+                                </p>
+                                <figure>
+                                    <img src="../assets/images/section1-6/CF_misc-equip.png" style="max-width: 450px; min-width: 450px;">
+                                </figure>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO02-P Section -->
+            <div id="ppo02-p" class="card card-body mb-3" data-check-type="4" data-component="misc" data-model="P">
+                <h3>PPO02–P Proposed design miscellaneous unregulated plug and process loads reported in the Compliance Form are
+                    as expected.</h3>
+
+                <div data-version="2016" data-path="ECB">
+                    <h5>90.1 2016 ECB</h5>
+                    <strong>Table 11.5.1 #12</strong>
+                        <ul>
+                            <li>
+                                Unregulated receptacle and process loads must be estimated based on the building area
+                                type or space type category and included in the simulations and when calculating the
+                                energy cost budget and design energy cost.
+                            </li>
+                            <li>
+                                All end-use load components within and associated with the building must be modeled
+                                including but not limited to exhaust fans, parking garage ventilation fans, exterior
+                                building lighting, swimming pool heaters and pumps, elevators and escalators,
+                                refrigeration equipment, and cooking equipment.
+                            </li>
+                        </ul>
+                    <p>
+                        <strong>Table 11.5.1 Section 13</strong> allows excluding components if their energy use does
+                        not affect the energy use of systems and components that are being considered for trade-off and
+                        the prescriptive requirements applicable to the excluded component are met.
+                    </p>
+                    <p>
+                        <strong>Table 11.5.1 Section 14</strong> allows excluding components that cannot be explicitly
+                        modeled by the simulation program if their energy impact on the trade-offs is not significant.
+                    </p>
+                </div>
+
+                <div data-version="2019, 2022" data-path="ECB">
+                    <h5>90.1 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1 #12/ Table 12.5.1 #12</strong>
+                    <p>
+                        The requirements for modeling unregulated loads are aligned with 90.1 2016 quoted above. The
+                        references to Table 11.5.1 sections 13 and 14 were removed, however the exceptions still apply
+                        because they are covered in the updated Table 11.5.1/12.5.1 Section 14 that addresses all
+                        systems and components in the proposed design.
+                    </p>
+                </div>
+
+                 <div data-version="2016,2019, 2022" data-path="PRM">
+                     <h5>90.1 2016, 2019, and 2022 PRM: </h5>
+                     <strong>Table G3.1 #12:</strong>
+                     <p>
+                         Unregulated receptacle and process loads, such as those for office and other equipment, must be
+                         estimated based on the building area type or space type category and must always be included in
+                         simulations of the building.
+                     </p>
+                 </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Miscellaneous unregulated plug loads are reported in Tables 1 of the Plug, Process and Other
+                        Loads tab of the Compliance Form. The table includes the default values established as described
+                        in Appendix A of this manual based on the building area types applicable to the project.
+                        Proposed EPD significantly deviating from the provided default values without sufficient
+                        justifications included in the Notes field below the table should be flagged in the review.
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_misc-loads-table1.png" style="max-width: 1000px; min-width: 1000px;">
+                        </figure>
+                    </li>
+                    <li>Process equipment is reported in Table 4 of the Plug, Process and Other Loads tab in the Compliance
+                        Form.</li>
+                </ol>
+            </div>
+
+            <!--PPO02-B Section -->
+            <div id="ppo02-b" class="card card-body mb-3" data-check-type="4" data-component="misc" data-model="B">
+                <h3>PPO02–B Miscellaneous unregulated baseline/budget plug and process loads reported in the Compliance
+                    Form are the same as proposed unless allowed to differ.</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/ 2022 ECB</h5>
+                    <strong>Table 11.5.1 #12/Table 12.5.1 #12</strong>
+                    <p>Miscellaneous receptacle and process loads in the budget design must be identical to the proposed design.</p>
+                </div>
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019, and 2022 PRM</h5>
+                    <strong>Table G3.1 #12</strong>
+                    <p>
+                        Energy used for cooking equipment, receptacle loads, computers, medical or laboratory equipment,
+                        and manufacturing and industrial process equipment not specifically identified in the standard,
+                        power and energy rating or capacity of the equipment must be identical between the proposed
+                        building performance and the baseline building performance.
+                    </p>
+                    <p>
+                        <strong>Exceptions:</strong> When quantifying performance that exceeds the requirements of
+                        Standard 90.1 (but not when using the PRM as an alternative path for minimum standard compliance
+                        per Section 4.2.1.1) variations of the power requirements, schedules, or control sequences of
+                        the equipment modeled in the baseline building design from those in the proposed design shall be
+                        approved by the rating authority based on documentation that the equipment installed in the
+                        proposed design represents a significant verifiable departure from documented current
+                        conventional practice. The burden of this documentation is to demonstrate that accepted
+                        conventional practice would result in baseline building equipment different from that installed
+                        in the proposed design. Occupancy and occupancy schedules shall not be changed.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>Miscellaneous unregulated plug and process loads assumed for the baseline/budget design are
+                        reported in Table 1 of the Plug, Process and Other Loads tab of the Compliance Form. The
+                        baseline/budget equipment power density (EPD) must be equal to proposed except when the
+                        <img src="../assets/images/section1-6/CF_misc-loads-table1.png" style="max-width: 1040px; min-width: 1040px;">
+
+                        <p>
+                            project is documenting above-code performance following 90.1 PRM, as indicated in the
+                            General Model Information section of the General Information tab. In this case, supporting
+                            documentation must be included in the submittal to justify the modeled difference.
+                        </p>
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_compliance-path.png"
+                                 style="max-width: 850px; min-width: 850px;">
+                        </figure>
+                    </li>
+                    <li>
+                        Review supporting documentation to verify that the methodology and assumptions used to establish
+                        the baseline and proposed EPDs are substantiated as required in Table G3.1 #12 Exception quoted
+                        above.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO03 Section -->
+            <div id="ppo03" class="card card-body mb-3" data-check-type="4" data-component="misc" data-model="B,P">
+                <h3>PPO03 Miscellaneous unregulated plug and process load schedules reported in the Compliance Form for
+                    the baseline/budget design are the same as for the proposed design unless allowed to differ.</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016, 2019 and 2022 ECB</h5>
+                    <strong>Table 11.5.1 #4/Table 12.5.1 #4</strong>
+                    <p>
+                        The schedules must be typical of the proposed design as determined by the designer and approved
+                        by the authority having jurisdiction, and the same for the proposed design and budget building
+                        design.
+                    </p>
+                </div>
+
+                <div data-version="2016" data-path="PRM">
+                    <h5>90.1 2016 PRM</h5>
+                    <strong>Table G3.1 #4</strong>
+                    <p>
+                        The schedules must be typical of the proposed building type as determined by the designer and
+                        approved by the rating authority.
+                    </p>
+                    <p><strong>Table G3.1 #12</strong><br>
+                        Occupancy and occupancy schedules must not be changed when documenting savings as allowed in
+                        Table G3.1 #12 exception.
+                    </p>
+                </div>
+
+                <div data-version="2019,2022" data-path="PRM">
+                    <h5>90.1 2019 and 2022 PRM</h5>
+                    <strong>Table G3.1 #4</strong>
+                    <p>
+                        The schedules must be typical of the proposed building type as determined by the designer and
+                        approved by the rating authority.
+                    </p>
+                    <p style="margin: 0;"><strong>Table G3.1 #12</strong></p>
+                    <ul>
+                        <li>Receptacle schedules must be the same as the proposed design before the receptacle power
+                            credit is applied.
+                        </li>
+                        <li>
+                            Occupancy and occupancy schedules must not be changed when documenting savings as allowed in
+                            Table G3.1 #12 exception.
+                        </li>
+                    </ul>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Confirm that the same schedules are used in the baseline/budget and proposed design based on
+                        Table 1 of the Plug, Process and Other Loads tab. Schedules are only allowed to differ for 90.1
+                        2019 and 2022 PRM projects due to office receptacle controls.
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_same-schedules.png" style="max-width: 1040px; min-width: 1040px;">
+                        </figure>
+                    </li>
+                    <li>
+                        The allowed office receptacle control credit is reflected in Table 10 of the Plug, Process and
+                        Other Loads tab of the Compliance Form.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO04 Section -->
+            <div id="ppo04" class="card card-body mb-3" data-check-type="5" data-component="misc" data-model="B,P">
+                <h3>PPO04 Miscellaneous plug and process loads are modeled as reported in the Compliance Form.</h3>
+                <p>
+                    Review simulation reports listed below to verify that the plug and process loads are modeled as
+                    reported. Energy use from miscellaneous equipment and industrial is reported in Table 2 of the
+                    Compliance Calculations tab.
+                </p>
+                <div class="annotated-report container">
+                    <div class="row" data-bem-tool="eQUEST">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border">
+                                eQUEST
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-top border-left border-right">
+                                    BEPU
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/eQuest_BEPU.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 700">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 700
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Energy Cost Budget report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace700_energy-cost-budget.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 3D Plus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 3D Plus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    LEED Summary Section 1.6
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/trace3d_site-consumption.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="IESVE">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                IESVE
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    PRM Compliance Report, ECB Compliance Report, Room Loads Report, Zone Loads Report,
+                                    System Loads Report, Energy Model Output Report, BPRM Report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/ashrae-prm-ecb-compliance-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_room-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_zone-loads.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads1.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_system-loads2.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_energy-model-output-report.png">
+                                        Annotated Report
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/IESVE_BPRM-report.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="EnergyPlus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                EnergyPlus
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    eplustbl.html ‘LEED Summary’ report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_EUI_table.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="OpenStudio">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                OpenStudio
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    eplustbl.html ‘LEED Summary’ report
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/energyplus_EUI_table.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Carrier HAP v5">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Carrier HAP v5
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    “LEED Summary” report, Section 2 “Minimum Energy Performance Calculator”, table
+                                    titled “Proposed Energy Summary by End Use”.
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Design Builder">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Design Builder
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12 border-left border-right">
+                                    Output_Performance_1 sheet in LEED Minimum Energy Performance Calculator (.xlsm)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 border-bottom border-left border-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal"
+                                            data-full="../assets/images/section7/designbuilder_performance-outputs.png">
+                                        Annotated Report
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--PPO05-P Section -->
+            <div id="ppo05-p" class="card card-body mb-3" data-check-type="2" data-component="commercial" data-model="P">
+                <h3>PPO05-P Regulated commercial refrigerators & freezers reported in the Compliance Form for the
+                    proposed design reflect design documents</h3>
+
+                <div data-version="2016" data-path="ECB">
+                    <h5>90.1 2016 ECB</h5>
+                    <p>
+                        <strong>Table 11.5.1 #12 Column A:</strong> All end use load components within and associated
+                        with the building must be modeled including, but not limited to refrigeration equipment.
+                    </p>
+                    <p>
+                        <strong>Table 6.8.1-13 Commercial Refrigeration—Minimum Efficiency Requirements</strong><br>
+                        Minimum efficiency requirements specified in the table are mandatory and must be met by the
+                        specified units.
+                    </p>
+                </div>
+
+                 <div data-version="2019,2022" data-path="ECB">
+                    <h5>90.1 2019/2022 ECB</h5>
+                    <p>
+                        <strong>Table 11.5.1 #13 Column A/Table 12.5.1 #13 Column A:</strong> Where refrigeration
+                        equipment in the proposed design is rated in accordance with AHRI 1200, the rated energy use
+                        shall be modeled. Otherwise, the proposed design shall be modeled using the actual equipment
+                        capacities and efficiencies.
+                    </p>
+                    <p>
+                        <strong>Table 6.8.1-11 Commercial Refrigerators, Commercial Freezers, and Refrigeration—Minimum
+                        Efficiency Requirements</strong><br>
+                        Minimum efficiency requirements specified in the table are mandatory and must be met by the
+                        specified units.
+                    </p>
+                </div>
+
+                 <div data-version="2016" data-path="PRM">
+                    <h5>90.1 2016 PRM</h5>
+                    <p>
+                        <strong>Table G3.1 #17 Proposed Building Performance Column:</strong> The proposed design shall
+                        be modeled using the actual equipment capacities and efficiencies.
+                    </p>
+                    <p>
+                        <strong>Table 6.8.1-13 Commercial Refrigeration—Minimum Efficiency Requirements:</strong> Minimum
+                        efficiency requirements specified in the table are mandatory and must be met by the specified
+                        units.
+                    </p>
+                </div>
+
+                <div data-version="2019,2022" data-path="PRM">
+                    <h5>90.1 2019 and 2022 PRM</h5>
+                    <p>
+                        <strong>Table G3.1 #17 Proposed Building Performance Column:</strong> Where refrigeration
+                        equipment in the proposed design is rated in accordance with AHRI 1200, the rated energy use
+                        shall be modeled. Otherwise, the proposed design shall be modeled using the actual equipment
+                        capacities and efficiencies.
+                    </p>
+                    <p>
+                        <strong>Table 6.8.1-11 Commercial Refrigerators, Commercial Freezers, and Refrigeration—Minimum
+                            Efficiency Requirements: </strong> Minimum efficiency requirements specified in the table
+                        are mandatory and must be met by the specified units.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Specified regulated refrigerators and freezers are reported in Table 3 of the Plug, Process and
+                        Other Loads tab. Cross-check information provided in the Compliance Form to design documents for
+                        a sample of units focusing on the units that account for largest difference between baseline and
+                        proposed design accounting for unit quantity. Reference to appropriate design documents where
+                        each unit is described must be provided in the last column of Table 3. If the details that must
+                        be captured in Table 3 are not available in the design documents, request equipment cutsheets or
+                        manufacturer literature.
+                        <img src="../assets/images/section7/CF_ppo-table3.png" style="max-width: 1040px; min-width: 1040px;">
+                    </li>
+                    <li>
+                        Verify that proposed kWh/day does not exceed corresponding 90.1 requirements shown in the table.
+                        Since these requirements are mandatory, all specified units must have lower rated kWh/Day
+                        consumption.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO05-b Section -->
+            <div id="ppo05-b" class="card card-body mb-3" data-check-type="4" data-component="commercial" data-model="B">
+                <h3>PPO05-B Baseline/budget design for the regulated commercial refrigerators & freezers reported in the
+                    Compliance Form is established correctly</h3>
+
+                <div data-version="2016" data-path="ECB">
+                    <h5>90.1 2016 ECB</h5>
+                    <p>
+                        <strong>Table 11.5.1 #12 Column B</strong><br>
+                        Receptacle, motor, and process loads shall be modeled and estimated based on the building area
+                        type or space type category and shall be assumed to be identical in the proposed and budget
+                        building designs.
+                    </p>
+                </div>
+
+                 <div data-version="2019,2022" data-path="ECB">
+                    <h5>90.1 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1 #13 Column B/Table 12.5.1 #13 Column B</strong>
+                    <p>
+                        Where refrigeration equipment is specified in the proposed design and listed in Table 6.8.1-11,
+                        the budget building design shall be modeled as specified in Table 6.8.1-11 using the actual
+                        equipment capacities. If the refrigeration equipment is not listed in Table 6.8.1-11, the budget
+                        building design shall be modeled the same as the proposed design.
+                    </p>
+                </div>
+
+                <div data-version="2016,2019" data-path="PRM">
+                    <h5>90.1 2016 and 2019 PRM</h5>
+                    <p style="margin: 0;"><strong>Table G3.1 #13/#17 Baseline Building Performance Column</strong></p>
+                    <ul>
+                        <li>
+                            Where refrigeration equipment is specified in the proposed design and listed in Tables
+                            G3.10.1 and G3.10.2, the baseline building design shall be modeled as specified in
+                            Tables G3.10.1 and G3.10.2 using the actual equipment capacities.
+                        </li>
+                        <li>
+                            If the refrigeration equipment is not listed in Tables G3.10.1 and G3.10.2, the baseline
+                            building design shall be modeled the same as the proposed design.
+                        </li>
+                    </ul>
+                </div>
+
+                <div data-version="2022" data-path="PRM">
+                    <h5>90.1 2022 PRM</h5>
+                    <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                    <p>Requirements are the same as described for the 90.1 2016 and 2019 PRM above.</p>
+
+                    <p>
+                        <strong><u>G3.3 Minor Alterations</u></strong><br>
+                        Based on 90.1 Section G3.3.2.1, commercial refrigerators & freezers included in the scope of
+                        retrofit shall be modeled at efficiency levels meeting the mandatory and prescriptive
+                        requirements in 90.1 Section 6.1.4.
+                    </p>
+
+                    <p>
+                        90.1 Section 6.1.4.1, which applies to direct replacements, includes requirements for walk-in
+                        coolers and walk-in freezers (90.1 Section 6.4.5) and equipment efficiency (90.1 Section 6.4.1).
+                        When the scope of the alteration includes new cooling systems installed to serve previously
+                        uncooled spaces the refrigerated display cases (90.1 Section 6.4.6), and refrigeration system
+                        (90.1 Section 6.5.11) are also applicable to the baseline.
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Energy use of the regulated refrigerators and freezers in the baseline/budget design is
+                        established automatically in Table 3 on the Plug, Process and Other Loads tab. However, the
+                        calculations are based on the characteristic of the corresponding proposed unit reported in
+                        Table 3 below, thus the related inputs should be verified. Cross-check information provided in
+                        the Compliance Form to design documents for a sample of units focusing on the units that account
+                        for largest difference between baseline and proposed design accounting for unit quantity.
+                        Reference to appropriate design documents where each unit is described must be provided in the
+                        last column of Table 3. If details that must be captured in Table 3 are not available in the
+                        design documents, request equipment cutsheets or manufacturer literature.
+                        <br>
+                        <br>
+                        <p>
+                            For 90.1 2019 and 2022 projects, Table 9 on the Plug, Process and Other Loads tab includes
+                            information about walk-in cooler and freezer equipment. Similar to above, cross-check
+                            information provided in the Compliance Form to design documents for a sample of units.
+                        </p>
+                        <p>
+                            Refer to
+                            <a href="#" class="modal-2022-g3_3-trigger" data-content-id="ppo05-b">
+                                90.1 2022 Section G3.3 Performance Calculations for Other Alterations
+                            </a>
+                            for review tips for alterations subject to 90.1 2022 Section G3.3 (i.e., Minor alterations).
+                        </p>
+                        <figure>
+                            <img src="../assets/images/section1-6/CF_ppo05.png" style="max-width: 1040px; min-width: 1040px;">
+                        </figure>
+                    </li>
+                    <li>
+                        The check may be skipped if the modeled difference between the baseline/budget and proposed
+                        design is small.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO06 Section -->
+
+            <div id="ppo06" class="card card-body mb-3" data-check-type="5,6" data-component="commercial" data-model="B,P">
+                <h3>
+                    PPO06 Regulated refrigerators and freezers are modeled as reported in the Compliance Form for the
+                    baseline/budget and proposed design.
+                </h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Since regulated refrigerators and freezers are rated in kWh/day, annual energy use reported in
+                        Table 2 of the Compliance Calculations tab, “Refrigeration Equipment, regulated” row should be
+                        equal to the total value shown in Table 8 of the Plug, Process and Other Loads tab.
+                        Discrepancies should be flagged. Refer to
+                        <a href="#" class="modal-2022-g3_3-trigger" data-content-id="ppo06">90.1 2022 Section G3.3
+                            Performance Calculations for Other Alterations</a>
+                        for review tips for alterations subject to 90.1 2022 Section G3.3 (i.e., Minor alterations).
+                    </li>
+                    <li>Common Mistakes
+                        <ol style="list-style-type: lower-alpha">
+                            <li>90.1 2016 ECB:
+                                <ul>
+                                    <li>
+                                        Claiming credit for better than code regulated refrigeration systems on projects
+                                        following. (Budget and proposed design must be modeled the same)
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>90.1 2016/2019/2022 PRM:
+                                <ul>
+                                    <li>
+                                        Reporting all refrigeration systems as unregulated loads on the Compliance
+                                        Calculations tab. Energy used by units included in 90.1 2016/2019 and 2022 Table
+                                        6.8.1-13/6.8.1-11 must be reported under “Refrigerated Equipment, regulated”.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Refrigeration equipment is not reported or modeled for projects involving building types
+                                that likely have it such as supermarkets, large office buildings, hospitals, schools
+                                that have cafeteria, etc.
+                            </li>
+                            <li>
+                                Modeled energy use deviates from annual energy use inferred in kWh/Day efficiency
+                                ratings.
+                            </li>
+                            <li>
+                                Internal gains/losses to space where refrigeration systems are located are not modeled
+                                correctly. Refer to
+                                <a href="https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-26917.pdf">
+                                PNNL Performance Rating Method Reference Manual</a> Section G3.3.6 for
+                                methodology for determining internal gains/losses for packaged refrigeration units
+                                versus units with remote condensers.
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO07-P Section -->
+            <div id="ppo07-p" class="card card-body mb-3" data-check-type="2" data-component="regulated" data-model="P">
+                <h3>PPO07-P Regulated Motors reported in the Compliance Form for the proposed design reflect design
+                    documents</h3>
+
+                <div data-version="2016,2019" data-path="ECB">
+                    <h5>90.1 2016/2019 ECB</h5>
+                    <strong>Table 11.5.1 #12, Column A</strong>
+                    <p>
+                        Receptacle, motor, and process loads shall be modeled and estimated based on the building area
+                        type or space type category and shall be assumed to be identical in the proposed and budget
+                        building designs. All end-use load components within and associated with the building shall be modeled,
+                        estimated based on the building area type or space type category, and shall be assumed to be identical
+                        in the proposed and budget building designs, including but not limited to parking garage ventilation
+                        fans and escalators.
+                    </p>
+                </div>
+
+                <div data-version="2022" data-path="ECB">
+                    <h5>90.1 2022 ECB</h5>
+                    <strong>Table 12.5.1 #12, Column A</strong>
+                    <p style = margin:0;>Same requirements as Table 11.5.1 #12, Column A described above with the addition of:</p>
+                    <ol style="list-style-type: lower-alpha">
+                        <li>
+                            Where power and other systems covered by Sections 8 and 10 have been designed and submitted
+                            with design documents, those systems shall be determined in accordance with Sections 8 and
+                            10.
+                        </li>
+                        <li>
+                            Where power and other systems covered by Sections 8 and 10 have not been submitted with
+                            design documents, those systems shall comply with but not exceed the requirements of those
+                            sections.
+                        </li>
+                    </ol>
+                </div>
+
+                <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019, and 2022 PRM</h5>
+                    <strong>Table G3.1#12, Proposed Building Performance column</strong>
+                    <ol style="list-style-type: lower-alpha">
+                        <li>
+                            Where power and other systems covered by Sections 8 and 10 have been designed and submitted
+                            with design documents, those systems shall be determined in accordance with Sections 8 and
+                            10.
+                        </li>
+                        <li>
+                            Where power and other systems covered by Sections 8 and 10 have not been submitted with
+                            design documents, those systems shall comply with but not exceed the requirements of those
+                            sections.
+                        </li>
+                    </ol>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        All motors that have efficiency requirements prescribed in 90.1 Section 10 are considered
+                        regulated. Regulated motors are reported in Table 5 on the Plug, Process and other Loads tab of
+                        the Compliance Form. Typically, only larger motors including but not limited to water booster
+                        pumps and garage exhaust fans should be individually reported.
+                    </li>
+                    <li>
+                        Cross-check larger motors included in Table 5 with the design documents referenced in the
+                        Plans/Specs row of the table to confirm alignment in the reported motor HP, type, quantity and
+                        efficiency.
+                    </li>
+                    <li>
+                        Confirm that specified efficiency is not below the minimum required in 90.1 Section 10. For most
+                        types of motors, the requirements are included in the Minimum Efficiency column of Table 5 on
+                        the Plug, Process and other Loads tab.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO07-B Section -->
+            <div id="ppo07-b" class="card card-body mb-3" data-check-type="4" data-component="regulated" data-model="B">
+                <h3>PPO07-B Regulated Motors reported in the Compliance Form for the baseline/budget design are
+                    established correctly</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <p><strong>Table 11.5.1 #12, Column B/ Table 12.5.1 #12, Column B:</strong> Same as proposed</p>
+                </div>
+
+                 <div data-version="2016,2019" data-path="PRM">
+                    <h5>90.1 2016 and 2019 PRM</h5>
+                    <strong>Table G3.1#12, Baseline Building Performance column</strong>
+                    <p>
+                        Motors shall be modeled as having the efficiency ratings found in Table G3.9.1 Other systems
+                        covered by Section 10 shall be modeled as identical to those in the proposed design, including
+                        schedules of operation and control of the equipment.
+                    </p>
+                 </div>
+
+                 <div data-version="2022" data-path="PRM">
+                    <h5>90.1 2022 PRM</h5>
+                     <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                     <p>
+                         Same requirements as Table G3.1#12, Baseline Building Performance column described above for
+                         the 90.1 2016 and 2019 PRM.
+                     </p>
+                     <p><strong><u>G3.3 Minor Alterations</u></strong></p>
+                     <p>
+                         Based on Section G3.3.2.1, motors included in the scope of retrofit shall be modeled at
+                         efficiency levels meeting the mandatory and prescriptive requirements in Sections 10.1.4. All
+                         other motors should be modeled identically in the baseline and proposed.
+                     </p>
+                 </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Parameters of the baseline/budget motors are auto populated in the Table 5 of the Plug, Process
+                        and other Loads tab (examine the “Minimum Efficiency” column for alterations subject to 90.1
+                        2022 Section G3.3 (i.e., Minor Alterations) for the baseline value and the Notes field under the
+                        table for clarifications regarding what was modeled and why).
+                    </li>
+                    <li>Equivalent Full Load Hours must be the same for the baseline/budget and proposed design.</li>
+                </ol>
+            </div>
+
+            <!--PPO08 Section -->
+            <div id="ppo08" class="card card-body mb-3" data-check-type="5,6" data-component="regulated" data-model="B,P">
+                <h3>PPO08 Regulated Motors are modeled as reported in the Compliance Form for the baseline/budget and
+                    proposed design.</h3>
+                <h5>Review Tips</h5>
+                <p>Review simulation reports to verify alignment with the values reported in the Compliance Form.</p>
+
+                <div class="annotated-report container">
+                    <div class="row" data-bem-tool="eQUEST">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border border-bottom border-top">
+                                eQUEST
+                            </div>
+                        </div>
+                        <div class="col-10 border-right border-top">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 700">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 700
+                            </div>
+                        </div>
+                        <div class=" col-10 border-right">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Trane TRACE 3D Plus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Trane TRACE 3D Plus
+                            </div>
+                        </div>
+                        <div class="col-10 border-right">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="IESVE">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                IESVE
+                            </div>
+                        </div>
+                        <div class="col-10 border-right">
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                TBD
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="EnergyPlus">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                EnergyPlus
+                            </div>
+                        </div>
+                        <div class="col-10 border-right">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="OpenStudio">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                OpenStudio
+                            </div>
+                        </div>
+                        <div class="col-10 border-right">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Carrier HAP v5">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom">
+                                Carrier HAP v5
+                            </div>
+                        </div>
+                        <div class="col-10 border-right">
+                        </div>
+                    </div>
+                    <div class="row" data-bem-tool="Design Builder">
+                        <div class="col-2 px-0">
+                            <div class="h-100 d-flex align-items-center justify-content-center border-left border-right border-bottom border-top">
+                                Design Builder
+                            </div>
+                        </div>
+                        <div class="col-10 border-right border-bottom">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--PPO09-P Section -->
+            <div id="ppo09-p" class="card card-body mb-3" data-check-type="2" data-component="elevators" data-model="P">
+                <h3>PPO09-P Elevators reported in the Compliance Form for the proposed design reflect design documents</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <strong>Table 11.5.1/12.5.1 #12, Column A</strong>
+                    <p>
+                        All end-use load components within and associated with the building shall be modeled, estimated
+                        based on the building area type or space type category, and shall be assumed to be identical in the
+                        proposed and budget building designs, including but not limited to elevators and escalators.
+                    </p>
+                </div>
+
+                 <div data-version="2016,2019,2022" data-path="PRM">
+                    <h5>90.1 2016, 2019, and 2022 PRM</h5>
+                    <strong>Table G3.1#16, Proposed Building Performance column</strong>
+                    <p>
+                        Where the proposed design includes elevators, the elevator motor, ventilation fan, and light load
+                        shall be included in the model. The cab ventilation fan and lights shall be modeled with the
+                        same schedule as the elevator motor.
+                    </p>
+                 </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Specified elevators are described in Table 6a of Plug, Process and Other Loads tab. Cross-check
+                        information provided in the table with the design documents that must be referenced in the last
+                        column of the table for each elevator. Focus on elevators that account for the greatest annual
+                        motor energy use based on Table 6b.
+                    </li>
+                </ol>
+
+            </div>
+
+            <!--PPO09-B Section -->
+            <div id="ppo09-b" class="card card-body mb-3" data-check-type="4" data-component="elevators" data-model="B">
+                <h3>PPO09-B Elevators reported in the Compliance Form for the baseline/budget design are established correctly</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB">
+                    <h5>90.1 2016 and 2019/2022 ECB</h5>
+                    <p><strong>Table 11.5.1/12.5.1 #12, Column B:</strong> Same as proposed.</p>
+                </div>
+
+                <div data-version="2016,2019" data-path="PRM">
+                    <h5>90.1 2016 and 2019 PRM</h5>
+                    <strong>Table G3.1#16, Baseline Building Performance column</strong>
+                    <p>Where the proposed design includes elevators, the baseline building design shall be modeled to include
+                    the elevator cab motor, ventilation fans, and lighting power. Calculations are provided to determine
+                    baseline elevator peak motor power. The elevator motor use shall be modeled with the same schedule
+                    as the proposed design. When included in the proposed design, the baseline elevator cab ventilation fan
+                    shall be 0.33 W/cfm and the lighting power density shall be 3.14 W/ft<sup>2</sup>; both operate continuously.
+                    </p>
+                </div>
+
+                 <div data-version="2022" data-path="PRM">
+                    <h5>90.1 2022 PRM</h5>
+                    <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                    <p>
+                        Same requirements as Table G3.1#16, Baseline Building Performance column described above for the
+                        90.1 2016 and 2019 PRM.
+                    </p>
+                    <p>
+                        <strong><u>G3.3 Minor Alterations</u></strong>
+                        <br>
+                        Based on Section G3.3.2.1, elevators included in the scope of retrofit shall be modeled at
+                        efficiency levels meeting the mandatory and prescriptive requirements in Sections 10.1.4. All
+                        other elevators should be modeled identically in the baseline and proposed.
+                    </p>
+                 </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Energy use of the baseline elevators is established automatically based on the details provided
+                        for the prosed elevators and is shown in Table 6b of Plug, Process and Other Loads tab (examine
+                        the Notes field under the table for clarifications regarding what was modeled and why for
+                        alterations subject to 90.1 2022 Section G3.3).
+                    </li>
+                </ol>
+
+            </div>
+
+            <!--PPO10 Section -->
+            <div id="ppo10" class="card card-body mb-3" data-check-type="5,6" data-component="elevators" data-model="P">
+                <h3>PPO10 Elevators are modeled as reported in the Compliance Form for the baseline/budget and proposed design.</h3>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        The total elevator energy use for the baseline/budget and proposed design should be as shown in
+                        the Totals row of Table 6b (examine the Notes field under the table for clarifications regarding
+                        what was modeled and why for alterations subject to 90.1 2022 Section G3.3).
+                    </li>
+                </ol>
+
+            </div>
+
+            <!--PPO11-P Section -->
+            <div id="ppo11-p" class="card card-body mb-3" data-check-type="2" data-component="CHP" data-model="P">
+                <h3>PPO11-P Combined Heat and Power (CHP) systems reported in the Compliance Form for the proposed
+                    design reflect design documents and electricity generation and recovered energy reported in
+                    submittal is reasonable.</h3>
+
+                <div data-version="2016,2019,2022" data-path="ECB,PRM">
+                    <h5>90.1 2016 and 2019/2022 ECB, 90.1 2016, 2019 and 2022 PRM</h5>
+                    <p><strong>Table 11.5.1/12.5.1, Table G3.1: </strong>The proposed design must be consistent with the
+                        design documents.</p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        The specified CHP systems are reported in Table 7 of the Plug, Process and other Loads tab. The
+                        provided information must at minimum include the generator ownership, type, quantity, total
+                        generation capacity (kW) at design conditions, thermal and electrical efficiency at design
+                        conditions, controls, schedule of operation, fuel used, where the recovered heat is used (e.g.
+                        absorption chillers, space heating loop, service water heating loop, etc.), specified back-up
+                        systems when recovered heat is not available and parasitic losses (e.g. air handling unit to
+                        cool the intake air).
+                    </li>
+                    <li>Verify that the required information is provided and reflects design documents.</li>
+                </ol>
+            </div>
+
+            <!--PPO11-B Section -->
+            <div id="ppo11-b" class="card card-body mb-3" data-check-type="2" data-component="CHP" data-model="B">
+                <h3>PPO11-B CHP systems reported in the Compliance Form for the baseline/budget design are established
+                    correctly</h3>
+
+                <div data-version="2016" data-path="ECB">
+                    <h5>90.1 2016 ECB:</h5>
+                    <p>
+                        Based on Table 11.5.1 #1 Column B, all building systems and equipment must be modeled
+                        identically in the budget and proposed design except as specifically instructed. Since Table
+                        11.5.1 does not cover CHP systems, the budget building design and the proposed design must be
+                        modeled with the same CHP system that is specified for the proposed design. Following Section
+                        11.4.3.2, where CHP waste heat is recovered in the proposed design, the budget building design
+                        must be based on the energy source used as the backup energy source, or electricity if no backup
+                        energy source has been specified. In the proposed design, the recovered waste heat must not be
+                        considered purchased energy and must be subtracted from the proposed design energy consumption,
+                        thus contributing to the performance credit. The requirement was further clarified by adding the
+                        explicit language to that section in the 2019 edition of the standard.
+                    </p>
+                </div>
+
+                <div data-version="2019,2022" data-path="ECB">
+                    <h5>90.1 2019/2022 ECB</h5>
+                    <p>
+                        <strong>11.4.3.2/12.4.3.2:</strong>Where the proposed design includes on-site electricity
+                        generation systems other than on-site renewable energy systems, the baseline design shall
+                        include the same generation systems excluding its site recovered energy.
+                    </p>
+                </div>
+
+                <div data-version="2016" data-path="PRM">
+                    <h5>90.1 2016 PRM</h5>
+                    <p>
+                        Based on Table G3.1 #1 Baseline Building column, all building systems and equipment must be
+                        modeled identically in the baseline and proposed design except as specifically instructed. Since
+                        90.1 Appendix G does not cover CHP systems, the baseline must be modeled with the same CHP
+                        system that is specified for the proposed design. The recovered waste heat of the specified CHP
+                        system must not be considered purchased energy and must be subtracted from the proposed design
+                        energy consumption following Section G2.4.1, thus contributing to the performance credit.
+                    </p>
+                </div>
+
+                <div data-version="2019,2O22" data-path="PRM">
+                    <h5>90.1 2019 and 2022 PRM</h5>
+                    <strong><u>G3.2 New Construction/Major Alterations</u></strong>
+                    <p>
+                        <strong>G2.4.2:</strong> Where the proposed design includes on-site electricity generation
+                        systems other than on-site renewable energy systems, the baseline design shall include the same
+                        generation systems excluding its site-recovered energy.
+                    </p>
+                    <p>
+                        <strong><u>G3.3 Minor Alterations</u></strong>
+                        <br>
+                        90.1 Section G3.3.1 states that systems and equipment excluded from the scope of retrofit shall
+                        reflect the existing conditions. Consequently, the requirement for CHP is the same as for G3.2
+                        with the exception that if existing building systems use recovered heat from an existing on-site
+                        CHP, then this existing recovered heat should be subtracted from the baseline (i.e., modeled the
+                        same in the baseline and proposed).
+                    </p>
+                </div>
+
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Confirm that the baseline CHP system is established correctly. It must be the same as the
+                        proposed system in all respects except without energy recovery.
+                    </li>
+                    <li>
+                        Common mistake includes not modeling CHP in the baseline and instead assuming that all
+                        electricity is purchased from grid.
+                    </li>
+                </ol>
+            </div>
+
+            <!--PPO12 Section -->
+            <div id="ppo12" class="card card-body mb-3" data-check-type="5,6" data-component="CHP" data-model="B,P">
+                <h3>PPO12 CHP systems are modeled as reported in the Compliance Form for the baseline/budget and
+                    proposed design.</h3>
+                <h5>Review Tips</h5>
+                <ol>
+                    <li>
+                        Review simulation reports to verify that CHP systems are modeled as reported in the Compliance
+                        Form.
+                    </li>
+                    <li>
+                        If the CHP system is modeled using exceptional calculation methods, perform checks EC01-EC03
+                    </li>
+                    <li>
+                        Irrespective of whether the CHP is modeled in the simulation tool or through exceptional
+                        calculations method, the amount of electricity generated by CHP is expected to be the same in
+                        the baseline (budget) and proposed design. The value of the recovered heat should be subtracted
+                        from the proposed design energy cost but not from the baseline. Similar patterns should be
+                        verified in the simulation output reports if CHP is incorporated in the simulation.
+                    </li>
+                </ol>
+            </div>
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div id="2022-g3_3-modal-container"></div> <!-- Modal for 2022 G3.3 Review Tips container -->
+
+        <!-- Sim Output Full Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog" style="width: auto; max-width: none;">
+            <div class="modal-content" id="resizableModal" style="resize: both; overflow: auto; max-width: 100vw; max-height: 100vh;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Resizable container for the image -->
+                <div id="resizableContainer">
+                  <img id="modalImage" src="" class="img-fluid" alt="Full Image" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script>
+    const componentTypes = ["misc","commercial","regulated","elevators","CHP"];
+    const labels = ["Miscellaneous and Process Equipment","Commercial Refrigerators and Freezers","Regulated Motors",
+    "Elevators","Combined Heat and Power"];
+</script>
+<script src="../assets/js/add-components-checks.js"></script>
+<script src="../assets/js/filter-checks.js"></script>
+<script src="../assets/js/filter-2022-g3_3-content.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

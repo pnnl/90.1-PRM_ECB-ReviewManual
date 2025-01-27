@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+
+            <!--- Page Content Goes Here --->
+            <h1>Nomenclature</h1>
+            <p>The review checks included in this section are organized into the following groups:</p>
+
+            <p><a href="../content/6_3_simulation-general.html">Simulation General (SG)</a></p>
+            <p>
+                SG checks verify compliance with the general simulation requirements such as that an approved simulation
+                program was used to model baseline/budget and proposed design, that project’s climate zone was
+                established correctly, that simulation results used to establish compliance outcome reflect submitted
+                simulation reports, and that the number of unmet load hours does not exceed the specified limit. In
+                addition, SG checks verify that the total simulated energy use intensity and energy intensities of
+                individual end uses including lighting, miscellaneous loads, heating, cooling, fans, pumps, heat
+                rejection, and service water heating are consistent with the selected benchmarks.
+            </p>
+
+            <p><a href="../content/6_4_utility-rates.html">Utility Rates (UR)</a></p>
+            <p>
+                UR checks verify that energy cost is established using utility rates from an approved source and are
+                properly modeled.
+            </p>
+
+            <p><a href="../content/6_5_building-envelope.html">Building Envelope (BE)</a></p>
+            <p>BE checks verify that the envelope geometry, thermal, and solar properties are established and modeled
+                correctly.
+            </p>
+
+            <p>
+                <a href="../content/6_6_lighting-interior.html">
+                    Lighting, Interior (LI)
+                </a>
+                and
+                <a href="../content/6_7_lighting-exterior.html">
+                    Lighting, Exterior (LE)
+                </a>
+            </p>
+            <p>
+                LI and LE checks verify that the interior and exterior lighting power and controls are properly
+                established and modeled.
+            </p>
+
+            <p>
+                <a href="../content/6_8_plug-process-other-loads.html">
+                    Plug, Process and Other Loads (PPO)
+                </a>
+            </p>
+            <p>
+                PPO checks verify that the miscellaneous unregulated loads, industrial processes, elevators, regulated
+                refrigeration, motors, and combined heat and power systems are properly established and modeled.
+            </p>
+
+            <p>
+                <a href="../content/6_9_service-water-heating.html">
+                    Service Water Heating (SWH)
+                </a>
+            </p>
+            <p>
+                SWH checks verify that service water heating equipment type, efficiency, and controls, that the related
+                auxiliary equipment and hot water demand were established and modeled correctly.
+            </p>
+
+            <p>
+                <a href="../content/6_10_airside-hvac.html">
+                    Air-side HVAC Systems (AHVAC)
+                </a>
+                and
+                <a href="../content/6_11_waterside-hvac.html">
+                    Water-side HVAC Systems (WHVAC)
+                </a>
+            </p>
+            <p>
+                AHVAC and WHVAC checks verify heating, cooling, and ventilation system type, capacity, efficiency, and
+                controls, and parameters of the related auxiliary components such as fans, pumps, and heat rejection
+                equipment were established correctly and properly modeled.
+            </p>
+
+            <p>
+                <a href="../content/6_12_renewable-energy.html">
+                    Renewable Energy (RE)
+                </a>
+            </p>
+            <p>
+                RE checks cover renewable electricity and thermal energy generation systems such as photovoltaic (PV)
+                systems.
+            </p>
+
+            <p>
+                <a href="../content/6_13_exceptional-calculations.html">
+                    Exceptional Calculations (EC)
+                </a>
+            </p>
+            <p>
+                EC checks address calculations that were completed outside of the simulation tool. The checks are only
+                relevant to projects involving renewable systems or exceptional calculations, respectively.
+            </p>
+
+            <p>In addition, checks are designated as applying to the Baseline/Budget Design or Proposed Design.</p>
+
+            <strong>Budget/Baseline Design (B)</strong>
+            <p>
+                B checks confirm that the baseline (budget) design described in the submittal reflects the requirements
+                of the selected compliance path and is modeled as reported.
+            </p>
+
+            <strong>Proposed Design (P)</strong>
+            <p>
+                P checks verify that the parameters of the proposed design reported in the Compliance Form match design
+                documents, comply with applicable 90.1 mandatory requirements, and are appropriately modeled.
+            </p>
+
+            <p><em>Example of the format for distinguishing between 90.1 G3.2 and G3.3 requirements through the Review Checks Section</em>
+                <br><strong><u>G3.2 New Construction/Major Alterations</u></strong><br>
+                Requirements for 90.1 G3.2 specifically will be included under this heading.<br>
+                <br><strong><u>G3.3 Minor Alterations</u></strong><br>
+                Requirements for 90.1 G3.3 specifically will be included under this heading.</p>
+
+            <p>
+                Each check has CheckID expressed using this nomenclature. For example, BE08-P is check #8 related to
+                building envelope (BE) for the proposed design (P).
+            </p>
+
+            <p>Check Group Information</p>
+            <p>Sections below list the checks included in each check group. The following information is provided for each check:</p>
+            <ul>
+                <li>Summary of the relevant 90.1 requirements</li>
+                <li>
+                    Review tips including location of the relevant information in the Compliance Form, steps for
+                    completing the check, sampling recommendations for checks that apply to multiple similar systems and
+                    components (e.g. HVAC systems), and common mistakes.
+                </li>
+                <li>
+                    For review checks that involve verifying simulation inputs or outputs, list of the relevant
+                    simulation reports of commonly used BEM. The annotated reports are included in the Simulation
+                    Reports section of this Manual.
+                </li>
+            </ul>
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+        <div>
+            <button id="backToTop" class="btn btn-primary" onclick="scrollToTop()">↑ Back to Top</button>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>
