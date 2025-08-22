@@ -31,8 +31,8 @@
 
             <p>
                 Since the 90.1 Energy Cost Budget and Performance Rating Methods allow performance trade-offs between
-                systems and components (with the exception of falling below the mandatory provisions), identifying
-                issues pertaining to the impactful systems are likely to affect compliance outcome and necessitate
+                systems and components (with the exception of not meeting mandatory provisions), identifying
+                issues pertaining to the impactful systems are likely to affect the compliance outcome and necessitate
                 changes to the design. On the other hand, uncovering issues with systems that have relatively low impact
                 on the modeled energy cost of baseline/budget and proposed design may result in updates to the models
                 and/or information reported in the Compliance Form without any changes to the design documents.
@@ -68,7 +68,7 @@
                             2. Specified systems reported in the Compliance Form reflect design documents
                         </td>
                         <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
-                            Always, based on sampling
+                            Only for impactful systems based on sampling
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#E0F7FA;">
                             NA
@@ -79,7 +79,7 @@
                             3. Specified systems meet mandatory requirements
                         </td>
                         <td style = "background-color:#FFF5E1; text-align: center; vertical-align: middle;">
-                            Always, based on sampling
+                            Only for impactful systems
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#E0F7FA;">
                             NA
@@ -102,10 +102,10 @@
                             5. Simulation inputs reflect systems and components reported in the Compliance Form
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
-                            Only for impactful systems based on sampling IF passes #2
+                            Only for impactful systems based on sampling
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
-                            Only for impactful systems based on sampling IF passes #4
+                            Only for impactful systems based on sampling
                         </td>
                     </tr>
                     <tr>
@@ -114,10 +114,10 @@
                             Form
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
-                            Only for impactful systems, based on sampling IF passes #2
+                            Only for impactful systems, based on sampling
                         </td>
                         <td style="text-align: center; vertical-align: middle; background-color:#F0FFF0;">
-                            Only for impactful systems, based on sampling IF passes #4
+                            Only for impactful systems, based on sampling
                         </td>
                     </tr>
                     <tr>
@@ -139,6 +139,212 @@
                 ventilation fans, heat rejection, service water heating, and elevators.
             </p>
 
+            <h4 id="review-check-classifications">Review Check Classifications</h4>
+            <p>Each review check automatically receives the classifications as described below on the Quality Control Checks tab in the
+                Compliance Form based on the specifics of the projects. These classifications, with the exception of Review Time Ranking,
+                which is for informational purposes only, are then used to automatically select the review checks to include in the
+                review following the logic in the Review Check Selection Logic section. See
+                <a href="../content/appendixB_logic-for-automatic-prioritization">Appendix B: Logic for Automatic Prioritization of
+                Review Checks</a> for the logic applied to each check to determine the ranking on a project-by-project basis
+            </p>
+            <!-- Note this link will only work once the Appendix B page has been merged with the branch -->
+
+            <ul>
+                <li>
+                    <strong>Review Time Classification</strong> — Each check is assigned a number from 1 to 5 to represent the estimated
+                    level of effort required. These values are preset in the Compliance Form and are for reference only. The time
+                    estimates below provide a general guideline, though actual duration may vary based on factors such as project size,
+                    complexity, reviewer experience, and the quality and completeness of submitted materials. Effort estimates:
+                    <ul>
+                        <li>
+                            1: Automated check
+                        </li>
+                       <li>
+                           2: 1-2 Minutes
+                       </li>
+                        <li>
+                            3: 3-7 Minutes
+                        </li>
+                        <li>
+                            4: 8-10 Minutes
+                        </li>
+                        <li>
+                            5: 11+ Minutes
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Identifying Review Checks Connected to Impactful End-Uses</strong> – Each check is dynamically assigned
+                    a "Yes" or "No" based on whether it involves systems and components that influence an end-use identified as
+                    impactful. If the review check is associated with any of the end-uses identified as impactful following the
+                    method described in the Identifying Impactful Aspects of the Submittal section then it will be marked as “Yes”.
+                </li>
+                <li>
+                    <strong>Ranking</strong> — For each check, a ranking is determined. The following are the assigned rankings and
+                    their meaning.
+                    <ul>
+                        <li>
+                            0: Automated checks - always conducted for all tiers.
+                        </li>
+                        <li>
+                            1: Always conducted for Tiers 2-5. These include EUI checks and general requirements of the PRM or ECB,
+                            such as verifying that unmet load hours do not exceed allowable limits.
+                        </li>
+                        <li>
+                            2: Checks that have a significant impact on energy consumption AND where the systems and components associated
+                            with the check affect end-use(s) determined to be impactful for the project (i.e., the check was assigned
+                            a “Yes’ according to the bullet above). Project attributes like number of stories, building type, and
+                            climate zone (CZ) will be considered when dynamically assigning a ranking of either a 2 or 3 to a check.
+                            For example, slab on grade construction related to checks for a single-story school in climate zone
+                            6A will receive a ranking of 2, whereas those checks for a 15-story office in CZ 2A will receive a
+                            ranking of 3.
+                        </li>
+                        <li>
+                            3: Checks that have a less significant impact on energy consumption AND where the systems and components
+                            associated with the check affect end-use(s) determined to be impactful for the project. Project attributes
+                            like number of stories, building type, and climate zone will be considered when dynamically assigning
+                            a ranking of either a 2 or 3 to a check.
+                        </li>
+                        <li>
+                            4: These are the checks that either always have a less significant impact on energy consumption OR are
+                            checks that were found to not affect any of the impactful end uses determined for the project.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Review Check Selection Logic</h4>
+            <p>
+                The following logic and process is used for determining whether “Include in Review” will be set equal to “Yes” or “No”
+                dynamically for each review check on the Quality Control Checks tab in the Compliance Form. Steps 2-4 are automated
+                in the Compliance Form.
+            </p>
+            <ul style = 1em>
+                <li>
+                    <strong>Step 1: Selection of review tier.</strong> For each project review, the reviewer must determine the
+                    appropriate review tier, considering both the available review time and the desired level of rigor. The review tier
+                    is selected on the Quality Control Checks tab in the Compliance Form.
+                    <br><br>
+                    When aligning the selected tier with the allocated review time, several factors should be taken into account:
+                    <br>
+                    <ul>
+                        <li>
+                            Reviewer Experience – Less experienced reviewers may require additional time to complete reviews.
+                        </li>
+                        <li>
+                           Project Complexity – More complex projects generally demand longer review times, even at lower tiers.
+                        </li>
+                        <li>
+                            Quality of Submitted Materials – Projects submitted with well-prepared, high-quality documentation often
+                            require significantly less review time compared to those with incomplete or inconsistent materials.
+                        </li>
+                    </ul>
+                            By carefully assessing these elements, reviewers can select a tier that balances efficiency and thoroughness while
+                            ensuring a comprehensive evaluation of the project.
+                        <br><br>
+                </li>
+                <li>
+                    <strong>Step 2: Identify impactful end-uses and checks that pertain to these end-uses.</strong> Impactful end
+                    uses will be determined automatically in the Compliance Form based on model results using the logic in Identifying
+                    Impactful Aspects of the Submittal section. Each check will be marked as Yes/No as to whether it affects any
+                    impactful end uses.
+                </li>
+                <li>
+                    <strong>Step 3: Rank checks.</strong> Rankings of 0 and 1 are not dynamic and are therefore not project specific.
+                    These are pre-assigned and remain stable across projects. The checks that received a “Yes” in step 2 will be
+                    ranked as either 2 or 3 based on its level of influence on energy consumption. A ranking of 2, 3, or 4 will
+                    be automatically determined in the Compliance Form based upon attributes of the project including but not
+                    limited to impactful end uses, climate zone, building type, number of stories, etc.  See the
+                    <a href=#review-check-classifications>Review Check Classifications</a> section for more information
+                    regarding ranking. See <a href="../content/appendixB_logic-for-automatic-prioritization">Appendix B: Logic for
+                    Automatic Prioritization of Review Checks</a> for the logic applied to each check to determine the ranking on a
+                    project-by-project basis.
+                </li>
+                <li>
+                    <strong>Step 4: Selection of checks to be performed.</strong> Checks will be selected automatically following
+                    the default logic shown below depending on the tier selected. “Include in Review” will be set equal to “Yes”
+                    or “No” dynamically following the logic below. In certain cases, the reviewer may choose to override the default
+                    percentages shown below. For example, if a submitter consistently provides high-quality work, the reviewer may
+                    adjust the percentage of rank 4 checks conducted from 20% to 5% for a Tier 3 review. Conversely, if a submitter
+                    frequently submits lower-quality work, the reviewer may opt to increase the percentage to 40% for a more thorough
+                    assessment. The percentage of checks conducted can be manually adjusted on the Quality Control Checks tab in the
+                    Compliance Form in the Review Tier section.
+                    <ul>
+                        <li>
+                            Tier 1:
+                            <ul>
+                                <li>
+                                    Verify all automated checks Pass
+                                </li>
+                                <li>
+                                    No additional checks are selected for review; however, if any automated checks fail, then the
+                                    reviewer should investigate, or ask the submitter to explain.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Tier 2
+                            <ul>
+                                <li>
+                                    Verify all automated checks Pass
+                                </li>
+                                <li>
+                                    100% of checks with a ranking of 1
+                                </li>
+                                <li>
+                                    50% of checks with a ranking of 2
+                                </li>
+                                <li>
+                                    25% of checks with a ranking of 3
+                                </li>
+                                <li>
+                                    10% of checks with a ranking of 4
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Tier 3:
+                            <ul>
+                                <li>
+                                    Verify all automated checks Pass
+                                </li>
+                                <li>
+                                    100% of checks with a ranking of 1
+                                </li>
+                                <li>
+                                    75% of checks with a ranking of 2
+                                </li>
+                                <li>
+                                    50% of checks with a ranking of 3
+                                </li>
+                                <li>
+                                    20% of checks with a ranking of 4
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Tier 4:
+                            <ul>
+                                <li>
+                                    All checks ranked 0 through 3
+                                </li>
+                                <li>
+                                    20% of checks with a ranking of 4
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Tier 5:
+                            <ul>
+                                <li>
+                                    All checks (ranking 0 through 4)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
             <p>
                 The Review Checks section of the Manual includes subsections dedicated to the key building systems (e.g., interior
                 lighting, building envelope, etc.). Each subsection starts with an introduction that includes a table listing the
@@ -147,7 +353,7 @@
                 example, verification that the specified lighting fixture wattage reported in the compliance form reflects design
                 document should focus on fixtures that account for the largest share of the specified wattage and spot-checking other
                 fixtures.
-            <p>
+            </p>
 
             <!--- ---------------------- --->
         </div>
