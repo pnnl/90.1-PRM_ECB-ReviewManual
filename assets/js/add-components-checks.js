@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
         populateComponents();
         $('.selectpicker').selectpicker();
         attachEventListeners();
+        initFilterReset();
         populateLinks();
         filterContent();
         attachSearchInputListener();
@@ -324,5 +325,59 @@ function enforceAtLeastOneChecked(groupName) {
                 this.checked = true;
             }
         }, { capture: true }); // Use capture phase to take priority
+    });
+}
+
+function initFilterReset() {
+    const resetBtn = document.getElementById("resetFilters");
+    if (!resetBtn) return;
+
+    // Keep one source of truth for defaults
+    const defaultFilters = {
+        path: ['ECB', 'PRM'],
+        version: ['2016', '2019', '2022'],
+        model: ['B', 'P'],
+        checkType: ['All'],
+        component: ['All'],
+        bemTool: ['All'],
+    };
+
+    resetBtn.addEventListener("click", function () {
+        const form = document.getElementById("filterForm");
+        if (!form) return;
+
+        // Reset checkboxes + localStorage + fire change
+        form.querySelectorAll("input[type='checkbox']").forEach(cb => {
+            cb.checked = true;
+            localStorage.setItem(cb.id, "true");
+            cb.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+
+        // Reset selects to "All" + localStorage + fire change
+        form.querySelectorAll("select").forEach(select => {
+            const isPicker = select.classList.contains("selectpicker");
+
+            if (isPicker) {
+                $(select).selectpicker('val', ['All']);
+                $(select).selectpicker('refresh');
+                localStorage.setItem(select.id, JSON.stringify(['All']));
+                $(select).trigger('change');
+            } else {
+                Array.from(select.options).forEach(opt => {
+                    opt.selected = (opt.value === 'All');
+                });
+                localStorage.setItem(select.id, JSON.stringify(['All']));
+                select.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        });
+
+        // Reset the in-memory filters object, then re-filter
+        Object.keys(defaultFilters).forEach(k => {
+            filters[k] = [...defaultFilters[k]];
+        });
+
+        if (typeof filterContent === "function") {
+            filterContent();
+        }
     });
 }

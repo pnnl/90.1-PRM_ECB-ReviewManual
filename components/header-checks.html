@@ -11,13 +11,12 @@
                 <ul id="dropdownResults" class="dropdown-menu dropdown-menu-right"></ul>
             </div>
         </form>
-
     </div>
 </div>
 
 <div class="collapse container mt-3" id="filterContent">
     <div class="card card-body">
-        <form>
+        <form id="filterForm">
             <div class="row">
                 <div class="col-4 mb-3">
                     <strong>Project Path: </strong><br>
@@ -126,6 +125,14 @@
             <div id="filter-links" class="mt-3">
                 <!-- Links will be dynamically populated based on the ids of cards within the #page-content -->
             </div>
+
+            <!-- Reset Button -->
+            <div class="mt-3 d-flex justify-content-end">
+                <button id="resetFilters" type="button" class="btn btn-secondary">
+                    Reset Filters
+                </button>
+            </div>
+
         </form>
     </div>
 </div>
