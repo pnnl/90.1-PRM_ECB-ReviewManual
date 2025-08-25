@@ -267,6 +267,7 @@ function applyActiveLink() {
 }
 
 function applyCollapseState() {
+    const sidebar = document.querySelector("#sidebar");
     const collapsibleButtons = document.querySelectorAll("#sidebar-container .btn-toggle");
 
     // Restore saved collapse states from localStorage
@@ -305,8 +306,7 @@ function applyScrollState() {
 
     // Save the scroll position whenever it changes
     sidebar.addEventListener("scroll", () => {
-        const scrollPosition = sidebar.scrollTop;
-        localStorage.setItem("sidebarScrollPosition", scrollPosition);
+        localStorage.setItem("sidebarScrollPosition", sidebar.scrollTop);
     });
 }
 

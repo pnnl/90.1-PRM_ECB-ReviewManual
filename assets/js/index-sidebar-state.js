@@ -13,7 +13,7 @@ function applyActiveLink() {
 
     // If an active link is stored, find it and set the active class
     if (activeLink) {
-        const currentActive = document.querySelector(`#sidebar-container a[href*='${activeLink}']`);
+        const currentActive = document.querySelector(`#sidebar a[href*='${activeLink}']`);
         if (currentActive) currentActive.classList.add("active");
     }
 
@@ -49,7 +49,7 @@ function applyCollapseState() {
         // Add event listeners to update state in localStorage when toggled
         button.addEventListener("click", () => {
             const expanded = button.getAttribute("aria-expanded") === "true";
-            localStorage.setItem(`collapseState-${targetId}`, !expanded);
+            localStorage.setItem(`collapseState-${targetId}`, expanded);
             const scrollPosition = sidebar.scrollTop;
             localStorage.setItem("sidebarScrollPosition", scrollPosition);
         });
