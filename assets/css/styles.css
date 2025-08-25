@@ -13,6 +13,13 @@ html, body {
     min-width: 1180px;
 }
 
+.freeze-scroll {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
 .chapter {
     background-color: white;
     border: 2px solid #ccc;
