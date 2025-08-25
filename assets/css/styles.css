@@ -194,6 +194,15 @@ footer img {
     background-color: #F7C88A !important;
 }
 
+.btn-help-circle{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .link-body-emphasis {
     width: 100%;
 }
