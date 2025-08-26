@@ -187,42 +187,39 @@ function attachSearchInputListener() {
 }
 
 function replaceAnchorLinks() {
-    const pageAnchorLinks = document.querySelectorAll('a[href^="#"]');
+  const pageAnchorLinks = document.querySelectorAll('a[href^="#"]');
 
-    pageAnchorLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+  pageAnchorLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      const href = this.getAttribute('href') || '';
+      // Skip empty/hash-only hrefs like "#"
+      if (!href || href === '#') return;
 
-            if (targetElement) {
-                event.preventDefault();
+      const targetId = href; // starts with '#'
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
 
-                const headerHeight = document.querySelector('#header-container').offsetHeight;
-                const scrollPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      event.preventDefault();
 
-                window.scrollTo({
-                    top: scrollPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+      const header = document.querySelector('#header-container');
+      const headerHeight = header ? header.offsetHeight : 0;
+      const scrollPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+      window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     });
+  });
 
-    const externalLinks = document.querySelectorAll("#page-content a[href]:not([href^='#'])");
+  const externalLinks = document.querySelectorAll("#page-content a[href]:not([href^='#'])");
+  externalLinks.forEach(link => { link.setAttribute('target', '_blank'); });
 
-    externalLinks.forEach(link => {
-        link.setAttribute('target', '_blank');
+  const contentLinks = document.querySelectorAll("#page-content a[href*='content/']");
+  contentLinks.forEach(link => {
+    link.addEventListener("click", function() {
+      const href = this.getAttribute("href") || '';
+      const lastSegment = href.substring(href.lastIndexOf('/') + 1);
+      localStorage.setItem("activeLink", lastSegment);
     });
-
-    const contentLinks = document.querySelectorAll("#page-content a[href*='content/']");
-    contentLinks.forEach(link => {
-        link.addEventListener("click", function() {
-            // Get the href and store only the substring after the last '/' character
-            const href = this.getAttribute("href");
-            const lastSegment = href.substring(href.lastIndexOf('/') + 1);
-            localStorage.setItem("activeLink", lastSegment);
-        });
-    });
+  });
 }
 
 window.onscroll = function() {
@@ -271,6 +268,7 @@ function applyActiveLink() {
 }
 
 function applyCollapseState() {
+    const sidebar = document.querySelector("#sidebar");
     const collapsibleButtons = document.querySelectorAll("#sidebar-container .btn-toggle");
 
     // Restore saved collapse states from localStorage
@@ -309,8 +307,7 @@ function applyScrollState() {
 
     // Save the scroll position whenever it changes
     sidebar.addEventListener("scroll", () => {
-        const scrollPosition = sidebar.scrollTop;
-        localStorage.setItem("sidebarScrollPosition", scrollPosition);
+        localStorage.setItem("sidebarScrollPosition", sidebar.scrollTop);
     });
 }
 

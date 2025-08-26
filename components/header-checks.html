@@ -1,17 +1,32 @@
 <div class="container">
-    <div class="d-flex flex-wrap justify-content-between align-items-center">
-        <button class="btn btn-filter mb-3" type="button" data-toggle="collapse" data-target="#filterContent"
-                aria-expanded="false" aria-controls="filterContent">
-            Filter Content
-        </button>
-
-        <form class="mb-3 me-3" role="search" autocomplete="off" style="position: relative;">
-            <div class="btn-group">
-               <input id="searchInput" class="form-control dropdown-toggle" placeholder="Search..." aria-label="Search" data-toggle="dropdown" aria-expanded="false">
-                <ul id="dropdownResults" class="dropdown-menu dropdown-menu-right"></ul>
-            </div>
-        </form>
+  <div class="d-flex flex-wrap justify-content-between align-items-center">
+    <!-- Left group: Filter + Help tight together -->
+    <div class="d-flex align-items-center mb-3">
+      <button class="btn btn-filter" type="button"
+              data-toggle="collapse" data-target="#filterContent"
+              aria-expanded="false" aria-controls="filterContent">
+        Filter Content
+      </button>
+      <button class="btn btn-help-circle mb-3 ml-1"
+        type="button"
+        data-toggle="modal"
+        data-target="#filterHelpModal"
+        aria-controls="filterHelpModal"
+        aria-label="Help"
+        title="Help">
+          <i class="fa fa-question-circle"></i>
+      </button>
     </div>
+
+    <!-- Right: search -->
+    <form class="mb-3 ml-auto" role="search" autocomplete="off" style="position: relative;">
+      <div class="btn-group">
+        <input id="searchInput" class="form-control dropdown-toggle" placeholder="Search..."
+               aria-label="Search" data-toggle="dropdown" aria-expanded="false">
+        <ul id="dropdownResults" class="dropdown-menu dropdown-menu-right"></ul>
+      </div>
+    </form>
+  </div>
 </div>
 
 <div class="collapse container mt-3" id="filterContent">
