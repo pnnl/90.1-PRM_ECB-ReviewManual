@@ -1,5 +1,15 @@
-// Initialize the filters object
+// Initialize the filters object to track live selections
 const filters = {
+    path: ['ECB', 'PRM'],
+    version: ['2016', '2019', '2022'],
+    model: ['B', 'P'],
+    checkType: ['All'],
+    component: ['All'],
+    bemTool: ['All'],
+};
+
+// Keep one source of truth for defaults
+const defaultFilters = {
     path: ['ECB', 'PRM'],
     version: ['2016', '2019', '2022'],
     model: ['B', 'P'],
@@ -37,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         initFilterReset();
         populateLinks();
         filterContent();
+        updateFilterCountBadge();
         attachSearchInputListener();
         replaceAnchorLinks();
     });
@@ -96,6 +107,7 @@ function attachEventListeners() {
             }
             localStorage.setItem(checkbox.id, checked);
             filterContent();
+            updateFilterCountBadge();
         });
     });
 
@@ -143,6 +155,7 @@ function attachEventListeners() {
             filters[filterType] = selectedValues.filter(option => option !== "All" || selectedValues.length === 1);
             localStorage.setItem(select.id, JSON.stringify(filters[filterType]));
             filterContent();
+            updateFilterCountBadge();
         });
     });
 
@@ -329,16 +342,6 @@ function initFilterReset() {
     const resetBtn = document.getElementById("resetFilters");
     if (!resetBtn) return;
 
-    // Keep one source of truth for defaults
-    const defaultFilters = {
-        path: ['ECB', 'PRM'],
-        version: ['2016', '2019', '2022'],
-        model: ['B', 'P'],
-        checkType: ['All'],
-        component: ['All'],
-        bemTool: ['All'],
-    };
-
     resetBtn.addEventListener("click", function () {
         const form = document.getElementById("filterForm");
         if (!form) return;
@@ -375,6 +378,40 @@ function initFilterReset() {
 
         if (typeof filterContent === "function") {
             filterContent();
+            updateFilterCountBadge();
         }
     });
+}
+
+function arraysEqualAsSets(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return false;
+  if (a.length !== b.length) return false;
+  const sa = new Set(a), sb = new Set(b);
+  if (sa.size !== sb.size) return false;
+  for (const v of sa) if (!sb.has(v)) return false;
+  return true;
+}
+
+function getAppliedGroupsCount() {
+  let count = 0;
+  for (const key of Object.keys(defaultFilters)) {
+    const curr = filters[key] || [];
+    const def = defaultFilters[key] || [];
+    if (!arraysEqualAsSets(curr, def)) count++;
+  }
+  return count;
+}
+
+function updateFilterCountBadge() {
+  const count = getAppliedGroupsCount();
+  const badge = document.getElementById('filterCountBadge');
+
+  if (!badge) return;
+
+  if (count > 0) {
+    badge.textContent = String(count);
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
 }
