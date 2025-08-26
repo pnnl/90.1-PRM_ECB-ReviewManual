@@ -433,6 +433,20 @@ footer img {
     background-color: #e9ecef; /* Slightly darker background for even items */
 }
 
+.bootstrap-select .dropdown-menu .selected a {
+  background-color: #1E40A5 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+#reviewTable tr:first-child {
+  position: sticky;
+  top: 86.8px;
+  background-color: #1E40A5;
+  color: white;
+  z-index: 2;
+}
+
 .show {
     display: block;
 }
