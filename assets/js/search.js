@@ -1196,19 +1196,24 @@ function updateHREFs() {
 }
 
 function performSearch(query) {
-    const results = fuse.search(query).slice(0, 4); // Limit to top 4 results
+    const allResults = fuse.search(query);
+    const previewResults = allResults.slice(0, 4); // initial preview
     const dropdownResults = document.getElementById('dropdownResults');
     dropdownResults.innerHTML = '';
-    if (query && results.length > 0) {
-        results.forEach(result => {
+
+    // reset sizing
+    dropdownResults.style.maxHeight = '';
+    dropdownResults.style.overflowY = '';
+
+    if (query && allResults.length > 0) {
+        // show the top 4 items
+        previewResults.forEach(result => {
             const a = document.createElement('a');
             a.href = result.item.checkHref;
-            a.classList.add('dropdown-item');
-            a.classList.add('list-group-item');
+            a.classList.add('dropdown-item', 'list-group-item');
 
             const boldKey = document.createElement('strong');
             boldKey.textContent = result.item.key + ' ';
-
             a.appendChild(boldKey);
             a.appendChild(document.createTextNode(result.item.title));
 
@@ -1221,16 +1226,13 @@ function performSearch(query) {
 
                 let lastSegment = targetHref.substring(targetHref.lastIndexOf('/') + 1);
                 lastSegment = lastSegment.split('#')[0];
-                localStorage.setItem("activeLink", lastSegment);
+                localStorage.setItem('activeLink', lastSegment);
 
                 if (targetElement) {
-                    const headerHeight = document.querySelector('#header-container').offsetHeight;
+                    const headerHeight = (document.querySelector('#header-container') || { offsetHeight: 0 }).offsetHeight;
                     const scrollPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
-                    window.scrollTo({
-                        top: scrollPosition,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
                 } else {
                     window.location.href = targetHref;
                 }
@@ -1238,6 +1240,57 @@ function performSearch(query) {
 
             dropdownResults.appendChild(a);
         });
+
+        // Add "View All Results" button if more exist
+        if (allResults.length > 4) {
+          const viewAll = document.createElement('button');
+          viewAll.type = 'button';
+          viewAll.textContent = `View All Results (${allResults.length})`;
+          viewAll.classList.add('dropdown-item', 'list-group-item', 'text-center', 'fw-semibold');
+
+          // Prevent Bootstrap from auto-closing due to focus/inside click
+          viewAll.addEventListener('mousedown', (e) => {
+            e.preventDefault();   // keep focus on input; avoids blur-triggered close
+            e.stopPropagation();  // don't bubble to Bootstrap's handler
+          });
+          viewAll.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Expand to full list
+            dropdownResults.innerHTML = '';
+            allResults.forEach(result => {
+              const a = document.createElement('a');
+              a.href = result.item.checkHref;
+              a.classList.add('dropdown-item', 'list-group-item');
+
+              const boldKey = document.createElement('strong');
+              boldKey.textContent = result.item.key + ' ';
+              a.appendChild(boldKey);
+              a.appendChild(document.createTextNode(result.item.title));
+              dropdownResults.appendChild(a);
+            });
+
+            // Make long lists scrollable
+            dropdownResults.style.maxHeight = '60vh';
+            dropdownResults.style.overflowY = 'auto';
+
+            // Ensure dropdown stays open after clicking View All
+            dropdownResults.classList.add('show');
+          });
+
+          dropdownResults.appendChild(viewAll);
+
+          // Size dropdown to fit exactly 4 results + button (no scroll)
+          requestAnimationFrame(() => {
+            const items = dropdownResults.querySelectorAll('.dropdown-item');
+            let needed = 0;
+            items.forEach(el => needed += el.getBoundingClientRect().height);
+            dropdownResults.style.maxHeight = `${needed + 8}px`;
+            dropdownResults.style.overflowY = 'hidden';
+          });
+        }
+
         dropdownResults.classList.add('show');
     } else {
         dropdownResults.classList.remove('show');
