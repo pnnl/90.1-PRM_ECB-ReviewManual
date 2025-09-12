@@ -98,16 +98,22 @@ function attachEventListeners() {
 
         // Add an event listener for each checkbox to handle changes
         checkbox.addEventListener("change", function () {
-            const checked = checkbox.checked;
+          const checked = checkbox.checked;
 
-            if (checked) {
-                filters[filterType].push(value);
-            } else {
-                filters[filterType] = filters[filterType].filter((v) => v !== value);
+          if (checked) {
+            if (!filters[filterType].includes(value)) {
+              filters[filterType].push(value);
             }
-            localStorage.setItem(checkbox.id, checked);
-            filterContent();
-            updateFilterCountBadge();
+          } else {
+            filters[filterType] = filters[filterType].filter((v) => v !== value);
+          }
+
+          // safety de-dupe in case of prior duplicates
+          filters[filterType] = [...new Set(filters[filterType])];
+
+          localStorage.setItem(checkbox.id, checked);
+          filterContent();
+          updateFilterCountBadge();
         });
     });
 
@@ -325,17 +331,28 @@ function applyScrollState() {
 }
 
 function enforceAtLeastOneChecked(groupName) {
-    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", function(event) {
-            const checkedCheckboxes = document.querySelectorAll(`input[name="${groupName}"]:checked`);
+  const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+  checkboxes.forEach((cb) => {
+    cb.addEventListener(
+      "change",
+      function (e) {
+        // If user is trying to uncheck the last remaining checked box in the group…
+        const group = Array.from(document.querySelectorAll(`input[name="${groupName}"]`));
+        const othersChecked = group.some(x => x !== cb && x.checked);
 
-            // If there is only one checkbox checked in the group and it is being unchecked, prevent it
-            if (checkedCheckboxes.length === 0) {
-                this.checked = true;
-            }
-        }, { capture: true }); // Use capture phase to take priority
-    });
+        if (!othersChecked && cb.checked === false) {
+          // Revert the toggle
+          cb.checked = true;
+
+          // Stop EVERY other change handler from running and mutating state
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      },
+      { capture: true } // run before bubble listeners
+    );
+  });
 }
 
 function initFilterReset() {
