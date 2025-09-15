@@ -1195,6 +1195,145 @@ function updateHREFs() {
     });
 }
 
+function activateTabForPane(pane) {
+  // If target is inside a .tab-pane, activate its tab trigger
+  const idSel = pane.id ? `#${pane.id}` : null;
+  if (!idSel) return;
+  const trigger = document.querySelector(
+    `[data-bs-toggle="tab"][data-bs-target="${idSel}"],
+     [data-bs-toggle="tab"][href="${idSel}"],
+     [data-toggle="tab"][href="${idSel}"],
+     [data-toggle="tab"][data-target="${idSel}"]`
+  );
+  if (!trigger) return;
+
+  try {
+    if (window.bootstrap && bootstrap.Tab) {
+      bootstrap.Tab.getOrCreateInstance(trigger).show();
+    } else if (window.jQuery && $(trigger).tab) {
+      $(trigger).tab('show');
+    }
+  } catch (_) {}
+}
+
+function activateFilterLink(targetId) {
+  const container = document.getElementById('filter-links');
+  if (!container || !targetId) return;
+
+  // Clear previous "active" states
+  container.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+
+  // Find link that points to this target
+  const sel = `a[href="#${CSS.escape(targetId)}"], a[data-target="#${CSS.escape(targetId)}"]`;
+  const link = container.querySelector(sel);
+  if (link) {
+    link.classList.add('active');
+
+    try {
+      if (window.bootstrap && bootstrap.Tab) {
+        bootstrap.Tab.getOrCreateInstance(link).show();
+      } else if (window.jQuery && $(link).tab) {
+        $(link).tab('show');
+      }
+    } catch (_) {}
+  }
+}
+
+function openCollapseEl(el) {
+  // Open collapse/accordion bodies, regardless of BS4/BS5
+  try {
+    if (window.bootstrap && bootstrap.Collapse) {
+      bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }).show();
+    } else if (window.jQuery && $(el).collapse) {
+      $(el).collapse('show');
+    } else {
+      el.classList.add('show');
+      el.style.height = '';
+    }
+  } catch (_) {}
+}
+
+function buildResultLink(result) {
+  const a = document.createElement('a');
+  a.href = result.item.checkHref;
+  a.classList.add('dropdown-item', 'list-group-item');
+
+  const boldKey = document.createElement('strong');
+  boldKey.textContent = result.item.key + ' ';
+  a.appendChild(boldKey);
+  a.appendChild(document.createTextNode(result.item.title));
+
+  a.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const targetHref = a.getAttribute('href');
+    const targetId = targetHref.split('#')[1];
+    const targetElement = targetId ? document.getElementById(targetId) : null;
+
+    // keep your activeLink behavior
+    let lastSegment = targetHref.substring(targetHref.lastIndexOf('/') + 1);
+    lastSegment = lastSegment.split('#')[0];
+    localStorage.setItem('activeLink', lastSegment);
+
+    if (targetElement) {
+      // 1) make sure target lives in visible containers
+      revealTargetAndAncestors(targetElement);
+
+      // 2) scroll after a tiny delay so collapses/tabs can finish opening
+      const headerHeight = (document.querySelector('#header-container') || { offsetHeight: 0 }).offsetHeight;
+      setTimeout(() => {
+        const scrollPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+      }, 150);
+    } else {
+      // different page: just navigate
+      window.location.href = targetHref;
+    }
+  });
+
+  return a;
+}
+
+function revealTargetAndAncestors(el, { addHighlight = true } = {}) {
+  if (!el) return;
+
+  // Open any <details> parents
+  const detailsParents = el.closest ? el.closest('details') : null;
+  if (detailsParents && !detailsParents.open) detailsParents.open = true;
+
+  let node = el;
+  while (node && node !== document.body) {
+    // Remove generic hidden states
+    if (node.hasAttribute && node.hasAttribute('hidden')) node.removeAttribute('hidden');
+    if (node.style && node.style.display === 'none') node.style.display = '';
+    if (node.classList) {
+      node.classList.remove('d-none', 'visually-hidden', 'hidden');
+    }
+
+    // If this ancestor is a Bootstrap collapse/accordion, open it
+    if (node.classList && (node.classList.contains('collapse') || node.classList.contains('accordion-collapse'))) {
+      if (!node.classList.contains('show')) {
+        openCollapseEl(node);
+      }
+    }
+
+    // If inside a tab-pane, activate its tab
+    if (node.classList && node.classList.contains('tab-pane') && !node.classList.contains('active')) {
+      activateTabForPane(node);
+    }
+
+    node = node.parentElement;
+  }
+
+  // Re-activate the corresponding inline link in #filter-links
+  activateFilterLink(el.id);
+
+  // Add a temporary gray highlight to the target itself
+  if (addHighlight) {
+    el.classList.add('reveal-highlight');
+  }
+}
+
 function performSearch(query) {
     const allResults = fuse.search(query);
     const previewResults = allResults.slice(0, 4); // initial preview
@@ -1208,37 +1347,7 @@ function performSearch(query) {
     if (query && allResults.length > 0) {
         // show the top 4 items
         previewResults.forEach(result => {
-            const a = document.createElement('a');
-            a.href = result.item.checkHref;
-            a.classList.add('dropdown-item', 'list-group-item');
-
-            const boldKey = document.createElement('strong');
-            boldKey.textContent = result.item.key + ' ';
-            a.appendChild(boldKey);
-            a.appendChild(document.createTextNode(result.item.title));
-
-            a.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                const targetHref = a.getAttribute('href');
-                const targetId = targetHref.split('#')[1];
-                const targetElement = document.getElementById(targetId);
-
-                let lastSegment = targetHref.substring(targetHref.lastIndexOf('/') + 1);
-                lastSegment = lastSegment.split('#')[0];
-                localStorage.setItem('activeLink', lastSegment);
-
-                if (targetElement) {
-                    const headerHeight = (document.querySelector('#header-container') || { offsetHeight: 0 }).offsetHeight;
-                    const scrollPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-                    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
-                } else {
-                    window.location.href = targetHref;
-                }
-            });
-
-            dropdownResults.appendChild(a);
+        dropdownResults.appendChild(buildResultLink(result));
         });
 
         // Add "View All Results" button if more exist
@@ -1260,15 +1369,7 @@ function performSearch(query) {
             // Expand to full list
             dropdownResults.innerHTML = '';
             allResults.forEach(result => {
-              const a = document.createElement('a');
-              a.href = result.item.checkHref;
-              a.classList.add('dropdown-item', 'list-group-item');
-
-              const boldKey = document.createElement('strong');
-              boldKey.textContent = result.item.key + ' ';
-              a.appendChild(boldKey);
-              a.appendChild(document.createTextNode(result.item.title));
-              dropdownResults.appendChild(a);
+            dropdownResults.appendChild(buildResultLink(result));
             });
 
             // Make long lists scrollable

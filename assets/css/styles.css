@@ -451,6 +451,11 @@ footer img {
     display: block;
 }
 
+.reveal-highlight {
+  background: #f1f3f5;   /* light gray */
+  transition: background-color 800ms ease;
+}
+
 #backToTop {
     position: fixed;
     bottom: 30px;
