@@ -1,5 +1,15 @@
-// Initialize the filters object
+// Initialize the filters object to track live selections
 const filters = {
+    path: ['ECB', 'PRM'],
+    version: ['2016', '2019', '2022'],
+    model: ['B', 'P'],
+    checkType: ['All'],
+    component: ['All'],
+    bemTool: ['All'],
+};
+
+// Keep one source of truth for defaults
+const defaultFilters = {
     path: ['ECB', 'PRM'],
     version: ['2016', '2019', '2022'],
     model: ['B', 'P'],
@@ -34,8 +44,10 @@ document.addEventListener("DOMContentLoaded", function() {
         populateComponents();
         $('.selectpicker').selectpicker();
         attachEventListeners();
+        initFilterReset();
         populateLinks();
         filterContent();
+        updateFilterCountBadge();
         attachSearchInputListener();
         replaceAnchorLinks();
     });
@@ -86,15 +98,22 @@ function attachEventListeners() {
 
         // Add an event listener for each checkbox to handle changes
         checkbox.addEventListener("change", function () {
-            const checked = checkbox.checked;
+          const checked = checkbox.checked;
 
-            if (checked) {
-                filters[filterType].push(value);
-            } else {
-                filters[filterType] = filters[filterType].filter((v) => v !== value);
+          if (checked) {
+            if (!filters[filterType].includes(value)) {
+              filters[filterType].push(value);
             }
-            localStorage.setItem(checkbox.id, checked);
-            filterContent();
+          } else {
+            filters[filterType] = filters[filterType].filter((v) => v !== value);
+          }
+
+          // safety de-dupe in case of prior duplicates
+          filters[filterType] = [...new Set(filters[filterType])];
+
+          localStorage.setItem(checkbox.id, checked);
+          filterContent();
+          updateFilterCountBadge();
         });
     });
 
@@ -142,6 +161,7 @@ function attachEventListeners() {
             filters[filterType] = selectedValues.filter(option => option !== "All" || selectedValues.length === 1);
             localStorage.setItem(select.id, JSON.stringify(filters[filterType]));
             filterContent();
+            updateFilterCountBadge();
         });
     });
 
@@ -311,15 +331,104 @@ function applyScrollState() {
 }
 
 function enforceAtLeastOneChecked(groupName) {
-    const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
-    checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", function(event) {
-            const checkedCheckboxes = document.querySelectorAll(`input[name="${groupName}"]:checked`);
+  const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+  checkboxes.forEach((cb) => {
+    cb.addEventListener(
+      "change",
+      function (e) {
+        // If user is trying to uncheck the last remaining checked box in the group…
+        const group = Array.from(document.querySelectorAll(`input[name="${groupName}"]`));
+        const othersChecked = group.some(x => x !== cb && x.checked);
 
-            // If there is only one checkbox checked in the group and it is being unchecked, prevent it
-            if (checkedCheckboxes.length === 0) {
-                this.checked = true;
+        if (!othersChecked && cb.checked === false) {
+          // Revert the toggle
+          cb.checked = true;
+
+          // Stop EVERY other change handler from running and mutating state
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      },
+      { capture: true } // run before bubble listeners
+    );
+  });
+}
+
+function initFilterReset() {
+    const resetBtn = document.getElementById("resetFilters");
+    if (!resetBtn) return;
+
+    resetBtn.addEventListener("click", function () {
+        const form = document.getElementById("filterForm");
+        if (!form) return;
+
+        // Reset checkboxes + localStorage + fire change
+        form.querySelectorAll("input[type='checkbox']").forEach(cb => {
+            cb.checked = true;
+            localStorage.setItem(cb.id, "true");
+            cb.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+
+        // Reset selects to "All" + localStorage + fire change
+        form.querySelectorAll("select").forEach(select => {
+            const isPicker = select.classList.contains("selectpicker");
+
+            if (isPicker) {
+                $(select).selectpicker('val', ['All']);
+                $(select).selectpicker('refresh');
+                localStorage.setItem(select.id, JSON.stringify(['All']));
+                $(select).trigger('change');
+            } else {
+                Array.from(select.options).forEach(opt => {
+                    opt.selected = (opt.value === 'All');
+                });
+                localStorage.setItem(select.id, JSON.stringify(['All']));
+                select.dispatchEvent(new Event("change", { bubbles: true }));
             }
-        }, { capture: true }); // Use capture phase to take priority
+        });
+
+        // Reset the in-memory filters object, then re-filter
+        Object.keys(defaultFilters).forEach(k => {
+            filters[k] = [...defaultFilters[k]];
+        });
+
+        if (typeof filterContent === "function") {
+            filterContent();
+            updateFilterCountBadge();
+        }
     });
+}
+
+function arraysEqualAsSets(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return false;
+  if (a.length !== b.length) return false;
+  const sa = new Set(a), sb = new Set(b);
+  if (sa.size !== sb.size) return false;
+  for (const v of sa) if (!sb.has(v)) return false;
+  return true;
+}
+
+function getAppliedGroupsCount() {
+  let count = 0;
+  for (const key of Object.keys(defaultFilters)) {
+    const curr = filters[key] || [];
+    const def = defaultFilters[key] || [];
+    if (!arraysEqualAsSets(curr, def)) count++;
+  }
+  return count;
+}
+
+function updateFilterCountBadge() {
+  const count = getAppliedGroupsCount();
+  const badge = document.getElementById('filterCountBadge');
+
+  if (!badge) return;
+
+  if (count > 0) {
+    badge.textContent = String(count);
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
 }
