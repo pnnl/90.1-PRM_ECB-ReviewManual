@@ -121,6 +121,7 @@ function applyActiveLink() {
 }
 
 function applyCollapseState() {
+    const sidebar = document.querySelector("#sidebar");
     const collapsibleButtons = document.querySelectorAll("#sidebar-container .btn-toggle");
 
     // Restore saved collapse states from localStorage

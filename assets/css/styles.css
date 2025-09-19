@@ -13,6 +13,13 @@ html, body {
     min-width: 1180px;
 }
 
+.freeze-scroll {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
 .chapter {
     background-color: white;
     border: 2px solid #ccc;
@@ -185,6 +192,15 @@ footer img {
 
 .btn-toggle:hover {
     background-color: #F7C88A !important;
+}
+
+.btn-help-circle{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .link-body-emphasis {
@@ -417,8 +433,27 @@ footer img {
     background-color: #e9ecef; /* Slightly darker background for even items */
 }
 
+.bootstrap-select .dropdown-menu .selected a {
+  background-color: #1E40A5 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+#reviewTable tr:first-child {
+  position: sticky;
+  top: 86.8px;
+  background-color: #1E40A5;
+  color: white;
+  z-index: 2;
+}
+
 .show {
     display: block;
+}
+
+.reveal-highlight {
+  background: #f1f3f5;   /* light gray */
+  transition: background-color 800ms ease;
 }
 
 #backToTop {

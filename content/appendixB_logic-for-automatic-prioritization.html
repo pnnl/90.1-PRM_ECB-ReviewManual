@@ -1,0 +1,3262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASHRAE 90.1 ECB and PRM Submittal Review Manual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/vnd.microsoft.icon"/>
+</head>
+<body>
+<div class="d-flex flex-nowrap">
+    <div id="sidebar-container"></div> <!-- Sidebar container -->
+
+    <main>
+
+        <header id="header-container" class="p-3 mb-3 border-bottom"></header> <!-- Header Container -->
+
+        <div id="page-content" class="container">
+            <!--- Page Content Goes Here --->
+            <h1>Appendix B: Logic for Automatic Prioritization of Review Checks</h1>
+            <p><strong>Explanation of the “Ranking Logic” Column in Table 6 below</strong></p>
+            <p><em>(Refer to the <a href="../content/5_4_establishing-review-scope.html#review-check-classifications">
+                Review Check Classifications</a> section for full context and greater detail regarding meaning of ranking.)</em></p>
+            <!-- Note this link will only work once the pull request for page 5-4 have been merged with the branch -->
+
+            <strong>Rank 0</strong>
+            <ul>
+                <li>
+                    Review check is automated via the Compliance Form and is always included.
+                </li>
+                <li>
+                    Always assigned Rank 0.
+                </li>
+            </ul>
+
+            <strong>Rank 1</strong>
+            <ul>
+                <li>
+                    Required for all Tiers 2–5.
+                </li>
+                <li>
+                    Includes high-priority items like EUI thresholds and general PRM/ECB requirements (e.g., unmet load hours).
+                </li>
+                <li>
+                    Always assigned Rank 1.
+                </li>
+            </ul>
+
+            <strong>Rank 2</strong>
+            <ul>
+                <li>
+                    Always assigned Rank 2.
+                </li>
+            </ul>
+
+            <strong>Rank 3</strong>
+            <ul>
+                <li>
+                    Always assigned Rank 3.
+                </li>
+            </ul>
+
+            <strong>Rank 4</strong>
+            <ul>
+                <li>
+                    Always assigned Rank 4.
+                </li>
+            </ul>
+
+            <strong>Rank 1 or 4</strong>
+            <ul>
+                <li>
+                    If the check affects an impactful end use, assign Rank 1.
+                </li>
+                <li>
+                    Otherwise, assign Rank 4.
+                </li>
+            </ul>
+
+            <strong>Rank 2, 3, or 4</strong>
+            <ul>
+                <li>
+                    Rank determined based on both the relevance of the check to impactful end uses and the project’s context:
+                    <ul>
+                        <li>
+                            <em>Rank 2:</em> Check targets an impactful end use and is especially significant due to building type,
+                            climate zone, or number of floors (e.g., a 24/7 facility in a cold climate).
+                        </li>
+                        <li>
+                            <em>Rank 3:</em> Check targets an impactful end use, but without a context that makes it particularly
+                            critical.
+                        </li>
+                        <li>
+                            <em>Rank 4:</em> Check does not target an impactful end use.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <strong>Rank 3 or 4</strong>
+            <ul>
+                <li>
+                    <em>Rank 3:</em> Check targets an impactful end use, but its relative impact is always lower.
+                </li>
+                <li>
+                    <em>Rank 4:</em> Check does not target an impactful end use.
+                </li>
+            </ul>
+
+            <p>The following Table 6 presents the ranking logic implemented in the Compliance Form for each Review Check.</p>
+            <div class="mb-3">
+              <div class="form-row align-items-end">
+                <div class="col-sm-6 col-md-5">
+                  <label for="filterSection" class="mb-1">Filter by Section</label>
+                  <select id="filterSection" class="selectpicker form-control" data-live-search="true" title="All sections">
+                    <!-- options will be populated by JS -->
+                  </select>
+                </div>
+                <div class="col-sm-4 col-md-3 mt-3 mt-sm-0">
+                  <label for="filterRank" class="mb-1">Filter by Rank</label>
+                  <select id="filterRank" class="selectpicker form-control" title="All ranks">
+                    <option value="">All</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <p style="text-align: center;"><strong>Table 6: Review Check Prioritization Logic Summary Table</strong></p>
+            <table id="reviewTable" border="1">
+                <tbody style="text-align: center;">
+
+                    <tr style="background-color: #1E40A5; color: white;">
+                        <td><strong>Review Check Section Title</strong></td>
+                        <td style="width: 100px;"><strong>Check ID</strong></td>
+                        <td style="width: 250px;"><strong>Check Description</strong></td>
+                        <td style="width: 100px;"><strong>Ranking Logic</strong></td>
+                        <td><strong>End-Uses Affected by Rule</strong></td>
+                        <td><strong>Building Types where Rule is Impactful</strong></td>
+                        <td><strong>Climate Zones where Rule is Impactful</strong></td>
+                        <td><strong>Number of Stories where Rule is Impactful</strong></td>
+                        <td><strong>Helpful Notes</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG01</td>
+                        <td>The same approved simulation program is used for the baseline/budget and proposed design models.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG02</td>
+                        <td>Project climate zone reported in the Compliance Form is established correctly.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG03</td>
+                        <td>The same approved weather file was used in the baseline/budget and proposed design simulations.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG04</td>
+                        <td>The reported project floor area is consistent with the design documents.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG05</td>
+                        <td>The modeled floor area is as reported in the Compliance Form and is the same in the proposed and
+                            baseline/budget design.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG06</td>
+                        <td>At least 8760 hours per year were explicitly modeled.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG07</td>
+                        <td>The number of unmet load hours (UMLH) for the baseline/budget and proposed design reported in the Compliance
+                            Form for the baseline/budget and proposed designs does not exceed the prescribed limit.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG08</td>
+                        <td>The number of unmet load hours reported in the compliance form for the baseline/budget and proposed design
+                            reflect simulation reports.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG09-P</td>
+                        <td>Proposed energy use reported in the Compliance Form matches the simulation output reports.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG09-B</td>
+                        <td>Baseline/budget energy use reported in the Compliance Form matches the simulation output reports.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG10-P</td>
+                        <td>Site Energy Use Intensity (EUI) of the proposed design is generally consistent with the selected benchmark,
+                            with difference of less than 20%.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG10-B</td>
+                        <td>Site Energy Use Intensity (EUI) of the baseline/budget design is generally consistent with the selected
+                            benchmark, with difference of less than 20%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG11-P</td>
+                        <td>Site EUI of the lighting energy end-use in the proposed design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG11-B</td>
+                        <td>Site EUI of the lighting energy end-use in the baseline/budget design is generally consistent with the
+                            selected benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG12-P</td>
+                        <td>Site EUI of the miscellaneous and process equipment end-use in the proposed design is generally consistent
+                            with the selected benchmark, with a difference that does not exceed -25%/25%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG12-B</td>
+                        <td>Site EUI of the miscellaneous and process equipment end-use in the baseline/budget design is generally
+                            consistent with the selected benchmark, with a difference that does not exceed -25%/25%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG13-P</td>
+                        <td>Site EUI of the heating energy end-use in the proposed design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG13-B</td>
+                        <td>Site EUI of the heating energy end-use in the baseline/budget design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG14-P</td>
+                        <td>Site EUI of the cooling energy end-use in the proposed design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG14-B</td>
+                        <td>Site EUI of the cooling energy end-use in the baseline/budget design is generally consistent with the
+                            selected benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG15-P</td>
+                        <td>Site EUI of the HVAC fan energy end-use in the proposed design is generally consistent with the selected benchmark,
+                            with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG15-B</td>
+                        <td>Site EUI of the HVAC fan energy end-use in the baseline/budget design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG16-P</td>
+                        <td>Site EUI of the HVAC pump energy end-use in the proposed design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG16-B</td>
+                        <td>Site EUI of the HVAC pump energy end-use in the baseline/budget design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG17-P</td>
+                        <td>Site EUI of the heat rejection energy end-use in the proposed design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG17-B</td>
+                        <td>Site EUI of the heat rejection energy end-use in the baseline/budget design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG18-P</td>
+                        <td>Site EUI of the SWH end-use in the proposed design is generally consistent with the selected benchmark,
+                            with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG18-B</td>
+                        <td>Site EUI of the SWH end-use in the baseline/budget design is generally consistent with the selected benchmark,
+                            with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG19-P</td>
+                        <td>Site EUI of the elevator energy end-use in the proposed design is generally consistent with the
+                            selected benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                     <tr>
+                        <td>Simulation General</td>
+                        <td>SG19-B</td>
+                        <td>Site EUI of the elevator energy end-use in the baseline/budget design is generally consistent with the selected
+                            benchmark, with a difference that does not exceed -50%/50%.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Simulation General</td>
+                        <td>SG20</td>
+                        <td>Baseline energy use is correctly allocated to regulated versus unregulated energy uses and the compliance
+                            outcome is established correctly.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Utility Rates</td>
+                        <td>UR01</td>
+                        <td>The utility rates for electricity, natural gas and other applicable energy sources are based on
+                            an approved source.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Utility Rates</td>
+                        <td>UR02</td>
+                        <td>The difference between the average modeled baseline/budget and proposed utility rates for
+                            electricity, natural gas and other applicable energy sources are as expected.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Utility Rates</td>
+                        <td>UR03</td>
+                        <td>The modeled utility rates for electricity, natural gas and other applicable energy sources are as reported in the
+                            Compliance Form and the same in the baseline/budget and proposed design model.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE01-P</td>
+                        <td>Thermal properties of the above-grade walls in the proposed design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE01-B</td>
+                        <td>Thermal properties of the above-grade walls in the baseline/budget design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE02-P</td>
+                        <td>Thermal properties of below-grade walls in the proposed design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE02-B</td>
+                        <td>Thermal properties of below-grade walls in the baseline/budget design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE03-P</td>
+                        <td>Thermal properties of the roof in the proposed design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE03-B</td>
+                        <td>Thermal properties of the roof in the baseline/budget design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE04-P</td>
+                        <td>Thermal properties of the exterior floors in the proposed design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td>Also looks at whether the % of total exposure area is greater than 5%. If not, 3 instead of 2.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE04-B</td>
+                        <td>Thermal properties of the exterior floors in the baseline/budget design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td>Also looks at whether the % of total exposure area is greater than 5%. If not, 3 instead of 2.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE05-P</td>
+                        <td>Thermal properties of the slab-on-grade floor in the proposed design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE05-B</td>
+                        <td>Thermal properties of the slab-on-grade floors in the baseline/budget design are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE06-P</td>
+                        <td>Modeled U-factors and areas of the above-grade walls in the proposed design are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE06-B</td>
+                        <td>Modeled U-factor and areas of the above-grade walls in the baseline/budget design are as reported on the
+                            Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE07-P</td>
+                        <td>Modeled C-factors and areas of the below-grade walls in the proposed design are as reported in
+                            the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE07-B</td>
+                        <td>Modeled C-factor and areas of below-grade walls in the baseline/budget design are as
+                            reported on the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE08-P</td>
+                        <td>Modeled U-factors and areas of the roof in the proposed design are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE08-B</td>
+                        <td>Modeled U-factor and areas of the roof in the baseline/budget design are as reported on the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE09-P</td>
+                        <td>Modeled U-factor and areas of exposed floors in the proposed design are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td>Also looks at whether the % of total exposure area is greater than 5%. If not, 3 instead of 2.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE09-B</td>
+                        <td>Modeled U-factor and areas of the exposed floors in the baseline/budget design are as reported in the
+                            Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td>Also looks at whether the % of total exposure area is greater than 5%. If not, 3 instead of 2.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE10-P</td>
+                        <td>Modeled F-factors and slab-on-grade areas in the proposed design are as
+                            reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE10-B</td>
+                        <td>Modeled F-factors and areas of slab-on-grade in the baseline/budget design are as reported
+                            in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Warehouse, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>1-5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE11-P</td>
+                        <td>Proposed roof and exterior wall reflectance is established correctly in the Compliance Form based on
+                            the design documents.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>0-4</td>
+                        <td>1-5 if check only applies to roof (i.e., prior to 90.1 2022)</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE11-B</td>
+                        <td>Baseline/budget roof and exterior wall reflectance is established correctly in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>0-4</td>
+                        <td>1-5 if check only applies to roof (i.e., prior to 90.1 2022)</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE12-P</td>
+                        <td>Proposed roof and exterior wall reflectance was modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>0-4</td>
+                        <td>1-5 if check only applies to roof (i.e., prior to 90.1 2022)</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE12-B</td>
+                        <td>Baseline/budget roof and exterior wall reflectance was modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>0-4</td>
+                        <td>1-5 if check only applies to roof (i.e., prior to 90.1 2022)</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE13-P</td>
+                        <td>Fenestration area in the proposed design reported in the Compliance Form reflects design documents.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE13-B</td>
+                        <td>Fenestration area in the baseline/budget design reported in the Compliance Form is established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE14-P</td>
+                        <td>Modeled fenestration areas for the proposed design are as reported in the Compliance Form</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE14-B</td>
+                        <td>Modeled fenestration areas for the baseline/budget design are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE15-P</td>
+                        <td>Proposed fenestration U-factor, SHGC and VT are established correctly and required documentation is provided.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE15-B</td>
+                        <td>Baseline/budget fenestration U-factor, SHGC and VT reported in the Compliance Form are established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE16-P</td>
+                        <td>Modeled U-factor, SHGC and VLT of the proposed fenestration are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE16-B</td>
+                        <td>Modeled U-factor, SHGC and VLT of the baseline/budget fenestration are as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE17-P</td>
+                        <td>Proposed infiltration rate reported in the Compliance Form is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE17-B</td>
+                        <td>Baseline/budget infiltration rate reported in the Compliance Form is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE18-P</td>
+                        <td>Modeled infiltration rate for the proposed design reflects the values reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE18-B</td>
+                        <td>Modeled infiltration rate for the baseline/budget design reflects the values reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE-19</td>
+                        <td>Change in the proposed versus baseline/budget total annual and design loads from envelope components is
+                            reasonable given the difference in the proposed versus baseline/budget envelope parameters reported in the
+                            Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>School, Hotel/motel, Multifamily, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE20-P</td>
+                        <td>Proposed building orientation reflected in the Compliance Form is as specified.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting, Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE20-B</td>
+                        <td>The baseline/budget building performance is an average of four orientations, if required.</td>
+                        <td>0</td>
+                        <td>Interior Lighting, Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE21-P</td>
+                        <td>Proposed building orientation is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting, Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE21-B</td>
+                        <td>Building orientation of the baseline/budget design is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting, Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE22-P</td>
+                        <td>Proposed interior and exterior shading is established correctly in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, Retail, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>0-4</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE22-B</td>
+                        <td>Baseline/budget design interior and exterior shading is established correctly in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, Retail, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>0-4</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE23-P</td>
+                        <td>Proposed interior and exterior shading is modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, Retail, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>0-4</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE23-B</td>
+                        <td>Baseline/budget design interior and exterior shading is modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>Office, Retail, School, Hotel/motel, Multifamily, All Others</td>
+                        <td>0-4</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Building Envelope</td>
+                        <td>BE24-P</td>
+                        <td>Proposed envelope complies with minimum mandatory envelope requirements.</td>
+                        <td>1 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI01</td>
+                        <td>The floor area used in the lighting calculations is consistent with the reported project floor area.</td>
+                        <td>0</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI02-P</td>
+                        <td>Proposed Lighting Power in the Compliance Form reflects design documents for spaces
+                            where lighting is fully specified.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI03-P</td>
+                        <td>Proposed LPD to be modeled for spaces where lighting is not specified or partially specified
+                            is established correctly in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI03-B</td>
+                        <td>Baseline/budget Lighting Power Density (LPD) is established correctly in the Compliance Form
+                            for spaces where proposed lighting is fully specified.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI04-P</td>
+                        <td>Proposed lighting controls reported in the Compliance Form reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                     <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI05-P</td>
+                        <td>Specified lighting controls meet mandatory requirements in 90.1 Section 9.</td>
+                        <td>1 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI05-B</td>
+                        <td>Baseline/budget lighting controls are established correctly in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI06-P</td>
+                        <td>Modeled interior lighting peak demand is consistent with the proposed design lighting
+                            wattage reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI06-B</td>
+                        <td>Modeled interior lighting peak demand is consistent with the baseline/budget design lighting
+                            wattage reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI07-P</td>
+                        <td>Proposed interior lighting wattage entered into simulation tool reflects values reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI07-B</td>
+                        <td>Baseline/budget Design interior lighting wattage entered into simulation tool reflects values reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI08-P</td>
+                        <td>Occupancy sensor controls in the proposed design are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI08-B</td>
+                        <td>Occupancy sensor controls in the baseline/budget design are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI09-P</td>
+                        <td>Daylighting controls in the proposed design are modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Warehouse, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI09-B</td>
+                        <td>Daylighting sensor controls in the baseline/budget design are modeled as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Warehouse, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI10</td>
+                        <td>Modeled interior lighting runtime hours are realistic.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Interior Lighting</td>
+                        <td>LI11</td>
+                        <td>The difference in the interior lighting annual energy use of the baseline/budget and proposed design is reasonable.</td>
+                        <td>2 or 4</td>
+                        <td>Interior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE01-P</td>
+                        <td>Proposed exterior lighting power reported in the Compliance Form reflects design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE01-B</td>
+                        <td>Baseline/budget exterior lighting power is established correctly in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE02-P</td>
+                        <td>Specified exterior lighting meets 90.1 mandatory requirements.</td>
+                        <td>1 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE03-P</td>
+                        <td>Modeled exterior lighting power in the proposed design reflects the wattages reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE03-B</td>
+                        <td>Modeled exterior lighting power in the baseline/budget design reflects the wattages reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE04-P</td>
+                        <td>Exterior lighting controls reported in the Compliance Form reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE04-B</td>
+                        <td>Exterior lighting controls reported in the Compliance Form for the baseline/budget design are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE05-P</td>
+                        <td>Specified exterior lighting controls meet 90.1 mandatory requirements.</td>
+                        <td>1 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE06-P</td>
+                        <td>Modeled exterior lighting runtime hours in the proposed design are reasonable.</td>
+                        <td>2 or 4</td>
+                        <td>Exterior Lighting</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exterior Lighting</td>
+                        <td>LE07</td>
+                        <td>Difference between the baseline/budget and proposed exterior lighting energy is as expected.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO01</td>
+                        <td>The difference between the modeled baseline/budget and proposed miscellaneous equipment and process
+                            energy use is as expected.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO02-P</td>
+                        <td>Proposed design miscellaneous unregulated plug and process loads reported in the Compliance Form are reasonable.</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO02-B</td>
+                        <td>Miscellaneous unregulated baseline/budget plug and process loads reported in the Compliance Form are the
+                            same as proposed unless allowed to differ.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO03</td>
+                        <td>Schedules used for the miscellaneous unregulated plug and process loads reported in the Compliance Form for the
+                            baseline/budget design are the same as for the proposed design unless allowed to differ.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO04-P</td>
+                        <td>Miscellaneous proposed plug and process loads are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO04-B</td>
+                        <td>Miscellaneous baseline/budget plug and process loads are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO05-P</td>
+                        <td>Regulated commercial refrigerators & freezers reported in the Compliance Form for the proposed design
+                            reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO05-B</td>
+                        <td>Baseline/budget design for the regulated commercial refrigerators & freezers reported in the Compliance Form
+                            is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Misc equipment, Industrial process, Refrigeration equipment (unregulated), Other unregulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO06</td>
+                        <td>Regulated refrigerators and freezers are modeled as reported in the Compliance Form for the
+                            baseline/budget and proposed design.</td>
+                        <td>2 or 4</td>
+                        <td>Refrigeration equipment (regulated)</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO07-P</td>
+                        <td>Regulated motors reported in the Compliance Form for the proposed design reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Other regulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO07-B</td>
+                        <td>Regulated motors reported in the Compliance Form for the baseline/budget design are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Other regulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO08</td>
+                        <td>Regulated motors are modeled as reported in the Compliance Form for the baseline/budget and proposed design.</td>
+                        <td>2 or 4</td>
+                        <td>Other regulated</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO09-P</td>
+                        <td>Elevators reported in the Compliance Form for the proposed design reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Elevators and escalators</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO09-B</td>
+                        <td>Elevators reported in the Compliance Form for the baseline/budget design are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Elevators and escalators</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO10</td>
+                        <td>Elevators are modeled as reported in the Compliance Form for the baseline/budget/budget and proposed design.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO11-P</td>
+                        <td>Combined Heat and Power (CHP) systems reported in the Compliance Form for the proposed design reflect design documents.</td>
+                        <td>2 if CHP is reported, otherwise excluded</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO11-B</td>
+                        <td>CHP systems reported in the Compliance Form for the baseline/budget design are established correctly.</td>
+                        <td>2 if CHP is reported, otherwise excluded</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Plug, Process and Other Loads</td>
+                        <td>PPO12</td>
+                        <td>CHP systems are modeled as reported in the Compliance Form for the baseline/budget and proposed design.</td>
+                        <td>2 if CHP is reported, otherwise excluded</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH01-P</td>
+                        <td>Proposed SWH system type, efficiency and capacity reported in the Compliance Form reflects design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH02-P</td>
+                        <td>Proposed SWH efficiency reported in the Compliance Form meets the mandatory requirements of 90.1 Section 7.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH02-B</td>
+                        <td>Baseline/budget SWH system type, efficiency and capacity reported in the Compliance Form is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH03-P</td>
+                        <td>The ancillary components of the proposed SWH system reported in the Compliance Form reflect design documents.</td>
+                        <td>4</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH03-B</td>
+                        <td>Ancillary components of the baseline/budget SWH system reported in the Compliance Form are established correctly.</td>
+                        <td>4</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH04-P</td>
+                        <td>Proposed service hot water demand reported in the Compliance Form is reasonable.</td>
+                        <td>2 or 4</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH04-B</td>
+                        <td>Difference between the baseline/budget and proposed hot water demand reported in the
+                            Compliance Form is as allowed.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH05-P</td>
+                        <td>Modeled proposed SWH system type, efficiency, capacity, ancillary features and HW demand
+                            reflect parameters reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH05-B</td>
+                        <td>Modeled baseline/budget SWH system type, efficiency, capacity, ancillary features
+                            and demand reflect parameters reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH06</td>
+                        <td>Difference in the baseline/budget and proposed hot water use is reasonable based on the
+                            system parameters reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                     <tr>
+                        <td>Service Water Heating</td>
+                        <td>SWH07-P</td>
+                        <td>Modeled proposed SWH effective full load hours are reasonable.</td>
+                        <td>3 or 4</td>
+                        <td>Service Water Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC01-P</td>
+                        <td>Thermal blocks are listed in the Compliance Form and are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>This translates to always ranked as a 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC02-P</td>
+                        <td>Thermal blocks are modeled for the proposed design as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>This translates to always ranked as a 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC02-B</td>
+                        <td>Thermal blocks are modeled for the baseline/budget design as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>This translates to always ranked as a 2</td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC03-P</td>
+                        <td>All specified air-side HVAC systems are reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC03–B</td>
+                        <td>Baseline/budget system types reported in the Compliance Form are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC04-P</td>
+                        <td>All proposed air-side HVAC systems reported in the Compliance Form are modeled.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC04-B</td>
+                        <td>All baseline/budget air-side HVAC systems reported in the Compliance Form are modeled.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC05-P</td>
+                        <td>Heating and cooling types and capacities of the proposed air-side HVAC systems reported in the Compliance
+                            Form reflect Design Documents.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC05-B</td>
+                        <td>Heating and cooling types and capacities of the baseline/budget air-side HVAC systems reported in the
+                            Compliance Form are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC06-P</td>
+                        <td>Heating and cooling capacities of the proposed air-side HVAC systems are modeled as reported in
+                            the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC06-B</td>
+                        <td>Heating and cooling capacities of the baseline/budget air-side HVAC systems are modeled as
+                            reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC07-P</td>
+                        <td>Reported air-side HVAC systems cooling and heating efficiencies reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC08-P</td>
+                        <td>Cooling and heating efficiencies of the specified air-side HVAC systems meet the mandatory
+                            minimums in 90.1 Section 6.</td>
+                        <td>1 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC08–B</td>
+                        <td>Baseline/budget air-side systems’ heating and cooling efficiencies reported in the Compliance Form
+                            are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC09-P</td>
+                        <td>Modeling inputs for the proposed heating and cooling efficiency are provided in the Compliance Form and
+                            established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC09-B</td>
+                        <td>Modeling inputs for the baseline/budget heating and cooling efficiency are provided in the Compliance Form
+                            and established correctly.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC10-P</td>
+                        <td>The heating & cooling performance curves used in the proposed design simulation are based on an approved source.</td>
+                        <td>3 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC10-B</td>
+                        <td>The heating & cooling performance curves used in the baseline/budget design simulation are based on an
+                            approved source.</td>
+                        <td>3 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC11-P</td>
+                        <td>Modeled heating and cooling efficiency of the proposed air-side systems reflect values reported in the
+                            Compliance Form.</td>
+                        <td>3 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC11-B</td>
+                        <td>Modeled heating and cooling efficiency of the baseline/budget air-side systems reflect values
+                            reported in the Compliance Form.</td>
+                        <td>3 or 4</td>
+                        <td>Space Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC12-P</td>
+                        <td>Annual average realized DX cooling and heating efficiencies of the proposed systems reflect expected
+                            performance at the range of actual conditions.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC12-B</td>
+                        <td>Annual average realized DX cooling and heating efficiencies of the baseline/budget systems reflect expected
+                            performance at the range of actual conditions.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC13-P</td>
+                        <td>Annual average realized heating efficiencies of the proposed air-side systems reflect expected
+                            performance.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC13-B</td>
+                        <td>Annual average realized heating efficiencies of the baseline/budget air-side systems reflect
+                            expected performance.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC14-P</td>
+                        <td>Design supply, return, relief and exhaust fan flow rates reported in the Compliance Form are as
+                            specified in the Design Documents.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC14-B</td>
+                        <td>Baseline/budget design fans flow rates reported in the Compliance Form are established correctly.</td>
+                        <td>3 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC15-P</td>
+                        <td>Design supply, return, relief and exhaust fan power reported in the Compliance Form is as specified
+                            in the design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC15-B</td>
+                        <td>Baseline/budget fan power reported in the Compliance Form is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC16-P</td>
+                        <td>Air flow controls reported in the Compliance Form are as specified in the design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC16-B</td>
+                        <td>Air flow and supply temperature controls reported in the Compliance Form for the baseline/budget design are
+                            established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC17-P</td>
+                        <td>Fan power performance curves used in the simulation are based on an approved source.</td>
+                        <td>3 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC17-B</td>
+                        <td>Fan power performance curves reported for the baseline/budget design in the Compliance Form are
+                            based on an approved source.</td>
+                        <td>3 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC18-P</td>
+                        <td>Fan power, flow rate and controls are modeled in the proposed design as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC18-B</td>
+                        <td>Fan power, flow rate and controls are modeled in the baseline/budget design as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC19-P</td>
+                        <td>Modeled peak demand of ventilation fans in the proposed design is generally consistent with
+                            design fan power and control reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC19-B</td>
+                        <td>Modeled peak demand of ventilation fans in the baseline/budget design is generally consistent with
+                            design fan power and control reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC20-P</td>
+                        <td>Modeled equivalent full load hours of the ventilation fans in the proposed design are as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC20-B</td>
+                        <td>Modeled equivalent full load hours of the ventilation fans in the baseline/budget design are as
+                            expected.</td>
+                        <td>2 or 4</td>
+                        <td>Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC21-P</td>
+                        <td>Air-side economizers reported in the Compliance Form are as specified in the design documents.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Cooling, Heat Rejection</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC21-B</td>
+                        <td>Air-side economizers reported in the Compliance Form for the baseline/budget systems are
+                            established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Cooling, Heat Rejection</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC22-P</td>
+                        <td>Air-side economizer is modeled in the proposed design as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Cooling, Heat Rejection</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                     <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC22-B</td>
+                        <td>Air-side economizer is modeled in the baseline/budget design as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Cooling, Heat Rejection</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, All Others</td>
+                        <td>3A-8</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC23–P</td>
+                        <td>Design ventilation rates reported in the Compliance Form are consistent with the design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC23–B</td>
+                        <td>Baseline/budget ventilation rates reported in the Compliance Form are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC24–P</td>
+                        <td>Demand control ventilation reported in the Compliance Form is consistent with the design documents.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>Retail, School, Restaurant</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC25–P</td>
+                        <td>Demand control ventilation reported in the Compliance Form for the proposed design meets mandatory
+                            requirements in 90.1 Section 6.</td>
+                        <td>1 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>Retail, School, Restaurant</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC25-B</td>
+                        <td>Demand control ventilation reported in the Compliance Form for the baseline/budget design
+                            is established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>Retail, School, Restaurant</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC26-P</td>
+                        <td>Ventilation rate and control are modeled for the proposed design as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC26-B</td>
+                        <td>Ventilation rate and controls are modeled for the baseline/budget design as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Pumps, Heat Rejection,
+                            Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC27–P</td>
+                        <td>Exhaust air energy recovery reported in the Compliance Form reflects design documents.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating (if CZ >=4), Space Cooling (if CZ <4), Fans Interior Ventilation</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC27-B</td>
+                        <td>Exhaust air energy recovery reported in the Compliance Form for the baseline/budget design
+                            is established correctly.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating (if CZ >=4), Space Cooling (if CZ <4), Fans Interior Ventilation</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC28-P</td>
+                        <td>Exhaust air energy recovery modeled in the proposed design is as reported in the Compliance Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating (if CZ >=4), Space Cooling (if CZ <4), Fans Interior Ventilation</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC28-B</td>
+                        <td>Exhaust air energy recovery modeled in the baseline/budget design is as reported in the Compliance
+                            Form.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating (if CZ >=4), Space Cooling (if CZ <4), Fans Interior Ventilation</td>
+                        <td>Office, Retail, School, Healthcare/hospital, Restaurant, Hotel/motel, Multifamily, All Others</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC29–P</td>
+                        <td>Additional HVAC efficiency measures reported in the Compliance Form are allowed for trade-off and
+                            reflect design documents.</td>
+                        <td>2 if reported</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC30-P</td>
+                        <td>Additional HVAC efficiency measures were modeled for the proposed design as described in the
+                            Compliance Form.</td>
+                        <td>2 if reported</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC31-P</td>
+                        <td>Modeled monthly patterns of heating and cooling loads in the proposed design are as expected with no
+                            excessive simultaneous heating and cooling.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Heat Rejection</td>
+                        <td>Office, School, Healthcare/hospital, All Others</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Air-Side HVAC Systems</td>
+                        <td>AHVAC31-B</td>
+                        <td>Modeled monthly patterns of heating and cooling loads in the baseline/budget design are as expected with
+                            no excessive simultaneous heating and cooling.</td>
+                        <td>2, 3, or 4</td>
+                        <td>Space Heating, Heat Pump Supplemental Heating, Space Cooling, Heat Rejection</td>
+                        <td>Office, School, Healthcare/hospital, All Others</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC01-P</td>
+                        <td>Proposed chillers reported in the Compliance Form reflect design documents and meet the minimum
+                            efficiency requirements.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC01-B</td>
+                        <td>Properties of the baseline/budget chillers reported in the Compliance Form are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC02-P</td>
+                        <td>Proposed chillers are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC02-B</td>
+                        <td>Baseline/budget chillers are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC03–P</td>
+                        <td>Average annual realized proposed chiller efficiency is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC03–B</td>
+                        <td>Average annual realized baseline/budget chiller efficiency is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC04-P</td>
+                        <td>Proposed chilled water loop configuration and temperature controls reported in the Compliance Form
+                            reflect design documents.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC04-B</td>
+                        <td>Baseline/budget chilled water loop configuration and temperature controls reported in the Compliance
+                            Form are established correctly.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC05-P</td>
+                        <td>Proposed chilled water loops configuration and temperature controls are modeled as reported in
+                            the Compliance Form.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC05-B</td>
+                        <td>Baseline/budget chilled water loops configuration and temperature controls are modeled as reported
+                            in the Compliance Form.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC06-P</td>
+                        <td>Proposed chilled water pump system parameters reported in the Compliance Form
+                            reflect design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC06-B</td>
+                        <td>Baseline/budget chilled water pump system parameters reported in the Compliance Form
+                            are established correctly</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC07-P</td>
+                        <td>Proposed CHW pumps are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC07-B</td>
+                        <td>Baseline/budget CHW pumps are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC08-P</td>
+                        <td>Proposed CHW loop flow control is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC08-B</td>
+                        <td>Baseline/budget CHW loop flow control is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Cooling, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC09-P</td>
+                        <td>Modeled proposed annual chilled water pump energy is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC09-B</td>
+                        <td>Modeled baseline/budget annual chilled water pump energy is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC10–P</td>
+                        <td>Proposed heat rejection system reported in the Compliance Form reflects design documents.</td>
+                        <td>2 or 4</td>
+                        <td>Heat Rejection, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC10–B</td>
+                        <td>Baseline/budget heat rejection system reported in the Compliance Form is established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Heat Rejection, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC11–P</td>
+                        <td>Proposed heat rejection system is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Heat Rejection, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC11–B</td>
+                        <td>Baseline/budget heat rejection system is modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Heat Rejection, Fans Interior Ventilation</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC12-P</td>
+                        <td>Proposed space heating boilers reported in the Compliance Form reflect design documents and meet
+                            the minimum efficiency requirements.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC12-B</td>
+                        <td>Properties of the space heating boilers in the baseline/budget design reported in the Compliance Form
+                            are established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC13-P</td>
+                        <td>Space heating boilers in the proposed design are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC13-B</td>
+                        <td>Space heating boilers in the baseline/budget design are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC14-P</td>
+                        <td>Average annual realized efficiency of the proposed boilers is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC14-B</td>
+                        <td>Average annual realized efficiency of the baseline/budget boilers is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC15-P</td>
+                        <td>Proposed hot water loop configuration and temperature controls reported in the Compliance Form
+                            reflect design documents.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Heating, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC15-B</td>
+                        <td>Baseline/budget hot water loop configuration and temperature controls reported in the Compliance Form
+                            are established correctly.</td>
+                        <td>0, if reported</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC16-P</td>
+                        <td>Proposed hot water loops configuration and temperature controls are modeled as
+                            reported in the Compliance Form.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Heating, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC16-B</td>
+                        <td>Baseline/budget hot water loops temperature controls are modeled as reported in the
+                            Compliance Form.</td>
+                        <td>2 (if pump impactful end-use), 2 (if only space cooling is impactful), 4</td>
+                        <td>Space Heating, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC17-P</td>
+                        <td>Proposed hot water pump system parameters reported in the Compliance Form reflect design
+                            documents.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC17-B</td>
+                        <td>Baseline/budget hot water pump system parameters reported in the Compliance Form are
+                            established correctly.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC18-P</td>
+                        <td>Proposed hot water pumps are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC18-B</td>
+                        <td>Baseline/budget hot water pumps are modeled as reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC19-P</td>
+                        <td>Proposed hot water loops configuration and flow control is modeled as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC19-B</td>
+                        <td>Baseline/budget hot water loops configuration and flow control is modeled as reported in the
+                            Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating, Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC20-P</td>
+                        <td>Modeled proposed annual hot water pump energy is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC20-B</td>
+                        <td>Modeled baseline/budget annual hot water pump energy is as expected.</td>
+                        <td>2 or 4</td>
+                        <td>Pumps</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC21</td>
+                        <td>Pump energy use is reported on the Compliance Calculations tab if applicable.</td>
+                        <td>0</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Water-Side HVAC Systems</td>
+                        <td>WHVAC22</td>
+                        <td>Modeled baseline/budget and proposed heating energy use by fuel is consistent with the heating energy
+                            source reported in the Compliance Form.</td>
+                        <td>2 or 4</td>
+                        <td>Space Heating</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td>All</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>RE01</td>
+                        <td>The renewable electricity generation systems reported in the Compliance Form reflect
+                            design documents.</td>
+                        <td>1 if achieving compliance depends on renewables otherwise, 4 or N/A if none reported.</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>RE02</td>
+                        <td>The renewable thermal energy systems reported in the Compliance Form reflect design documents.</td>
+                        <td>Same as above</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>RE03</td>
+                        <td>Savings from renewable energy reported in the Compliance Form are substantiated.</td>
+                        <td>Same as above</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>RE04</td>
+                        <td>Contribution of renewable energy toward compliance does not exceed the allowed limit.</td>
+                        <td>Same as above</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Renewable Energy</td>
+                        <td>RE05</td>
+                        <td>Prescriptive on-site renewable energy requirements reported in the Compliance Form are established
+                            correctly.</td>
+                        <td>1 or N/A if none reported.</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exceptional Calculations</td>
+                        <td>EC01</td>
+                        <td>Documentation submitted for each exceptional calculation method reported in the Compliance Form meets
+                            90.1 requirements.</td>
+                        <td>1 if reported otherwise not included</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Exceptional Calculations</td>
+                        <td>EC02</td>
+                        <td>Calculation methodology is acceptable and inputs reflect specified systems and equipment.</td>
+                        <td>1 if reported otherwise not included</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                     <tr>
+                        <td>Exceptional Calculations</td>
+                        <td>EC03</td>
+                        <td>Contribution of exceptional calculations toward compliance does not exceed the allowed limit.</td>
+                        <td>1 if reported otherwise not included</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <!--- ---------------------- --->
+        </div>
+
+        <div id="footer-container"></div> <!-- Footer container -->
+    </main>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="../assets/js/add-components.js"></script>
+<script>
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var $table = $('#reviewTable');
+      var $tbody = $table.find('tbody');
+      var $rows = $tbody.find('tr').not(':first');
+      var $sectionSel = $('#filterSection');
+      var $rankSel = $('#filterRank');
+
+      // Build Section options from column 0 (first column)
+      var sections = {};
+      $rows.each(function () {
+        var txt = $(this).children().eq(0).text().trim();
+        if (txt && !sections[txt]) sections[txt] = true;
+      });
+
+      // Always reset the dropdown and start with "All sections"
+      $sectionSel.empty();
+      $sectionSel.append($('<option/>', { text: "All sections", value: "" }));
+
+      // Insert unique section names (sorted)
+      Object.keys(sections).sort().forEach(function (sec) {
+        $sectionSel.append($('<option/>', { text: sec, value: sec }));
+      });
+
+      // Refresh bootstrap-select
+      $sectionSel.selectpicker('refresh');
+
+      // Filtering logic
+      function rowMatchesSection($tr, sectionVal) {
+        if (!sectionVal) return true;
+        var sectionText = $tr.children().eq(0).text().trim();
+        return sectionText === sectionVal;
+      }
+
+      function rowMatchesRank($tr, rankVal) {
+        if (!rankVal) return true;
+        var cell = $tr.children().eq(3).text().trim(); // Ranking Logic column
+        // Match rank as a standalone number within any phrasing (e.g., "2, 3, or 4")
+        var re = new RegExp('\\b' + rankVal + '\\b');
+        return re.test(cell);
+      }
+
+      function applyFilters() {
+        var sectionVal = $sectionSel.val() || '';
+        var rankVal = $rankSel.val() || '';
+
+        var visible = 0;
+        $rows.each(function () {
+          var $tr = $(this);
+          var show = rowMatchesSection($tr, sectionVal) && rowMatchesRank($tr, rankVal);
+          $tr.toggle(show);
+          if (show) visible += 1;
+        });
+
+      }
+
+      // Events
+      $sectionSel.on('changed.bs.select', applyFilters);
+      $rankSel.on('changed.bs.select', applyFilters);
+
+    });
+  })();
+</script>
+</body>
+</html>

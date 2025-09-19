@@ -385,7 +385,9 @@
                         </figure>
                     </li>
                     <li>Process equipment is reported in Table 4 of the Plug, Process and Other Loads tab in the Compliance
-                        Form.</li>
+                        Form. Ensure that the project captured all unique end-use load components within and associated with the
+                        building including but not limited to swimming pool heaters and pumps, fireplaces, firepits, BBQs, water
+                        features, etc.</li>
                 </ol>
             </div>
 
@@ -515,9 +517,16 @@
             <div id="ppo04" class="card card-body mb-3" data-check-type="5" data-component="misc" data-model="B,P">
                 <h3>PPO04 Miscellaneous plug and process loads are modeled as reported in the Compliance Form.</h3>
                 <p>
-                    Review simulation reports listed below to verify that the plug and process loads are modeled as
+                    Review simulation reports shown in the table below to verify that the plug and process loads are modeled as
                     reported. Energy use from miscellaneous equipment and industrial is reported in Table 2 of the
                     Compliance Calculations tab.
+                </p>
+                <p>
+                    For additional verification, if available in model output reports, check that modeled schedules reflect building
+                    occupancy types including appropriate seasonal and weekly variation. For example, if the building occupancy type is
+                    a school that closes during the summer months, then the miscellaneous plug and process load schedules should be
+                    reflective of this seasonal occupancy pattern. Refer to the Operating Schedule tab in the Compliance Form for
+                    anticipated building occupancy patterns.
                 </p>
                 <div class="annotated-report container">
                     <div class="row" data-bem-tool="eQUEST">
@@ -1415,6 +1424,33 @@
                 <div id="resizableContainer">
                   <img id="modalImage" src="" class="img-fluid" alt="Full Image" style="width: 100%; height: auto; display: block;">
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="filterHelpModal" tabindex="-1" role="dialog" aria-labelledby="filterHelpLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="filterHelpLabel">How to Use the Filter Feature</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                <h6 class="mb-3">How do I use the Filter feature?</h6>
+                <ol class="mb-0">
+                  <li>Click on the orange <strong>Filter Content</strong> button at the top of the page.</li>
+                  <li>By default, all options are selected. To filter for your specific project, first uncheck the project path, 90.1 vintages, and model types that are <em>not</em> applicable.</li>
+                  <li>Then select from the dropdowns the <strong>Check Type(s)</strong>, <strong>Component Type(s)</strong>, and <strong>BEM Tool(s)</strong> that <strong>are</strong> applicable.</li>
+                  <li>After filtering, checks that are not applicable will be grayed out at the top of the page; only applicable checks remain visible as you scroll.</li>
+                  <li>To reset and show all content again, click the <strong>Reset Filters</strong> button.</li>
+                </ol>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
